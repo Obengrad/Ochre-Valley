@@ -58,7 +58,7 @@
 				if(prob(3))
 					used = 'sound/vo/male/gen/HEY.ogg'
 			if("hic" || "hiccup") // OV Edit, hiccups.
-				used = list('sound/vo/vore/burps/hic.ogg','sound/vo/vore/burps/hiccup.ogg')
+				used = list('sound/vo/vore/hiccups/hic.ogg','sound/vo/vore/hiccups/hiccup.ogg')
 			if("hmm")
 				used = 'sound/vo/male/gen/hmm.ogg'
 			if("huh")

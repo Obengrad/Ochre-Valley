@@ -53,7 +53,7 @@
 			if("haltyell")
 				used = list('sound/vo/female/gen/haltyell (1).ogg','sound/vo/female/gen/haltyell (2).ogg')
 			if("hic" || "hiccup") // OV Edit, hiccups.
-				used = list('sound/vo/vore/burps/hic.ogg','sound/vo/vore/burps/hiccup.ogg')
+				used = list('sound/vo/vore/hiccups/hic.ogg','sound/vo/vore/hiccups/hiccup.ogg')
 			if("hmm")
 				used = 'sound/vo/female/gen/hmm.ogg'
 			if("huh")
