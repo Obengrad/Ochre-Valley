@@ -245,6 +245,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/noble_gossip
 
 	var/averse_chosen_faction = "Inquisition"
+	var/cursed_animal = "mouse" //OV ADD
 
 	var/datum/voicepack/temp_vp
 
@@ -658,6 +659,18 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(!averse_chosen_faction)
 					averse_chosen_faction = "Inquisition"
 				dat += "<b>Loathed Group:</b> <a href='?_src_=prefs;preference=charflaw_averse_choice;task=input'>[averse_chosen_faction]</a><BR>"
+			
+			//OV edit
+			var/has_dendor_touched = FALSE
+			for(var/datum/charflaw/cf in charflaws)
+				if(istype(cf, /datum/charflaw/dendor_touched))
+					has_dendor_touched = TRUE
+					break
+			if(has_dendor_touched)
+				if(!cursed_animal)
+					cursed_animal = "mouse"
+				dat += "<b>Cursed Animal:</b> <a href='?_src_=prefs;preference=charflaw_cursed_animal_choice;task=input'>[cursed_animal]</a><BR>"
+			//OV edit end
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
@@ -2681,6 +2694,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/choice = tgui_input_list(user, "Who do you loathe?", "AVERSION", GLOB.averse_factions)
 					if(choice)
 						averse_chosen_faction = choice
+				
+				//OV edit
+				if("charflaw_cursed_animal_choice")
+					var/choice = tgui_input_list(user, "Which animal are you cursed to be? NOTE: All animals have the same stats, this is a cosmetic choice.", "DENDOR TOUCHED", GLOB.dendor_touched_animals)
+					if(choice)
+						cursed_animal = choice
+				//OV edit end
 
 				if("race_bonus_select")
 					if(length(pref_species.custom_selection))
