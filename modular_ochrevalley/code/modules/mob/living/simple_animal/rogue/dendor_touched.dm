@@ -61,49 +61,127 @@
 	convert_damage = FALSE
 	do_gib = FALSE
 
-/obj/shapeshift_holder/dendor_touched/Initialize(mapload,mob/living/caster)
+/obj/effect/proc_holder/spell/targeted/shapeshift/dendor_touched/Shapeshift(mob/living/caster)
+	var/cursed_animal
+	var/cursed_animal_colour
+	if(caster.mind)
+		if(caster.client.prefs?.cursed_animal)
+			cursed_animal = caster.client.prefs?.cursed_animal
+			cursed_animal_colour = caster.client.prefs?.cursed_animal_colour
+	if(!cursed_animal)
+		return
+
+	var/obj/shapeshift_holder/H = locate(/obj/shapeshift_holder) in caster
+	if(H)
+		to_chat(caster, span_warning("You're already shapeshifted!"))
+		return
+
+	if(do_gib)
+		playsound(caster.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
+
+	// Create the new form
+	var/mob/living/shape = new shapeshift_type(get_turf(caster))
+	shape.name = "[cursed_animal]"
+	shape.icon_state = "[cursed_animal]"
+	if(cursed_animal_colour)
+		shape.color = cursed_animal_colour
+
+	// Create holder INSIDE the new form, passing shape explicitly
+	H = new /obj/shapeshift_holder(shape, src, caster, shape)
+
+	if(do_gib)
+		caster.spawn_gibs(FALSE)
+
+/obj/shapeshift_holder/dendor_touched/Initialize(mapload, obj/effect/proc_holder/spell/targeted/shapeshift/source, mob/living/caster, mob/living/new_shape)
 	if(!caster)
 		return ..()
-	shape = loc
-	if(!istype(shape))
-		CRASH("shapeshift holder created outside mob/living")
+	src.source = source
 	stored = caster
+	shape = new_shape
+
+	if(!stored || !shape)
+		to_chat(caster, "Initialize failure: invalid mobs | stored=[stored] shape=[shape]")
+		CRASH("shapeshift holder initialized without valid mobs")
+
+	if(!isliving(shape))
+		to_chat(caster, "Initialize failure: shape not living | shape=[shape]")
+		CRASH("shapeshift holder received non-living shape")
+
 	if(stored.mind)
 		stored.mind.transfer_to(shape)
+
+	rebuild_perception(shape)
+	hard_reset_spatial(shape)
+
 	stored.forceMove(src)
 	stored.notransform = TRUE
+	
 	shape.visible_message(span_warning("[stored] has twisted brutally into an animal form."),span_warningbig("Shrouded within the darkness, you have been forced to transform into your cursed animal form."))
 	playsound(shape.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
-	slink = soullink(/datum/soullink/shapeshift, stored , shape)
-	slink.source = src
+	
+	slink = soullink(/datum/soullink/shapeshift, stored, shape)
+	if(slink)
+		slink.source = src
 
 /obj/shapeshift_holder/dendor_touched/restore(death=FALSE, knockout=0)
 	if(restoring || QDELETED(src))
 		return
-	
 
 	restoring = TRUE
-	qdel(slink)
-	if (stored)
-		stored.forceMove(get_turf(src))
-		stored.notransform = FALSE
 
-		// leave a track to indicate something has shifted out here
-		var/obj/effect/track/the_evidence = new(stored.loc)
-		the_evidence.handle_creation(stored)
-		the_evidence.track_type = "expanding animal tracks into humanoid footprints"
-		the_evidence.ambiguous_track_type = "curious footprints"
-		the_evidence.base_diff = 6
-	if(ishuman(stored))
-		var/mob/living/carbon/human/us = stored
+	if(slink)
+		qdel(slink)
+		slink = null
+
+	if(!stored)
+		qdel(src)
+		return
+
+	var/mob/living/temp = stored
+	stored = null
+
+	var/turf/original_turf = get_turf(src)
+
+	if(original_turf)
+		temp.forceMove(original_turf)
+		hard_reset_spatial(temp)
+
+	temp.notransform = FALSE
+
+	var/datum/mind/M = temp?.mind || shape?.mind
+	if(M)
+		M.transfer_to(temp)
+
+	rebuild_perception(temp)
+
+	var/obj/effect/track/the_evidence = new(temp.loc)
+	the_evidence.handle_creation(temp)
+
+	if(ishuman(temp))
+		var/mob/living/carbon/human/us = temp
 		for(var/datum/charflaw/dendor_touched/touched in us.charflaws)
 			touched.last_transform = world.time
-	if(shape && shape.mind)
-		shape.mind?.transfer_to(stored)
-		stored.mind.RemoveSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/dendor_touched)
-	to_chat(stored, span_notice("Bug notice: If you can no longer see emotes, move to a different z level and back (up/down a level). This is a known bug."))
-	qdel(shape)
-	shape = null
+
+	if(knockout)
+		temp.Unconscious(knockout, TRUE, TRUE)
+
+	if(death)
+		temp.death()
+	else if(source?.convert_damage && shape)
+		temp.revive(full_heal = TRUE, admin_revive = FALSE)
+
+		var/damage_percent = (shape.maxHealth - shape.health) / max(shape.maxHealth, 1)
+		var/damapply = temp.maxHealth * damage_percent
+		temp.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
+
+	if(shape)
+		var/mob/living/old_shape = shape
+		shape = null
+		qdel(old_shape)
+
+	stored = temp
+
+	qdel(src)
 
 /datum/stressevent/dendor_touched
 	timer = 6 MINUTES

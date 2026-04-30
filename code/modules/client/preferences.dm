@@ -248,6 +248,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/averse_chosen_faction = "Inquisition"
 	var/cursed_animal = "mouse" //OV ADD
+	var/cursed_animal_colour = "#FFFFFF" //OV ADD
 
 	var/datum/voicepack/temp_vp
 
@@ -676,7 +677,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(has_dendor_touched)
 				if(!cursed_animal)
 					cursed_animal = "mouse"
+				if(!cursed_animal_colour)
+					cursed_animal_colour = "#FFFFFF"
 				dat += "<b>Cursed Animal:</b> <a href='?_src_=prefs;preference=charflaw_cursed_animal_choice;task=input'>[cursed_animal]</a><BR>"
+				dat += "<b>Cursed Animal Color:</b><span style='border: 1px solid #161616; background-color: [cursed_animal_colour];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=charflaw_cursed_animal_colour;task=input'>Change</a><BR>"
 			//OV edit end
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
@@ -2711,6 +2715,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/choice = tgui_input_list(user, "Which animal are you cursed to be? NOTE: All animals have the same stats, this is a cosmetic choice.", "DENDOR TOUCHED", GLOB.dendor_touched_animals)
 					if(choice)
 						cursed_animal = choice
+				
+				if("charflaw_cursed_animal_colour")
+					var/new_animal_colour = color_pick_sanitized(user, "Choose your character's cursed animal form color:", "Character Preference","[cursed_animal_colour]")
+					if(new_animal_colour)
+						new_animal_colour = sanitize_hexcolor(new_animal_colour)
+						cursed_animal_colour = "#[new_animal_colour]"
 				//OV edit end
 
 				if("race_bonus_select")
