@@ -86,6 +86,7 @@
 				icon_state = "fullpadded_down"
 			flags_inv = HIDEEARS|HIDEHAIR
 			body_parts_covered = NECK|HAIR|EARS|HEAD
+			body_parts_covered_dynamic = body_parts_covered
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_neck()
@@ -96,6 +97,7 @@
 				icon_state = "fullpadded_neck"
 			flags_inv = null
 			body_parts_covered = NECK
+			body_parts_covered_dynamic = body_parts_covered
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_neck()
@@ -220,6 +222,7 @@
 				icon_state = "chaincoif"
 			flags_inv = HIDEEARS|HIDEHAIR
 			body_parts_covered = NECK|HAIR|EARS|HEAD
+			body_parts_covered_dynamic = body_parts_covered
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_neck()
@@ -230,6 +233,7 @@
 				icon_state = "chaincoif_t"
 			flags_inv = null
 			body_parts_covered = NECK
+			body_parts_covered_dynamic = body_parts_covered
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_neck()

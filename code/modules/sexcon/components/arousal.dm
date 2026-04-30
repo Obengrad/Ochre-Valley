@@ -318,8 +318,8 @@
 		adjust_arousal(parent, -dt * SPENT_AROUSAL_RATE)
 
 /datum/component/arousal/proc/is_spent()
-	if(charge < CHARGE_FOR_CLIMAX)
-		return TRUE
+	// if(charge < CHARGE_FOR_CLIMAX) // OV Removal
+	// 	return TRUE // OV Removal: No more "I'm too spent!"
 	return FALSE
 
 /datum/component/arousal/proc/update_pink_screen()

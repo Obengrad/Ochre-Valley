@@ -21,6 +21,36 @@
 	gradient_appearance.color = gradient_color
 	standing.overlays += gradient_appearance
 
+//OV edit
+/obj/item/bodypart/hair/clone_bodypart_feature(datum/bodypart_feature/hair/feature)
+	if(feature.body_zone != body_zone)
+		return FALSE
+	if(!bodypart_features)
+		bodypart_features = list()
+	for(var/datum/bodypart_feature/existing_feature as anything in bodypart_features)
+		if(!(existing_feature.feature_slot == feature.feature_slot))
+			continue
+		remove_bodypart_feature(existing_feature)
+	var/datum/bodypart_feature/hair/new_feature = new feature.type(src)
+	new_feature.accessory_type = feature.accessory_type
+	new_feature.accessory_colors = feature.accessory_colors
+	new_feature.hair_color = feature.hair_color
+	new_feature.natural_gradient = feature.natural_gradient
+	new_feature.natural_color = feature.natural_color
+	new_feature.hair_dye_gradient = feature.hair_dye_gradient
+	new_feature.hair_dye_color = feature.hair_dye_color
+	bodypart_features += new_feature
+	if(owner)
+		owner.update_body()
+		/*
+		if(ishuman(owner))
+			var/mob/living/carbon/human/H = owner
+			H.icon_render_key = null
+		owner.queue_icon_update(PENDING_UPDATE_BODY)
+		*/
+	return TRUE
+//OV edit end
+
 /datum/bodypart_feature/hair/head
 	name = "Hair"
 	feature_slot = BODYPART_FEATURE_HAIR

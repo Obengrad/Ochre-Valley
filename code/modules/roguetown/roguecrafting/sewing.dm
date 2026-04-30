@@ -13,6 +13,34 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/tiyon
+	name = "tiyon"
+	category = "Hats"
+	result = list(/obj/item/clothing/head/roguetown/tiyon)
+	reqs = list(/obj/item/natural/cloth = 2)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/sewing/longveil
+	name = "long veil"
+	category = "Hats"
+	result = list(/obj/item/clothing/head/roguetown/longveil)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/sewing/durag
+	name = "durag"
+	category = "Hats"
+	result = list(/obj/item/clothing/head/roguetown/durag)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/sewing/faceveil
+	name = "face veil"
+	category = "Masks"
+	result = list(/obj/item/clothing/mask/rogue/faceveil)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/sewing/allwrappings
 	name = "cloth wrappings"
 	category = "Bracers"
@@ -1919,7 +1947,7 @@
 /////////////////////////////////
 
 /datum/crafting_recipe/roguetown/sewing/tailor
-	always_availible = TRUE // CC Edit: Drip readded
+	always_availible = FALSE
 
 /datum/crafting_recipe/roguetown/sewing/tailor/naledisash
 	name = "hierophant's sash"
@@ -2118,3 +2146,19 @@
 	)
 	craftdiff = 4
 	category = "Pants"
+/datum/crafting_recipe/roguetown/sewing/velvetdress
+	name = "velvet dress"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/velvetdress)
+	reqs = list(
+		/obj/item/natural/cloth = 3,
+		/obj/item/natural/fibers = 2
+	)
+	craftdiff = 4
+/datum/crafting_recipe/roguetown/sewing/noble
+	name = "velvet dress"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/nobledress)
+	reqs = list(
+		/obj/item/natural/cloth = 3,
+		/obj/item/natural/fibers = 2
+	)
+	craftdiff = 4

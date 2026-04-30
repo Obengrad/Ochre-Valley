@@ -30,7 +30,6 @@
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/charging_fire.ogg'
 	cooldown_time = 5.5 SECONDS
-	is_implement_scaled_spell = TRUE
 	attunement_school = ASPECT_NAME_GEOMANCY
 	var/spread_step = 8
 
@@ -76,7 +75,7 @@
 
 /obj/projectile/magic/gravel_blast/arc
 	name = "arced gravel shot"
-	damage = 16
+	damage = 17
 	arcshot = TRUE
 
 /obj/projectile/magic/gravel_blast/on_hit(target)

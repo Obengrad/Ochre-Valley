@@ -18,7 +18,7 @@
 	capture_difficulty = 2 //OV ADD
 
 /mob/living/carbon/human/species/orc/npc
-	faction = list("orcs", "station")
+	faction = list(FACTION_ORCS, FACTION_STATION)
 	ai_controller = /datum/ai_controller/human_npc
 	cmode_music = FALSE
 

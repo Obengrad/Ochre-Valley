@@ -34,7 +34,6 @@
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/charging.ogg'
 	cooldown_time = 6 SECONDS
-	is_implement_scaled_spell = TRUE
 	attunement_school = ASPECT_NAME_FERRAMANCY
 
 	associated_skill = /datum/skill/magic/arcane
@@ -75,7 +74,7 @@
 
 /obj/projectile/energy/stygian/arc
 	name = "arced stygian harpe"
-	damage = 29
+	damage = 26
 	arcshot = TRUE
 
 /obj/projectile/energy/stygian/on_hit(target)

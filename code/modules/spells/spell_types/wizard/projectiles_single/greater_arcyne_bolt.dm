@@ -32,7 +32,6 @@
 	associated_skill = /datum/skill/magic/arcane
 	spell_tier = 2
 	spell_impact_intensity = SPELL_IMPACT_MEDIUM
-	is_implement_scaled_spell = TRUE
 	attunement_school = ASPECT_NAME_KINESIS
 
 /obj/projectile/magic/greater_arcyne_bolt
@@ -53,7 +52,7 @@
 
 /obj/projectile/magic/greater_arcyne_bolt/arc
 	name = "arced greater arcyne bolt"
-	damage = 50
+	damage = 34
 	arcshot = TRUE
 
 /obj/projectile/magic/greater_arcyne_bolt/on_hit(target)
