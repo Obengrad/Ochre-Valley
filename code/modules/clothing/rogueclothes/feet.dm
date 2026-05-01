@@ -13,7 +13,6 @@
 	experimental_inhand = TRUE
 	salvage_amount = 0
 	salvage_result = null
-	sellprice = 4 //Important footwear...
 
 /obj/item/clothing/shoes/roguetown/boots
 	name = "dark boots"
@@ -57,7 +56,6 @@
 	icon_state = "ancientboots"
 	smeltresult = /obj/item/ingot/aaslag
 	color = "#bb9696"
-	sellprice = 5 //Ew, AAlloy...
 
 /obj/item/clothing/shoes/roguetown/boots/paalloy
 	name = "ancient boots"
@@ -83,7 +81,6 @@
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER //170 extra hp. stop footfragging my orthos. 
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
-	sellprice = 15 //Blessed boots...
 
 /obj/item/clothing/shoes/roguetown/boots/psydonboots/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -101,7 +98,6 @@
 	armor = ARMOR_CLOTHING
 	salvage_amount = 2
 	salvage_result = /obj/item/natural/hide/cured
-	sellprice = 14 //Noble Boots... Quite nice.
 
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -123,7 +119,6 @@
 	sewrepair = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
-	sellprice = 3
 
 /obj/item/clothing/shoes/roguetown/ridingboots
 	name = "riding boots"
@@ -232,7 +227,6 @@
 	max_integrity = 100			//Half that of iron boots
 	armor = ARMOR_LEATHER			//Better than regular leather.
 	color = null
-	sellprice = 10 //Nice boots!
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
 	name = "dress boots"
@@ -253,7 +247,6 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 	sewrepair = TRUE
-	sellprice = 10
 
 /obj/item/clothing/shoes/roguetown/boots/otavan/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -269,7 +262,6 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 	sewrepair = TRUE
-	sellprice = 12
 
 /obj/item/clothing/shoes/roguetown/grenzelhoft/freifechter
 	name = "fencing boots"
@@ -291,7 +283,6 @@
 	icon_state = "welfshoes"
 	item_state = "welfshoes"
 	anvilrepair = /datum/skill/craft/carpentry
-	sellprice = 100 //Elven boots...
 	smeltresult = /obj/item/rogueore/coal
 
 /obj/item/clothing/shoes/roguetown/boots/elven_boots/Initialize(mapload)
@@ -314,7 +305,6 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 15
 
 /obj/item/clothing/shoes/roguetown/boots/armor/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
@@ -358,7 +348,7 @@
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "graggarplateboots"
-	sellprice = 35 //Heretic...
+	smeltresult = /obj/item/ingot/component/graggar
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar/Initialize()
 	. = ..()
@@ -371,8 +361,8 @@
 	desc = "Gilded tombs do worm enfold."
 	icon_state = "matthiosboots"
 	armor = ARMOR_PLATE_BSTEEL
-	sellprice = 35 //Heretic... //CC Edit
-/*caustic edit start
+	smeltresult = /obj/item/ingot/component/matthios
+
 /obj/item/clothing/shoes/roguetown/boots/armor/matthios/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
@@ -382,40 +372,46 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
-*///caustic edit end
-
-// OV edit start
-/obj/item/clothing/shoes/roguetown/boots/armor/matthios/Initialize()
-	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
-// OV edit end
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo
-	max_integrity = ARMOR_INT_SIDE_ANTAG
 	name = "avantyne boots"
-	desc = "Ensnaring paradoxes, rended beneath logic and solidified into tangible footguards. Called forth from the edge of what should be known, in Her name."
+	desc = "Bolstered by threads of avantyne, these lighter sabatons remain practical enough to be removed once the rite is done."
 	icon_state = "zizoboots"
+	max_integrity = ARMOR_INT_SIDE_STEEL
 	chunkcolor = "#363030"
 	material_category = ARMOR_MAT_PLATE
 	armor = ARMOR_PLATE_BSTEEL
-	sellprice = 35 //Heretic... //CC Edit
-/*caustic edit start
-/obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize()
+	armor_class = ARMOR_CLASS_MEDIUM
+	smeltresult = /obj/item/ingot/component/zizo
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/heavy
+	name = "fused avantyne boots"
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/heavy/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
-/obj/item/clothing/shoes/roguetown/boots/armor/zizo/dropped(mob/living/carbon/human/user)
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/heavy/dropped(mob/living/carbon/human/user)
 	. = ..()
 	if(QDELETED(src))
 		return
 	qdel(src)
-*///caustic edit end
 
-// OV edit start
-/obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize()
-	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
-// OV edit end
+/obj/item/clothing/shoes/roguetown/boots/armor/avantyne
+	name = "avantyne-threaded sabatons"
+	desc = "Marrow, flesh, ash; the bedrock of a new reality, fated to suffer until the final breath. It is this prognosis that commands Her disciples to \
+	work towards ascensionism - for no sacrifice is too great, in the pursuit of bringing lyfe back to this dying world."
+	icon_state = "zizoboots"
+	max_integrity = ARMOR_INT_SIDE_STEEL
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
+	armor = ARMOR_PLATE_BSTEEL
+	armor_class = ARMOR_CLASS_MEDIUM
+	smeltresult = /obj/item/ingot/avantyne
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	name = "light plated boots"
@@ -429,7 +425,6 @@
 	armor = ARMOR_PLATE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
-	sellprice = 14
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/kazengun
 	name = "armored sandals"
@@ -473,7 +468,6 @@
 	sewrepair = TRUE
 	detail_color = CLOTHING_WHITE
 	color = CLOTHING_AZURE
-	sellprice = 7.77 //Funny shoes...!
 
 /obj/item/clothing/shoes/roguetown/jester/update_icon()
 	cut_overlays()
@@ -512,7 +506,6 @@
 	armor = ARMOR_CLOTHING
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/fur
-	sellprice = 10 //Ooh pretty~
 
 /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 	name = "fur lined anklets"
@@ -526,7 +519,6 @@
 	is_barefoot = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/fur
-	sellprice = 10
 
 /obj/item/clothing/shoes/roguetown/boots/clothlinedanklets
 	name = "cloth lined anklets"
@@ -554,7 +546,6 @@
 	desc = "Magnificent sabatons of blacksteel, pointed-yet-restrained. By the click of your heels, a thousand levymen shall march without question - and 'pon a leaping start, they shall see the bravery that earned such alloyed gifts to begin with."
 	icon_state = "bplateboots"
 	item_state = "bplateboots"
-	sellprice = 79 // CC Edit
 
 /obj/item/clothing/shoes/roguetown/boots/armor/blacksteel
 	name = "ancient blacksteel plate boots"
@@ -565,7 +556,6 @@
 	armor = ARMOR_PLATE_BSTEEL
 	smeltresult = /obj/item/ingot/blacksteel
 	chunkcolor = "#303036"
-	sellprice = 79
 
 // ----------------- BLACKSTEEL END -----------------------
 
@@ -604,7 +594,6 @@
 	sewrepair = FALSE
 	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/iron
-	sellprice = 10
 
 /obj/item/clothing/shoes/roguetown/horseshoes/build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, icon/clip_mask)
 	var/mutable_appearance/image = ..()
@@ -630,7 +619,6 @@
 	sewrepair = FALSE
 	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 20
 
 /obj/item/clothing/shoes/roguetown/horseshoes/silver
 	name = "silver horseshoes"
@@ -641,7 +629,6 @@
 	sewrepair = FALSE
 	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/silver
-	sellprice = 30
 
 /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	name = "gold horseshoes"
@@ -652,7 +639,6 @@
 	sewrepair = FALSE
 	armor = ARMOR_PLATE // these are awful!
 	smeltresult = /obj/item/ingot/gold
-	sellprice = 40
 
 /obj/item/clothing/shoes/courtphysician
 	name = "sanguine shoes"
