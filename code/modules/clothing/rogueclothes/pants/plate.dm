@@ -76,14 +76,14 @@
 
 /obj/item/clothing/under/roguetown/platelegs/matthios/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT) //OV Edit - Armor Remove Maint
 	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
 
-/obj/item/clothing/under/roguetown/platelegs/matthios/dropped(mob/living/carbon/human/user)
+/*/obj/item/clothing/under/roguetown/platelegs/matthios/dropped(mob/living/carbon/human/user) //OV Edit Start - Armor Remove Maint
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 /obj/item/clothing/under/roguetown/platelegs/zizo
 	name = "avantyne garments"
@@ -108,7 +108,7 @@
 /obj/item/clothing/under/roguetown/platelegs/zizo/dropped(mob/living/carbon/human/user)
 	return ..()
 
-/obj/item/clothing/under/roguetown/platelegs/zizo/heavy/Initialize(mapload)
+/*/obj/item/clothing/under/roguetown/platelegs/zizo/heavy/Initialize(mapload) //OV Edit Start - Armor Remove Maint
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
@@ -116,7 +116,7 @@
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 /obj/item/clothing/under/roguetown/platelegs/avantyne
 	name = "avantyne fauldcoat"

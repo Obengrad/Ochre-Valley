@@ -436,7 +436,7 @@
 /obj/item/clothing/wrists/roguetown/bracers/zizo/heavy
 	name = "fused avantyne bracers"
 
-/obj/item/clothing/wrists/roguetown/bracers/zizo/heavy/Initialize()
+/*/obj/item/clothing/wrists/roguetown/bracers/zizo/heavy/Initialize() //OV Edit Start - Armor Remove Maint
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
@@ -444,7 +444,7 @@
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 //
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar
@@ -464,7 +464,7 @@
 	color = null
 	smeltresult = /obj/item/ingot/component/graggar
 
-/obj/item/clothing/wrists/roguetown/bracers/graggar/heavy/Initialize()
+/*/obj/item/clothing/wrists/roguetown/bracers/graggar/heavy/Initialize() //OV Edit Start - Armor Remove Maint
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
@@ -472,7 +472,7 @@
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar/Initialize()
 	. = ..()

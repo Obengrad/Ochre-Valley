@@ -252,7 +252,7 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/heavy
 	name = "fused avantyne hauberk"
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/heavy/Initialize(mapload)
+/*/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/heavy/Initialize(mapload) //OV Edit Start - Removable Armor Maint
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
@@ -260,7 +260,7 @@
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 //
 

@@ -316,14 +316,14 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/graggar/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT) //OV Edit - Removable Armor
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/dropped(mob/living/carbon/human/user)
+/*/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/dropped(mob/living/carbon/human/user) //OV Edit Start - Removavble Armor
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 	name = "psydonic half-plate"
@@ -454,13 +454,14 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/matthios/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT) //OV Edit - Armor Remove Maint
+	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/matthios/dropped(mob/living/carbon/human/user)
+/*/obj/item/clothing/suit/roguetown/armor/plate/full/matthios/dropped(mob/living/carbon/human/user) //OV Edit Start - Armor Remove Maint
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/zizo
 	name = "avantyne half-plate"
@@ -489,14 +490,14 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/zizo/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT) //OV Edit - Armor Remove Maint
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/zizo/dropped(mob/living/carbon/human/user)
+/*/obj/item/clothing/suit/roguetown/armor/plate/full/zizo/dropped(mob/living/carbon/human/user) //OV Edit Start - Armor Remove Maint
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/avantyne
 	name = "avantyne-threaded maille"

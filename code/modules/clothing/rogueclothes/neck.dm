@@ -1112,7 +1112,7 @@
 /obj/item/clothing/neck/roguetown/bevor/zizo/heavy
 	name = "fused avantyne bevor"
 
-/obj/item/clothing/neck/roguetown/bevor/zizo/heavy/Initialize()
+/*/obj/item/clothing/neck/roguetown/bevor/zizo/heavy/Initialize() //OV Edit Start - Armor Remove Maint
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
@@ -1120,7 +1120,7 @@
 	. = ..()
 	if(QDELETED(src))
 		return
-	qdel(src)
+	qdel(src)*/ //OV Edit End
 
 //
 
