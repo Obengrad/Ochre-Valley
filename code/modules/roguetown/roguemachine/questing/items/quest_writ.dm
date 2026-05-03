@@ -282,7 +282,7 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 		if(101 to INFINITY)
 			distance_text = " far away"
 
-	last_compass_direction = "[distance_text] ([distance] yards) to the [direction_text]"
+	last_compass_direction = "[distance_text] ([distance] paces) to the [direction_text]"
 	if(!last_z_level_hint)
 		last_z_level_hint = "on this level"
 
