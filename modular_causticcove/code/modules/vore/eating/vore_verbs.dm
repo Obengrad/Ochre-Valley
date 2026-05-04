@@ -105,14 +105,18 @@
 		//Removing an external organ
 		/*else*/ if(/*!T_int && */T_ext.brute_dam >= 25)
 			//Is it groin/chest? You can't remove those.
+			//Updated damage numbers to work with OV's HP scaling, so that limbs can actually be removed.  Also added sound.
 			if(!T_ext.dismemberable)
-				T.apply_damage(25, BRUTE, T_ext)
+				T.apply_damage(250, BRUTE, T_ext)
+				playsound(T, 'sound/gore/flesh_eat_01.ogg', 100)
 				visible_message(span_danger("[src] severely damages [T]'s [T_ext.name]!"))
 			else if(B)
+				playsound(T, 'sound/gore/flesh_eat_01.ogg', 100)
 				T_ext.drop_limb(1) //Clean cut so it doesn't kill the prey completely.
 				T_ext.forceMove(B)
 				visible_message(span_warning("[src] swallows [T]'s [T_ext.name] into their [lowertext(B.name)]!"))
 			else
+				playsound(T, 'sound/gore/flesh_eat_01.ogg', 100)
 				T_ext.drop_limb(1) //Clean cut so it doesn't kill the prey completely.
 				T_ext.forceMove(T.loc)
 				visible_message(span_warning("[src] tears off [T]'s [T_ext.name]!"),span_warning("You tear off [T]'s [T_ext.name]!"))
@@ -121,8 +125,10 @@
 		else
 			//if(T_int)
 			//	T_int.damage = 25 //Internal organs can only take damage, not brute damage.
-			T.apply_damage(25, BRUTE, T_ext)
+			T.apply_damage(50, BRUTE, T_ext)
+			playsound(T, 'sound/gore/flesh_eat_01.ogg', 100)
 			visible_message(span_danger("[src] severely damages [T]'s [T_ext.name]!"))
+
 
 		log_combat(src,T,"Shredded (hardvore)")
 
