@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY(last_words)
 			return
 		//Caustic Edit End
 		// Stop necrans from freaking out from digestion and unrevivable simplemob deaths
-		if (!gibbed && !( (src.mind && src.mind.has_antag_datum(/datum/antagonist/zombie)) || (src.mind && src.mind.has_antag_datum(/datum/antagonist/skeleton)) || HAS_TRAIT(src, TRAIT_SECONDLIFE) )) // because I hate being jumpscared by "OOH SOMEONE DIED IN THE CHURCH" when they're just killing a deadite with burn rot to rez them
+		if (!gibbed) //OV Edit - Removed to streamline death whispers, cause AUGH reliability. Credit to Caustic Cove PR#422 commit 3f83add for tweak. //&& !( (src.mind && src.mind.has_antag_datum(/datum/antagonist/zombie)) || (src.mind && src.mind.has_antag_datum(/datum/antagonist/skeleton)) || HAS_TRAIT(src, TRAIT_SECONDLIFE) )) // because I hate being jumpscared by "OOH SOMEONE DIED IN THE CHURCH" when they're just killing a deadite with burn rot to rez them
 			var/locale = prepare_deathsight_message()
 			for (var/mob/living/player in GLOB.player_list)
 				if (player.stat == DEAD || isbrain(player))
