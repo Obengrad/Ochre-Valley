@@ -3540,6 +3540,7 @@
 #include "modular_causticcove\code\modules\vore\config.dm"
 #include "modular_causticcove\code\modules\vore\food_handling.dm"
 #include "modular_causticcove\code\modules\vore\mob_tf.dm"
+#include "modular_ochrevalley\code\modules\vore\shapeshift_vore.dm"
 #include "modular_causticcove\code\modules\vore\obj.dm"
 #include "modular_causticcove\code\modules\vore\prefs.dm"
 #include "modular_causticcove\code\modules\vore\reagents_holder_vorebelly.dm"

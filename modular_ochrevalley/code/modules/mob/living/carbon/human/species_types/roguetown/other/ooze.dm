@@ -266,6 +266,9 @@
 	slink = soullink(/datum/soullink/shapeshift, stored , shape)
 	slink.source = src
 
+	shape.mob_belly_transfer(stored)
+	VORE_PREF_TRANSFER(shape, stored)
+
 /obj/shapeshift_holder/ooze_death/restore(death=FALSE, knockout=0)
 	if(restoring || QDELETED(src))
 		return
@@ -283,14 +286,41 @@
 		the_evidence.ambiguous_track_type = "curious footprints"
 		the_evidence.base_diff = 6
 
-	if(shape && shape.mind)
-		shape.mind?.transfer_to(stored)
-	stored.revive(full_heal = TRUE, admin_revive = FALSE)
-	to_chat(stored, span_notice("Bug notice: If you can no longer see emotes, move to a different z level and back (up/down a level). This is a known bug."))
-	stored.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/ooze)
-	stored.Knockdown(200)
-	stored.Stun(200)
-	stored.apply_status_effect(/datum/status_effect/debuff/revived)
-	stored.adjust_fire_stacks(2)
+	if(!stored)
+		qdel(src)
+		return
+
+	var/mob/living/temp = stored
+	stored = null
+
+	var/turf/original_turf = get_turf(src)
+
+	if(original_turf)
+		temp.forceMove(original_turf)
+		hard_reset_spatial(temp)
+	
+	if(isbelly(shape.loc))
+		var/obj/belly/B = shape.loc
+		temp.forceMove(B)
+
+	temp.notransform = FALSE
+
+	var/datum/mind/M = temp?.mind || shape?.mind
+	if(M)
+		M.transfer_to(temp)
+
+	rebuild_perception(temp)
+
+	temp.revive(full_heal = TRUE, admin_revive = FALSE)
+	to_chat(temp, span_notice("Bug notice: If you can no longer see emotes, move to a different z level and back (up/down a level). This is a known bug."))
+	temp.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/ooze)
+	temp.Knockdown(200)
+	temp.Stun(200)
+	temp.apply_status_effect(/datum/status_effect/debuff/revived)
+	temp.adjust_fire_stacks(2)
+	
+	temp.mob_belly_transfer(shape)
+	VORE_PREF_TRANSFER(temp, shape)
+
 	qdel(shape)
 	shape = null

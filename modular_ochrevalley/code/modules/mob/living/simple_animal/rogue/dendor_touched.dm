@@ -10,7 +10,7 @@
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 3
-	see_in_dark = 6
+	see_in_dark = 15
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite/volf)
 	botched_butcher_results = list()
@@ -122,6 +122,9 @@
 	slink = soullink(/datum/soullink/shapeshift, stored, shape)
 	if(slink)
 		slink.source = src
+	
+	shape.mob_belly_transfer(stored)
+	VORE_PREF_TRANSFER(shape, stored)
 
 /obj/shapeshift_holder/dendor_touched/restore(death=FALSE, knockout=0)
 	if(restoring || QDELETED(src))
@@ -145,6 +148,10 @@
 	if(original_turf)
 		temp.forceMove(original_turf)
 		hard_reset_spatial(temp)
+	
+	if(isbelly(shape.loc))
+		var/obj/belly/B = shape.loc
+		temp.forceMove(B)
 
 	temp.notransform = FALSE
 
@@ -174,12 +181,16 @@
 		var/damapply = temp.maxHealth * damage_percent
 		temp.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
 
+	temp.mob_belly_transfer(shape)
+	VORE_PREF_TRANSFER(temp, shape)
+
 	if(shape)
 		var/mob/living/old_shape = shape
 		shape = null
 		qdel(old_shape)
 
 	stored = temp
+	
 
 	qdel(src)
 
