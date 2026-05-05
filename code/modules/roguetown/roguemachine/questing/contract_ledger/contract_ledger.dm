@@ -104,6 +104,10 @@
 		data["rumor_log"] = SStreasury.rumor_log
 		data["rumor_lucrative_mult"] = RUMOR_LUCRATIVE_MULT
 	if(data["dynamic_role"] == "steward")
+		// Alderman acting via the noticeboard is restricted: pledge-only funding, no levy waiver.
+		// Steward retains broader authority even if also seated as Alderman (mirrors the gate at
+		// commission_defense_from_tgui where steward.job == "Steward" demotes alderman_acting).
+		data["is_alderman_acting"] = (SScity_assembly?.is_alderman(user) && user.job != "Steward") ? TRUE : FALSE
 		data["pledge_balance"] = SStreasury.burgher_pledge_fund ? SStreasury.burgher_pledge_fund.balance : 0
 		data["pledge_refill_base"] = BURGHER_PLEDGE_BASE_REFILL
 		data["pledge_refill_per_player"] = BURGHER_PLEDGE_PER_PLAYER

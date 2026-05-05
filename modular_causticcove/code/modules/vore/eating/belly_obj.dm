@@ -980,6 +980,7 @@
 	M.alpha = 0 
 	owner.handle_belly_update()
 	playsound(src, sfx, vary = 1, vol = 75, falloff = VORE_SOUND_FALLOFF, frequency = noise_freq, pref_toggle = "digestion_noises")
+	SEND_SIGNAL(M, COMSIG_MOB_DIGESTION_DEATH, src, owner)
 	//OV edit end
 
 // Handle a mob being absorbed

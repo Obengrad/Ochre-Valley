@@ -40,18 +40,20 @@
 
 /// Auto-pricing pegs to the global pre-blockade reference for each side, so the Crown
 /// always profits at least 1m on any single transaction cycle:
-///   buy  = max(0.75 * export_ref, export_ref - 1m), floored at 1m
+///   buy  = min(0.75 * export_ref, export_ref - 1m), floored at 1m
 ///   sell = max(1.25 * import_ref, import_ref + 1m), floored at 1m
 /// where import_ref = base * global_price_mod and export_ref = import_ref * (1 - SPREAD).
-/// At small base prices the +/-1m bound dominates; at larger base prices the 25% bound
-/// dominates. No regional lookup, no blockade dependency - stewards manually intervene
-/// during regional shortages or blockades if they want to fine-tune.
+/// Buy uses min so the Crown skims at least 25% off export at scale; sell uses max so the
+/// Crown marks up at least 25% over import at scale. At small base prices the +/-1m bound
+/// dominates; at larger base prices the 25% bound takes over. No regional lookup, no
+/// blockade dependency - stewards manually intervene during regional shortages or
+/// blockades if they want to fine-tune.
 /datum/roguestock/proc/compute_auto_prices(datum/trade_good/tg)
 	if(!tg)
 		return
 	var/import_ref = max(1, round(tg.base_price * tg.global_price_mod))
 	var/export_ref = max(1, round(tg.base_price * tg.global_price_mod * (1 - IMPORT_EXPORT_SPREAD)))
-	var/buy_target = max(round(export_ref * (1 - IMPORT_EXPORT_SPREAD)), export_ref - 1)
+	var/buy_target = min(round(export_ref * (1 - IMPORT_EXPORT_SPREAD)), export_ref - 1)
 	payout_price = max(1, buy_target)
 	var/sell_target = max(round(import_ref * (1 + IMPORT_EXPORT_SPREAD)), import_ref + 1)
 	withdraw_price = max(1, sell_target)
@@ -79,7 +81,7 @@
 	if(!tg)
 		return payout_price
 	var/export_ref = max(1, round(tg.base_price * tg.global_price_mod * (1 - IMPORT_EXPORT_SPREAD)))
-	return max(1, max(round(export_ref * (1 - IMPORT_EXPORT_SPREAD)), export_ref - 1))
+	return max(1, min(round(export_ref * (1 - IMPORT_EXPORT_SPREAD)), export_ref - 1))
 
 /datum/roguestock/proc/get_market_withdraw_price()
 	if(!trade_good_id)

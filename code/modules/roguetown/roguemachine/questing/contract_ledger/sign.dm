@@ -65,7 +65,7 @@
 	Q.quest_scroll_ref = WEAKREF(spawned_scroll)
 	spawned_scroll.update_quest_text()
 
-	SStreasury.transfer(SStreasury.get_account(user), SStreasury.discretionary_fund, deposit, "quest deposit")
+	SStreasury.burn(SStreasury.get_account(user), deposit, "quest deposit")
 
 /obj/structure/roguemachine/contractledger/proc/turn_in_contract(mob/user, obj/item/quest_writ/scroll_in_hand)
 	var/list/mob/quest_assignees = scroll_in_hand.get_quest_assignees(user, TRUE)
@@ -141,7 +141,7 @@
 	var/forfeited = matched_quest.calculate_deposit()
 	log_quest(user.ckey, user.mind, user, "Abandon [matched_quest.quest_type]")
 	SSquestpool.mark_abandoned(user, matched_quest, forfeited)
-	to_chat(user, span_warning("The contract is voided. Your deposit of [forfeited] mammon is forfeit to the treasury."))
+	to_chat(user, span_warning("The contract is voided. Your deposit of [forfeited] mammon is forfeit."))
 	matched_scroll.assigned_quest = null
 	qdel(matched_quest)
 	qdel(matched_scroll)

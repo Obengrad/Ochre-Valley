@@ -121,14 +121,14 @@ SUBSYSTEM_DEF(treasury)
 	record_round_statistic(STATS_RUMOR_POINTS_GENERATED, rumor_points)
 	init_decrees()
 
-	for(var/path in subtypesof(/datum/roguestock/bounty))
-		var/datum/D = new path
-		stockpile_datums += D
 	for(var/path in subtypesof(/datum/roguestock/stockpile))
 		var/datum/roguestock/D = new path
 		stockpile_datums += D
 		if(D.trade_good_id)
 			stockpile_by_trade_good[D.trade_good_id] = D
+	for(var/path in subtypesof(/datum/roguestock/bounty))
+		var/datum/D = new path
+		stockpile_datums += D
 	autoset_stockpile_limits()
 	return ..()
 
@@ -174,14 +174,7 @@ SUBSYSTEM_DEF(treasury)
 	total_rural_tax += rural_tax_amount
 
 /datum/controller/subsystem/treasury/proc/get_rural_tax_amount()
-	var/effective_pop = (SSeconomy && SSeconomy.simulated_player_scalar > 0) ? SSeconomy.simulated_player_scalar : get_active_player_count()
-	if(effective_pop <= RURAL_TAX_POP_LOW)
-		return RURAL_TAX_LOWPOP
-	if(effective_pop >= RURAL_TAX_POP_HIGH)
-		return RURAL_TAX
-	var/range = RURAL_TAX_POP_HIGH - RURAL_TAX_POP_LOW
-	var/lerp = (effective_pop - RURAL_TAX_POP_LOW) / range
-	return round(RURAL_TAX_LOWPOP - lerp * (RURAL_TAX_LOWPOP - RURAL_TAX))
+	return RURAL_TAX
 
 /datum/controller/subsystem/treasury/proc/get_expected_wage_outlay()
 	if(!steward_machine || !steward_machine.daily_payments)

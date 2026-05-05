@@ -7,6 +7,12 @@
                         list(/datum/skill/craft/cooking, 2, 2),
 						list(/datum/skill/labor/butchering, 2, 2))
 
+/datum/virtue/utility/beauty
+	name = "Beauty (Beautiful Single-Pick)"
+	added_traits = list(TRAIT_BEAUTIFUL, TRAIT_GOODLOVER)
+	desc = "(THIS IS A SINGLE PICK FOR CLASSES LOCKED OUT OF THE WELL-OFF VIRTUE) Just looking at me relieves some of the hardships of the world, and I'm quite good in bed."
+	added_stashed_items = list("Hand Mirror" = /obj/item/handmirror)
+
 
 #define SPARK_CHILLFOOD "Chill Food"
 #define SPARK_CAMPFIRE "Create Campfire"
@@ -17,6 +23,7 @@
 #define SPARK_MESSAGE "Message"
 #define SPARK_MIRROR "Mirror Transform"
 #define SPARK_NONDETECT "Nondetection"
+#define SPARK_GROW "Reduce/Grow Person"
 
 /datum/virtue/utility/spark
 	name = "Spark of Magick"
@@ -33,6 +40,7 @@
 		SPARK_MESSAGE,
 		SPARK_MIRROR,
 		SPARK_NONDETECT,
+		SPARK_GROW,
 	)
 	choice_tooltips = list(
 		SPARK_CHILLFOOD = "Chill a piece of food with a touch of frost without affecting its quality, extending its freshness by a half of a dae (15 MINUTES OOC).",
@@ -44,6 +52,7 @@
 		SPARK_MESSAGE = "Latch onto the mind of one who is familiar to you, whispering a message or sending an intuitive projection into their head.",
 		SPARK_MIRROR = "Gives you a arcyne hand mirror that allows one to change their appearance at will.",
 		SPARK_NONDETECT = "Shroud a target from divination magic for 1 hour.",
+		SPARK_GROW = "A basic trick many apprentices would use to prank their master. Allows one to shift in size to their whims! (( Abuse of this spell for combat purposes will lead to consequences from staff. ))",
 	)
 
 /datum/virtue/utility/spark/apply_to_human(mob/living/carbon/human/recipient)
@@ -81,6 +90,9 @@
 			if(SPARK_NONDETECT)
 				if(!recipient.mind?.has_spell(/datum/action/cooldown/spell/nondetection))
 					recipient.mind?.AddSpell(new /datum/action/cooldown/spell/nondetection)
+			if(SPARK_GROW)
+				if(!recipient.mind?.has_spell(/obj/effect/proc_holder/spell/targeted/touch/sizespell))
+					recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/sizespell)
 
 #undef SPARK_CHILLFOOD
 #undef SPARK_CAMPFIRE
@@ -91,3 +103,4 @@
 #undef SPARK_MESSAGE
 #undef SPARK_MIRROR
 #undef SPARK_NONDETECT
+#undef SPARK_GROW

@@ -238,3 +238,93 @@
 /datum/mob_descriptor/trait/volfish
 	name = "Volfish"
 	prefix = "%ARE% very"
+
+// OV Edits Start
+/datum/mob_descriptor/trait/viscous
+	name = "Viscous"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/oozing
+	name = "Oozing"
+	prefix = "%ARE%"
+
+/datum/mob_descriptor/trait/slimy
+	name = "Slimy"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/squishy
+	name = "Squishy"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/squelching
+	name = "Squelching"
+	prefix = "%ARE%"
+
+/datum/mob_descriptor/trait/engorged
+	name = "Engorged"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/bloated
+	name = "Bloated"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/gluttonous
+	name = "Gluttonous"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/overfed
+	name = "Overfed"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/feral
+	name = "Feral"
+	prefix = "%LOOK%"
+
+/datum/mob_descriptor/trait/radiant
+	name = "Radiant"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/bountiful
+	name = "Bountiful"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/trembling
+	name = "Trembling"
+	prefix = "%ARE%"
+
+/datum/mob_descriptor/trait/magnificent
+	name = "Magnificent"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/esteemed
+	name = "Esteemed"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/regal
+	name = "Regal"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/decadent
+	name = "Decadent"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/lavish
+	name = "Lavish"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/pompous
+	name = "Pompous"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/dashing
+	name = "Dashing"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/gravid
+	name = "Gravid"
+	prefix = "%ARE%"
+
+/datum/mob_descriptor/trait/fecund
+	name = "Fecund"
+	prefix = "%ARE%"
+// OV Edits End

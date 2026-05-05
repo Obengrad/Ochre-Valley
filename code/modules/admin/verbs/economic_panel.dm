@@ -285,14 +285,14 @@ GLOBAL_DATUM_INIT(economic_panel, /datum/economic_panel, new)
 			var/amt = text2num(params["amount"])
 			if(!isnum(amt) || amt <= 0)
 				return TRUE
-			SStreasury.mint(SStreasury.discretionary_fund, amt, "admin mint by [key_name(usr)]")
+			SStreasury.mint(SStreasury.discretionary_fund, amt, "Divine Intervention")
 			admin_log_fiscal("minted [amt]m into Crown's Purse", "Mint Crown's Purse")
 			return TRUE
 		if("burn_discretionary")
 			var/amt = text2num(params["amount"])
 			if(!isnum(amt) || amt <= 0)
 				return TRUE
-			SStreasury.burn(SStreasury.discretionary_fund, amt, "admin burn by [key_name(usr)]")
+			SStreasury.burn(SStreasury.discretionary_fund, amt, "Lost in Transit")
 			admin_log_fiscal("burned [amt]m from Crown's Purse", "Burn Crown's Purse")
 			return TRUE
 		if("toggle_charter")
@@ -351,7 +351,7 @@ GLOBAL_DATUM_INIT(economic_panel, /datum/economic_panel, new)
 			var/datum/fund/account = SStreasury.get_account(target)
 			if(!account)
 				return TRUE
-			SStreasury.mint(account, amt, "admin mint by [key_name(usr)]")
+			SStreasury.mint(account, amt, "Divine Intervention")
 			admin_log_fiscal("minted [amt]m to [key_name(target)]", "Mint to Account")
 			return TRUE
 		if("player_burn_account")
@@ -364,7 +364,7 @@ GLOBAL_DATUM_INIT(economic_panel, /datum/economic_panel, new)
 			var/datum/fund/account = SStreasury.get_account(target)
 			if(!account)
 				return TRUE
-			SStreasury.burn(account, amt, "admin burn by [key_name(usr)]")
+			SStreasury.burn(account, amt, "Lost in Transit")
 			admin_log_fiscal("burned [amt]m from [key_name(target)]", "Burn from Account")
 			return TRUE
 		if("player_fire_indebted")

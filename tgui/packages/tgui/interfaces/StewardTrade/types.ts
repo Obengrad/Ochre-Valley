@@ -40,6 +40,9 @@ export type Order = {
   can_fulfill: BooleanLike;
   shortfall_text: string;
   petitioned: BooleanLike;
+  can_partial: BooleanLike;
+  partial_pct: number;
+  partial_payout_preview: number;
 };
 
 export type EconomicEvent = {
