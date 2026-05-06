@@ -284,7 +284,10 @@
 			used_title = f_title
 		if((H.titles_pref == TITLES_N) && n_title) //OV Add: Gender Neutral Revamp
 			used_title = n_title //OV Add: Gender Neutral Revamp
-		scom_announce("[H.real_name] the [used_title] arrives to Azure Peak.")
+		//OV Add: Don't announce roleless players (Mostly for testing stuff)
+		if(used_title != "NOPE")
+			scom_announce("[H.real_name] the [used_title] arrives to Azure Peak.")
+		//OV Add End
 
 	if(give_bank_account)
 		if(give_bank_account > TRUE)
