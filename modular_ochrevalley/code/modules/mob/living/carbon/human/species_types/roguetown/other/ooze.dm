@@ -271,6 +271,9 @@
 	slink = soullink(/datum/soullink/shapeshift, stored , shape)
 	slink.source = src
 
+	shape.mob_belly_transfer(stored)
+	VORE_PREF_TRANSFER(shape, stored)
+
 /obj/shapeshift_holder/ooze_death/restore(death=FALSE, knockout=0)
 	if(restoring || QDELETED(src))
 		return
@@ -293,6 +296,10 @@
 	if(original_turf)
 		temp.forceMove(original_turf)
 		hard_reset_spatial(temp)
+	
+	if(isbelly(shape.loc))
+		var/obj/belly/B = shape.loc
+		temp.forceMove(B)
 
 	temp.notransform = FALSE
 
@@ -309,5 +316,9 @@
 	temp.Stun(200)
 	temp.apply_status_effect(/datum/status_effect/debuff/revived)
 	temp.adjust_fire_stacks(2)
+	
+	temp.mob_belly_transfer(shape)
+	VORE_PREF_TRANSFER(temp, shape)
+
 	qdel(shape)
 	shape = null

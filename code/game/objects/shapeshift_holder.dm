@@ -85,6 +85,11 @@
 	if(slink)
 		slink.source = src
 
+	//OV edit
+	shape.mob_belly_transfer(stored)
+	VORE_PREF_TRANSFER(shape, stored)
+	//OV edit end
+
 
 
 /obj/shapeshift_holder/Destroy()
@@ -164,6 +169,12 @@
 	if(original_turf)
 		temp.forceMove(original_turf)
 		hard_reset_spatial(temp)
+	
+	//OV edit
+	if(isbelly(shape.loc))
+		var/obj/belly/B = shape.loc
+		temp.forceMove(B)
+	//OV edit end
 
 	temp.notransform = FALSE
 
@@ -187,6 +198,11 @@
 		var/damage_percent = (shape.maxHealth - shape.health) / max(shape.maxHealth, 1)
 		var/damapply = temp.maxHealth * damage_percent
 		temp.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
+
+	//OV edit
+	temp.mob_belly_transfer(shape)
+	VORE_PREF_TRANSFER(temp, shape)
+	//OV edit end
 
 	if(shape)
 		var/mob/living/old_shape = shape

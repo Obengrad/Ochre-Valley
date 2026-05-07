@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 	//OV Add Start
 	/datum/charflaw/hemovore::name=/datum/charflaw/hemovore,
+	/datum/charflaw/dendor_touched::name=/datum/charflaw/dendor_touched,
 	//OV Add End
 	))
 

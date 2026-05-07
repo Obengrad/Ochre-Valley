@@ -745,6 +745,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["rumour"]			>> rumour
 	S["noble_gossip"]			>> noble_gossip
 	S["averse_chosen_faction"] >> averse_chosen_faction
+	S["cursed_animal"] >> cursed_animal //OV ADD
+	S["cursed_animal_colour"] >> cursed_animal_colour //OV ADD
 	S["song_artist"]		>> song_artist
 	S["song_title"]			>> song_title
 	S["nsfwflavortext"]	>> nsfwflavortext
@@ -998,6 +1000,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["rumour"] , html_decode(rumour))
 	WRITE_FILE(S["noble_gossip"] , html_decode(noble_gossip))
 	WRITE_FILE(S["averse_chosen_faction"] , html_decode(averse_chosen_faction))
+	WRITE_FILE(S["cursed_animal"] , html_decode(cursed_animal)) //OV ADD
+	WRITE_FILE(S["cursed_animal_colour"] , html_decode(cursed_animal_colour)) //OV ADD
 	WRITE_FILE(S["song_artist"] , song_artist)
 	WRITE_FILE(S["song_title"] , song_title)
 	WRITE_FILE(S["examine_theme"] , examine_theme)
