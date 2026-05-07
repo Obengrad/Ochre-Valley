@@ -152,7 +152,7 @@
 		else
 			//if(T_int)
 			//	T_int.damage = 25 //Internal organs can only take damage, not brute damage.
-			T.apply_damage(50, BRUTE, T_ext)
+			T.apply_damage(25, BRUTE, T_ext)
 			playsound(T, 'sound/gore/flesh_eat_01.ogg', 100)
 			visible_message(span_danger("[src] severely damages [T]'s [T_ext.name]!"))
 
