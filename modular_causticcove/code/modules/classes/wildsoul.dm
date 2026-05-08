@@ -193,7 +193,6 @@
 	give_feral_eyes(H)
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/nondetection) // Makes sense for them to have the tools to be hidden.
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/blindness)
 		r_hand = /obj/item/clothing/neck/roguetown/collar/leather/nomagic //either for "they tried and failed to capture me" roleplay or for people who REALLY want a challenge
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
