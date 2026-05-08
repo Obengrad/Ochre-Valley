@@ -67,8 +67,8 @@
 	//OV edit
 	var/pvp_pref = get_pvp_icon()
 	var/pvp_icon
-	if(pvp_pref && mind.directory_pvp)
-		pvp_icon = "[SPAN_TOOLTIP("[mind.directory_pvp]","[get_badge_span("[pvp_pref]")]")]"	
+	if(pvp_pref && client.prefs.directory_pvp)
+		pvp_icon = "[SPAN_TOOLTIP("[client.prefs.directory_pvp]","[get_badge_span("[pvp_pref]")]")]"	
 	//OV edit end
 
 	if(name in unknown_names)
@@ -1260,12 +1260,14 @@
 	return sheet.icon_tag(badge_icon_state)
 
 /mob/living/proc/get_pvp_icon()
-	if(!mind)
+	if(!client)
 		return
-	if(!mind.directory_pvp)
+	if(!client.prefs)
+		return
+	if(!client.prefs.directory_pvp)
 		return
 	var/pvp_icon
-	switch(mind.directory_pvp)
+	switch(client.prefs.directory_pvp)
 		if("No PvP")
 			pvp_icon = "pvp_no"
 		if("Ask First")
