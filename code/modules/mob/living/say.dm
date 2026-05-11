@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	spans |= speech_span
 
-	if(language && !petrified_speech)
+	if(language && !petrified_speech) //OV Edit
 		var/datum/language/L = GLOB.language_datum_instances[language]
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
@@ -273,13 +273,15 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(ending && !GLOB.correct_punctuation[ending])
 			message += "."
 
+	//OV Edit Start
 	var/atom/movable/message_origin = get_message_origin()
 	if(!message_origin)
 		message_origin = src
 	if(!petrified_speech && D.flags & SIGNLANG)
 		send_speech_sign(message, message_range, message_origin, bubble_type, spans, language, message_mode, original_message)
+	//OV Edit End
 	else
-		send_speech(message, message_range, message_origin, bubble_type, spans, language, message_mode, original_message)
+		send_speech(message, message_range, message_origin, bubble_type, spans, language, message_mode, original_message) //OV Edit
 
 	if(succumbed)
 		succumb(1)
@@ -287,35 +289,39 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	return 1
 
-/mob/living/proc/send_speech_sign(message, message_range = 6, atom/movable/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message)
+/mob/living/proc/send_speech_sign(message, message_range = 6, atom/movable/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message) //OV Edit
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
+	//OV Add Start
 	var/atom/movable/speech_source = source || src
 	var/turf/speaker_turf = get_turf(speech_source)
 	if(!speaker_turf)
 		return
+	//OV Add End
 
 	if(eavesdropping_modes[message_mode])
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
-	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, speech_source)
+	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, speech_source) //OV Edit
 	var/list/the_dead = list()
 	for(var/_M in GLOB.player_list)
 		var/mob/M = _M
-		if(!M?.client) //client is so that ghosts don't have to listen to mice
+		if(!M?.client) //client is so that ghosts don't have to listen to mice //OV Edit
 			continue
+		//OV Edit Start
 		var/atom/movable/tocheck = M.get_hearing_atom()
 		if(!tocheck)
 			tocheck = M
 		var/turf/listener_turf = get_turf(tocheck)
 		if(!listener_turf)
+		//OV Edit End
 			continue
-		if(get_dist(tocheck, speech_source) > message_range) //they're out of range of normal hearing
+		if(get_dist(tocheck, speech_source) > message_range) //they're out of range of normal hearing //OV Edit
 			if(M.client.prefs)
 				if(eavesdropping_modes[message_mode] && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
 					continue
 				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 					continue
-		if(!is_in_zweb(speaker_turf.z, listener_turf.z))
+		if(!is_in_zweb(speaker_turf.z, listener_turf.z)) //OV Edit
 			continue
 		listening |= M
 		the_dead[M] = TRUE
@@ -332,12 +338,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
+		//OV Add Start
 		var/atom/movable/listener_atom = AM
 		if(ismob(AM))
 			var/mob/listener = AM
 			listener_atom = listener.get_hearing_atom()
 			if(!listener_atom)
 				listener_atom = AM
+		//OV Add End
 
 		if(!(AM.has_language(message_language) || AM.check_language_hear(message_language)))
 			continue
@@ -352,7 +360,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			var/name_to_highlight = H.nickname
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
-		if(eavesdrop_range && get_dist(speech_source, listener_atom) > message_range+keenears && !(the_dead[AM]))
+		if(eavesdrop_range && get_dist(speech_source, listener_atom) > message_range+keenears && !(the_dead[AM])) //OV Edit
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else if(highlighted_message)
 			AM.Hear(rendered, src, message_language, highlighted_message, , spans, message_mode, original_message)
@@ -372,7 +380,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(H.voicecolor_override)
 			mob_color = H.voicecolor_override
 	var/chatmsg = "<font color = #[mob_color]><b>[src]</b></font> " + sign_verb + "."
-	speech_source.visible_message(chatmsg, runechat_message = sign_verb, log_seen = SEEN_LOG_EMOTE, ignored_mobs = understanders)
+	speech_source.visible_message(chatmsg, runechat_message = sign_verb, log_seen = SEEN_LOG_EMOTE, ignored_mobs = understanders) //OV Edit
 
 	//speech bubble
 	var/list/speech_bubble_recipients = list()
@@ -380,7 +388,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(M.client?.prefs)
 			if(M.client && !M.client.prefs.chat_on_map)
 				speech_bubble_recipients.Add(M.client)
-	var/image/I = image('icons/mob/talk.dmi', speech_source, "[bubble_type][say_test(message)]", FLY_LAYER)
+	var/image/I = image('icons/mob/talk.dmi', speech_source, "[bubble_type][say_test(message)]", FLY_LAYER) //OV Edit
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay), I, speech_bubble_recipients, 30)
 
@@ -393,13 +401,15 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/proc/can_see_runechat(atom/movable/speaker)
 	if(!client || !client.prefs)
 		return FALSE
+	//OV Add Start
 	if(!speaker)
 		return FALSE
+	//OV Add End
 	if(!client.prefs.chat_on_map)
 		return FALSE
 	if(stat >= UNCONSCIOUS)
 		return FALSE
-	if(!ismob(speaker) && !speaker.is_character_message_origin() && !client.prefs.see_chat_non_mob)
+	if(!ismob(speaker) && !speaker.is_character_message_origin() && !client.prefs.see_chat_non_mob) //OV Edit
 		return FALSE
 	return TRUE
 
@@ -426,6 +436,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	// Create map text prior to modifying message for goonchat
 	if(can_see_runechat(speaker) && can_hear())
+	//OV Edit Start
 		var/atom/movable/message_origin = speaker.get_message_origin()
 		create_chat_message(speaker, message_language, raw_message, spans, message_mode, message_origin)
 	var/is_petrified_speech = spans?.Find(SPAN_PETRIFIED_SPEECH)
@@ -433,12 +444,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(raw_message == last_heard_raw_message)
 			return
 		last_heard_raw_message = raw_message
+	//OV Edit End
 	// Recompose message for AI hrefs, language incomprehension.
 	message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mode)
 	show_message(message, MSG_AUDIBLE, deaf_message, deaf_type)
 	return message
 
-/mob/living/send_speech(message, message_range = 6, atom/movable/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message)
+/mob/living/send_speech(message, message_range = 6, atom/movable/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message) //OV Edit
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
 	var/Zs_too = FALSE
@@ -446,10 +458,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/Zs_yell = FALSE
 	var/listener_has_ceiling	= TRUE
 	var/speaker_has_ceiling		= TRUE
+	//OV Edit Start
 	var/atom/movable/speech_source = source || src
 	var/turf/speaker_turf = get_turf(speech_source)
 	if(!speaker_turf)
 		return
+	//OV Edit End
 	var/turf/speaker_ceiling = get_step_multiz(speaker_turf, UP)
 	if(speaker_ceiling)
 		if(istransparentturf(speaker_ceiling))
@@ -479,11 +493,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				S.verb_yell = initial(S.verb_yell)
 		remove_status_effect(/datum/status_effect/thaumaturgy)
 	// AZURE EDIT END
-	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, speech_source)
+	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, speech_source) //OV Edit
 	var/list/the_dead = list()
 //	var/list/yellareas	//CIT CHANGE - adds the ability for yelling to penetrate walls and echo throughout areas
 	for(var/_M in GLOB.player_list)
 		var/mob/M = _M
+		//OV Edit Start
 		if(!M?.client) //client is so that ghosts don't have to listen to mice
 			continue
 		var/atom/movable/tocheck = M.get_hearing_atom()
@@ -492,19 +507,20 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		var/turf/listener_turf = get_turf(tocheck)
 		if(!listener_turf)
 			continue
+		//OV Edit End
 //		if(M.stat != DEAD) //not dead, not important
 //			if(yellareas)	//CIT CHANGE - see above. makes yelling penetrate walls
 //				var/area/A = get_area(M)	//CIT CHANGE - ditto
 //				if(istype(A) && A.ambientsounds != SPACE && (A in yellareas))	//CIT CHANGE - ditto
 //					listening |= M	//CIT CHANGE - ditto
 //			continue
-		if(get_dist(tocheck, speech_source) > message_range) //they're out of range of normal hearing
+		if(get_dist(tocheck, speech_source) > message_range) //they're out of range of normal hearing //OV Edit
 			if(M.client.prefs)
 				if(eavesdropping_modes[message_mode] && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
 					continue
 				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 					continue
-		if(!is_in_zweb(speaker_turf.z, listener_turf.z))
+		if(!is_in_zweb(speaker_turf.z, listener_turf.z)) //OV Edit
 			continue
 		listening |= M
 		the_dead[M] = TRUE
@@ -520,6 +536,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	for(var/_AM in listening)
 		var/hearall = FALSE
 		var/atom/movable/AM = _AM
+	//OV Edit Start
 		var/atom/movable/listener_atom = AM
 		if(ismob(AM))
 			var/mob/listener = AM
@@ -529,6 +546,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		var/turf/listener_turf = get_turf(listener_atom)
 		if(!listener_turf)
 			continue
+	//OV Edit End
 		var/turf/listener_ceiling = get_step_multiz(listener_turf, UP)
 		if(istype(_AM, /obj/item/listeningdevice)) // Very evil snowflake code.
 			hearall = TRUE
@@ -540,7 +558,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
 				//OV edit
 				if(!istype(loc, /obj/belly) && !istype(loc, /obj/item/holder/micro) && !istype(AM.loc, /obj/belly) && !istype(AM.loc, /obj/item/holder/micro)) //can't use isbelly because its defined badly here
-					if(listener_turf.z != speaker_turf.z)
+					if(listener_turf.z != speaker_turf.z) //OV Edit
 						continue
 				//OV edit end
 		if(Zs_too && listener_turf.z != speaker_turf.z && !Zs_all)
@@ -586,7 +604,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					chance += 20
 				if(prob(chance))
 					H.sate_addiction(/datum/charflaw/addiction/clamorous)
-		if(eavesdrop_range && get_dist(speech_source, listener_atom) > message_range+keenears && !(the_dead[AM]))
+		if(eavesdrop_range && get_dist(speech_source, listener_atom) > message_range+keenears && !(the_dead[AM])) //OV Edit
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else
 			AM.Hear(rendered, src, message_language, (highlighted_message ? highlighted_message : message), , spans, message_mode, original_message)
@@ -600,7 +618,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(M.client?.prefs)
 			if(M.client && !M.client.prefs.chat_on_map)
 				speech_bubble_recipients.Add(M.client)
-	var/image/I = image('icons/mob/talk.dmi', speech_source, "[bubble_type][say_test(message)]", FLY_LAYER)
+	var/image/I = image('icons/mob/talk.dmi', speech_source, "[bubble_type][say_test(message)]", FLY_LAYER) //OV Edit
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay), I, speech_bubble_recipients, 30)
 

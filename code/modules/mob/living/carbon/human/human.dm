@@ -32,9 +32,11 @@
 					held_item.melee_attack_chain(user, src, params)
 		return
 	if(user == src)
+		//OV Add Start
 		if(IsPetrified())
 			to_chat(src, span_warning("You cannot do this while petrified."))
 			return
+		//OV Add End
 		if(get_num_arms(FALSE) < 1)
 			return
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
@@ -842,7 +844,7 @@
 			if(istype(grab) && grab.grabbed == target)
 				has_grab = TRUE
 			// If the target is grabbed and can be firemanned, we fireman carry them
-			if(has_grab && !target.IsPetrified() && can_be_firemanned(target))
+			if(has_grab && !target.IsPetrified() && can_be_firemanned(target)) //OV Edit
 				fireman_carry(target)
 				return TRUE
 	else if(istype(dragged, /obj/item/bodypart/head/dullahan/))

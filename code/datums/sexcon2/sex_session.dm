@@ -82,10 +82,12 @@
 		return
 	if(!action_type)
 		return
+	//OV Add Start
 	var/datum/sex_action/action = SEX_ACTION(action_type)
 	if(action.masturbation && user.IsPetrified())
 		to_chat(user, span_warning("You cannot do this while petrified."))
 		return
+	//OV Add End
 	if(!can_perform_action(action_type))
 		return
 
@@ -175,8 +177,10 @@
 	// OV Edit End
 	if(!target)
 		return FALSE
+	//OV Add Start
 	if(action.masturbation && user.IsPetrified())
 		return FALSE
+	//OV Add End
 	if(user.stat != CONSCIOUS)
 		return FALSE
 	// OV Edit Start: Belly Sex/Petrified Head

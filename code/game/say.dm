@@ -31,20 +31,24 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, args)
 
+//OV Add Start
 /atom/movable/proc/get_message_origin()
 	return src
 
 /atom/movable/proc/is_character_message_origin()
 	return FALSE
+//OV Add End
 
 /atom/movable/proc/can_speak()
 	return TRUE
 
 /atom/movable/proc/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language = null, message_mode)
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
+	//OV Edit Start
 	var/list/listening = get_hearers_in_view(range, source)
 	add_remote_hearing_atom_listeners(listening, source, range)
 	for(var/atom/movable/hearing_movable as anything in listening)
+	//OV Edit End
 		if(!hearing_movable) // Should not get nulls, but just in case.
 			stack_trace("somehow theres a null returned from get_hearers_in_view() in send_speech!")
 			continue
@@ -84,6 +88,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	if(istype(src,/mob/living))
 		var/atom/movable/tocheck = src
+		//OV Edit Start
 		if(ismob(src))
 			var/mob/listener = src
 			tocheck = listener.get_hearing_atom()
@@ -93,9 +98,10 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		if(!speaker_origin)
 			speaker_origin = speaker
 		var/turf/speakturf = get_turf(speaker_origin)
+		//OV Edit End
 		var/turf/sourceturf = get_turf(tocheck)
 		if(istype(speakturf) && istype(sourceturf) && !(speakturf in get_hear(7, sourceturf)))
-			switch(get_dir(tocheck,speaker_origin))
+			switch(get_dir(tocheck,speaker_origin)) //OV Edit
 				if(NORTH)
 					arrowpart = " ⇑"
 				if(SOUTH)
@@ -143,7 +149,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			spanpart1 = "<span class='smallyell'>"
 
 	var/languageicon = ""
-	if(message_language && show_language_icon() && !(processed_spans?.Find(SPAN_PETRIFIED_SPEECH)))
+	if(message_language && show_language_icon() && !(processed_spans?.Find(SPAN_PETRIFIED_SPEECH))) //OV Edit
 		var/datum/language/D = GLOB.language_datum_instances[message_language]
 		if(istype(D) && D.display_icon(src))
 			languageicon = SPAN_TOOLTIP_DANGEROUS_HTML("<b>[D.name]</b>[D.desc ? "<br>" + D.desc : ""]", "<span style=\"position: relative; bottom: 4px;\">[D.get_icon()] </span>")
@@ -216,11 +222,13 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return FALSE
 
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, message_mode, no_quote = FALSE)
+	//OV Add Start
 	if(spans?.Find(SPAN_PETRIFIED_SPEECH))
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM)
 			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode)
 		return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode)
+	//OV Add End
 	if(has_language(language) || check_language_hear(language))
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM) //Basically means "if the speaker is virtual"
@@ -328,7 +336,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 /atom/movable/virtualspeaker/GetSource()
 	return source
 
+//OV Add Start
 /atom/movable/virtualspeaker/get_message_origin()
 	if(source)
 		return source.get_message_origin()
 	return src
+//OV Add End

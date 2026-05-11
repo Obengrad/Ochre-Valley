@@ -463,8 +463,7 @@
 
 	if(.)
 		Moved(oldloc, direct)
-	// OV Edit Start
-	if(. && !moving_from_pull && pulled && pulledby == pulled && pulled.cmode && pulled.grab_state < GRAB_AGGRESSIVE) //NICHE case of being in a first tier grab state.
+	if(. && !moving_from_pull && pulled && pulledby == pulled && pulled.cmode && pulled.grab_state < GRAB_AGGRESSIVE) //NICHE case of being in a first tier grab state. //OV Edit
 		if(!pulledby || QDELETED(pulledby))
 			return
 		if(pulledby.anchored)
@@ -476,7 +475,6 @@
 				pulledby.moving_from_pull = src
 				pulledby.Move(T, get_dir(pulledby, T), glide_size) //the pullee tries to reach our previous position
 				pulledby.moving_from_pull = null
-	// OV Edit End
 	if(. && pulling && pulling == pullee && pulling != moving_from_pull)
 		if(!pulling || QDELETED(pulling))
 			return

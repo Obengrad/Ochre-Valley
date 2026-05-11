@@ -1096,6 +1096,7 @@
 /mob/proc/can_hear()
 	. = TRUE
 
+//OV Add Start
 /mob
 	var/tmp/atom/movable/hearing_atom_override
 
@@ -1150,6 +1151,7 @@
 		if(!is_in_zweb(source_turf.z, hearing_turf.z))
 			continue
 		listening |= listener
+//OV Add End
 
 /**
   * Examine text for traits shared by multiple types.

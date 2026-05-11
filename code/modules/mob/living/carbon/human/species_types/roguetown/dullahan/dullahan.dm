@@ -329,7 +329,7 @@
 
 	UnregisterSignal(user, COMSIG_MOB_SAY)
 	UnregisterSignal(user, COMSIG_MOB_SAY_POSTPROCESS)
-	user.set_hearing_atom_override(null)
+	user.set_hearing_atom_override(null) //OV Add
 	//UnregisterSignal(user, COMSIG_ERP_LOCATION_ACCESSIBLE) // TODO SEXCON2
 	if(my_head && my_head.owner ~= user)
 		// Give their head back instead?
@@ -356,7 +356,7 @@
 
 	var/obj/item/organ/dullahan_vision/vision = user.getorganslot(ORGAN_SLOT_HUD)
 	vision.viewing_head = FALSE
-	user.refresh_hearing_atom_override()
+	user.refresh_hearing_atom_override() //OV Add
 	user.reset_perspective()
 
 // Butchering a head permas their user as the organs don't drop, that is bad.
@@ -373,7 +373,7 @@
 
 	UnregisterSignal(my_head, COMSIG_QDELETING)
 	my_head = null
-	user.set_hearing_atom_override(null)
+	user.set_hearing_atom_override(null) //OV Add
 
 /datum/species/dullahan/proc/soul_light_on(mob/living/carbon/human/user)
 	var/obj/item/organ/soul/soul_accessory = user.getorganslot(ORGAN_SLOT_SOUL)

@@ -66,16 +66,20 @@
 	. = TRUE
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
+	//OV Add Start
 	var/atom/movable/message_origin = user.get_message_origin()
 	if(!message_origin)
 		message_origin = user
+	//OV Add End
 	if(only_forced_audio && intentional)
 		return FALSE
 	if(targetted)
 		var/list/mobsadjacent = list()
 		var/mob/chosenmob
+		//OV Edit Start
 		var/atom/target_origin = get_turf(message_origin) || message_origin
 		for(var/mob/living/M in range(target_origin, targetrange))
+		//OV Edit End
 			if(M != user)
 				mobsadjacent += M
 		//OV Edit: Let held micros be targetable
@@ -90,7 +94,7 @@
 		if(mobsadjacent.len)
 			chosenmob = input("[key] who?") in mobsadjacent
 		if(chosenmob)
-			if(target_origin.Adjacent(chosenmob))
+			if(target_origin.Adjacent(chosenmob)) //OV Edit
 				params = chosenmob.name
 				adjacentaction(user, chosenmob)
 			else if(targetrange > 2) //if it's a ranged targeted emote
@@ -107,7 +111,7 @@
 		return
 
 	// A COMSIG here would be nice, in my attempts it sadly didn't work out well for the relay.
-	var/atom/movable/emotelocation = message_origin
+	var/atom/movable/emotelocation = message_origin //OV Edit
 	var/mob/living/carbon/human/human
 	if(ishuman(user))
 		human = user
@@ -117,7 +121,7 @@
 	if(isdullahan(user))
 		dullahan = human.dna.species
 		vision = human.getorganslot(ORGAN_SLOT_HUD)
-		if(emotelocation == user && dullahan.headless && vision.viewing_head)
+		if(emotelocation == user && dullahan.headless && vision.viewing_head) //OV Edit
 			emotelocation = dullahan.my_head
 
 
@@ -139,15 +143,19 @@
 				emotelocation = dullahan.my_head
 			else// if(!vision.viewing_head)
 				emotelocation = user
+		//OV Add Start
 		if(message_origin != user)
 			emotelocation = message_origin
+		//OV Add End
 
 		playsound(emotelocation, tmp_sound, snd_vol, FALSE, snd_range, soundping = soundping, animal_pref = animal, quiet = is_quiet)
 	if(!nomsg)
 		user.log_message(msg, LOG_EMOTE)
+		//OV Add Start
 		var/emote_display_name = "[emotelocation]"
 		if(message_origin != user)
 			emote_display_name = user.GetVoice()
+		//OV Add End
 		var/pre_color_msg = msg
 		if (use_params_for_runechat) // apply puncutation stripping here where appropriate
 			var/static/regex/regex = regex(@"[,.!?]", "g")
@@ -159,13 +167,13 @@
 			var/color_to_use = human.voice_color
 			if(human.voicecolor_override)
 				color_to_use = human.voicecolor_override
-			styled_name = "<span style='color:#[color_to_use];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[emote_display_name]</b></span>"
+			styled_name = "<span style='color:#[color_to_use];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[emote_display_name]</b></span>" //OV Edit
 		else
-			styled_name = "<b>[emote_display_name]</b>"
+			styled_name = "<b>[emote_display_name]</b>" //OV Edit
 		// If the message contains $n, substitute it with the name instead of prepending
 		if(findtext(msg, "$n"))
 			msg = trim(replacetext(msg, "$n", styled_name))
-			pre_color_msg = trim(replacetext(pre_color_msg, "$n", "[emote_display_name]"))
+			pre_color_msg = trim(replacetext(pre_color_msg, "$n", "[emote_display_name]")) //OV Edit
 		else
 			msg = "[styled_name] [msg]"
 		for(var/mob/M in GLOB.dead_mob_list)

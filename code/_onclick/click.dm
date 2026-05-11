@@ -987,11 +987,13 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 		else
 			rmb_on(A, params)
 	else if(used_intent.rmb_ranged)
+		//OV Add Start
 		if(!get_active_held_item() && isliving(src))
 			var/mob/living/living_user = src
 			if(living_user.IsPetrified())
 				to_chat(living_user, span_warning("I can't move while petrified."))
 				return
+		//OV Add End
 		used_intent.rmb_ranged(A, src) //get the message from the intent
 	changeNext_move(CLICK_CD_RAPID)
 	if(isturf(A.loc))

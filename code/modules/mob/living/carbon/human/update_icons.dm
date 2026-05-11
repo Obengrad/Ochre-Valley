@@ -103,12 +103,12 @@ There are several things that need to be remembered:
 	START_PROCESSING(SSdamoverlays,src)
 
 /mob/living/carbon/human/proc/update_damage_overlays_real()
-	// OV Edit Start
+	//OV Edit Start
 	var/petrified = IsPetrified()
 	if(!petrified && dna.species)
+	//OV Edit End
 		if(dna.species.update_damage_overlays(src))
 			return
-	// OV Edit End
 
 	remove_overlay(DAMAGE_LAYER)
 	remove_overlay(LEG_DAMAGE_LAYER)
@@ -1953,34 +1953,45 @@ generate/load female uniform sprites matching all previously decided variables
 		petrified_render_color = null
 	if(petrified_status_active || petrified_render_color)
 		petrification_debug("update_body_parts start: owner=[key_name(src)] redraw=[redraw] override=[petrification_debug_value(petrified_color_override)] status=[petrified_status_active] render_color=[petrification_debug_value(petrified_render_color)] old_key=[petrification_debug_value(icon_render_key)] bodyparts=[petrification_debug_len(bodyparts)]")
+//OV Edit End
 
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
 	icon_render_key = generate_icon_render_key()
+	//OV Add Start
 	if(petrified_render_color && !petrified_status_active)
 		icon_render_key += "-petrified-[petrified_render_color]"
 	if(petrified_status_active || petrified_render_color)
 		petrification_debug("update_body_parts key: owner=[key_name(src)] old_key=[petrification_debug_value(oldkey)] new_key=[petrification_debug_value(icon_render_key)] redraw=[redraw]")
+	//OV Add End
 	if(oldkey == icon_render_key && !redraw)
+		//OV Add Start
 		if(petrified_status_active || petrified_render_color)
 			petrification_debug("update_body_parts return-same-key: owner=[key_name(src)] key=[petrification_debug_value(icon_render_key)]")
+		//OV Add End
 		return
 
 	remove_overlay(BODYPARTS_LAYER)
 
 	for(var/obj/item/bodypart/BP as anything in bodyparts)
+		//OV Add Start
 		BP.petrification_render_color = petrified_render_color
 		if(petrified_status_active || petrified_render_color)
 			petrification_debug("update_body_parts update_limb-before: owner=[key_name(src)] [petrification_debug_bodypart_summary(BP)]")
+		//OV Add End
 		BP.update_limb()
+		//OV Add Start
 		if(petrified_status_active || petrified_render_color)
 			petrification_debug("update_body_parts update_limb-after: owner=[key_name(src)] [petrification_debug_bodypart_summary(BP)]")
+		//OV Add End
 
 	//LOAD ICONS
 	if(!redraw)
 		if(limb_icon_cache[icon_render_key])
+			//OV Add Start
 			if(petrified_status_active || petrified_render_color)
 				petrification_debug("update_body_parts cache-hit: owner=[key_name(src)] key=[petrification_debug_value(icon_render_key)] cache_len=[petrification_debug_len(limb_icon_cache[icon_render_key])]")
+			//OV Add End
 			load_limb_from_cache()
 			return
 
@@ -2004,9 +2015,11 @@ generate/load female uniform sprites matching all previously decided variables
 			new_limbs += BP.get_limb_icon(hideaux = hiden)
 		else
 			new_limbs += BP.get_limb_icon()
+		//OV Add Start
 		if(petrified_status_active || petrified_render_color)
 			petrification_debug("update_body_parts generated-bodypart: owner=[key_name(src)] zone=[BP.body_zone] new_limbs_len=[petrification_debug_len(new_limbs)]")
-	
+		//OV Add End
+
 	if(isooze(src))
 		for(var/image/limb_alpha in new_limbs)
 			limb_alpha.alpha = 180
@@ -2014,14 +2027,17 @@ generate/load female uniform sprites matching all previously decided variables
 	if(length(new_limbs))
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 		limb_icon_cache[icon_render_key] = new_limbs
+		//OV Add Start
 		if(petrified_status_active || petrified_render_color)
 			petrification_debug("update_body_parts cache-store: owner=[key_name(src)] key=[petrification_debug_value(icon_render_key)] new_limbs=[petrification_debug_len(new_limbs)]")
+		//OV Add End
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
+	//OV Add Start
 	if(petrified_status_active || petrified_render_color)
 		petrification_debug("update_body_parts end: owner=[key_name(src)] key=[petrification_debug_value(icon_render_key)] overlay_len=[petrification_debug_len(overlays_standing[BODYPARTS_LAYER])] new_limbs=[petrification_debug_len(new_limbs)]")
-// OV Edit End
+	// OV Add End
 
 /mob/living/carbon/proc/has_boobed_overlay()
 	var/obj/item/organ/breasts/boobs = getorganslot(ORGAN_SLOT_BREASTS)

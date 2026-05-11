@@ -317,8 +317,10 @@
 	var/typing_indicator_timerid
 	/// The shared typing indicator currently attached to our vis_contents, or null if not typing. DO NOT RUNTIME ASSIGN OTHER THAN FROM SHOW/CLEAR.
 	var/obj/effect/overlay/typing_indicator/typing_indicator_current
+	//OV Add Start
 	/// The atom currently holding our shared typing indicator.
 	var/atom/movable/typing_indicator_holder
+	//OV Add End
 	/// TRUE if we set KEEP_TOGETHER on the mob to make the indicator follow our transform (and need to clear it on stop).
 	var/typing_indicator_added_keep_together = FALSE
 

@@ -58,17 +58,21 @@
 
 	listeners += SSmobs.dead_players_by_zlevel[source_z]
 	listeners += muffled_listeners
+	//OV Add Start
 	if(ignore_walls)
 		add_remote_hearing_atom_listeners(listeners, turf_source, maxdistance)
+	//OV Add End
 	. = list()
 
 	for(var/mob/M as anything in listeners)
+		//OV Edit Start
 		var/atom/movable/hearing_atom = M.get_hearing_atom()
 		if(!hearing_atom)
 			hearing_atom = M
 		var/turf/turf_check = get_turf(hearing_atom)
 		if(!turf_check)
 			continue
+		//OV Edit End
 
 		if(quiet)
 			if(turf_check.z != turf_source.z)
@@ -133,6 +137,7 @@
 	if(!S.channel)
 		S.channel = SSsounds.random_available_channel()
 
+	//OV Edit Start
 	var/atom/movable/hearing_atom = get_hearing_atom()
 	if(!hearing_atom)
 		hearing_atom = src
@@ -143,6 +148,7 @@
 				muffled = TRUE
 		if(istype(hearing_atom.loc, /obj/structure/closet) || istype(hearing_atom.loc, /obj/item/storage/))
 			muffled = TRUE
+	//OV Edit End
 
 	if(muffled)
 		S.environment = 11
@@ -172,7 +178,7 @@
 
 	S.volume = vol2use
 
-	var/area/A = get_area(get_turf(hearing_atom))
+	var/area/A = get_area(get_turf(hearing_atom)) //OV Edit
 	if(A)
 		if(A.soundenv != -1)
 			S.environment = A.soundenv
@@ -183,9 +189,11 @@
 		S.frequency = frequency
 
 	if(isturf(turf_source))
+	//OV Edit Start
 		var/turf/T = get_turf(hearing_atom)
 		if(!T)
 			return FALSE
+	//OV Edit End
 
 		//sound volume falloff with distance
 		var/distance = get_dist(T, turf_source)
@@ -213,7 +221,7 @@
 
 		if(S.volume <= 0)
 			return FALSE //No sound
-		var/atom/our_turf = get_turf(hearing_atom)
+		var/atom/our_turf = get_turf(hearing_atom) //OV Edit
 		var/dx = turf_source.x - our_turf.x
 		if(dx <= 1 && dx >= -1)
 			S.x = 0
