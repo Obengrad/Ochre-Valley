@@ -83,11 +83,20 @@
 	var/spread_num = 10
 	damfactor = 2
 	var/range = 30
+	var/onehanded = FALSE
 	var/reloaded = FALSE
 	var/load_time = 50
 	var/gunpowder = FALSE
 	var/obj/item/ramrod/myrod = null
 	var/gunchannel
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Black powder weapons increase in accuracy with a higher <b>PERCEPTION</b>, but deal a static amount of damage \
+	regardless of character stats.")
+	. += span_info("Black powder weapons must be loaded with powder, then a bullet which must be forced down the barrel with a ramrod.")
+	if(onehanded)
+		. += span_info("This weapon can be used in one hand, at the penalty of aim time.")
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/getonmobprop(tag)
 	. = ..()
@@ -281,29 +290,30 @@
 	return max(newtime, 1) * ARCHER_NPC_ROF_PENALTY
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/pistol
-    name = "arquebus pistol"
-    icon = 'icons/roguetown/weapons/32.dmi'
-    icon_state = "pistol"
-    item_state = "pistol"
-    force_wielded = null
-    possible_item_intents = list(/datum/intent/shoot/arquebus/pistol, /datum/intent/arc/arquebus/pistol, /datum/intent/mace/strike/wood)
-    gripped_intents = null
-    pixel_y = 0
-    pixel_x = 0
-    bigboy = FALSE
-    gripsprite = FALSE
-    wlength = WLENGTH_SHORT
-    w_class = WEIGHT_CLASS_SMALL
-    equip_delay_self = 1.5 SECONDS
-    unequip_delay_self = 1.5 SECONDS
-    inv_storage_delay = 2 SECONDS
-    walking_stick = FALSE
-    smeltresult = /obj/item/ash
-    slot_flags = ITEM_SLOT_HIP
-    range = 10
-    var/can_spin = TRUE
-    var/last_spunned
-    var/spin_cooldown = 3 SECONDS
+	name = "arquebus pistol"
+	icon = 'icons/roguetown/weapons/32.dmi'
+	icon_state = "pistol"
+	item_state = "pistol"
+	force_wielded = null
+	possible_item_intents = list(/datum/intent/shoot/arquebus/pistol, /datum/intent/arc/arquebus/pistol, /datum/intent/mace/strike/wood)
+	gripped_intents = null
+	pixel_y = 0
+	pixel_x = 0
+	bigboy = FALSE
+	gripsprite = FALSE
+	wlength = WLENGTH_SHORT
+	w_class = WEIGHT_CLASS_SMALL
+	equip_delay_self = 1.5 SECONDS
+	unequip_delay_self = 1.5 SECONDS
+	inv_storage_delay = 2 SECONDS
+	walking_stick = FALSE
+	smeltresult = /obj/item/ash
+	slot_flags = ITEM_SLOT_HIP
+	range = 10
+	onehanded = TRUE
+	var/can_spin = TRUE
+	var/last_spunned
+	var/spin_cooldown = 3 SECONDS
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/pistol/getonmobprop(tag)
     . = ..()
