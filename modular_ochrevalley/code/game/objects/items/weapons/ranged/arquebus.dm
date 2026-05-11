@@ -34,6 +34,13 @@
 		return max(newtime, 12) // Raise the aim time floor like bow arc, instead of raising the floor and making it much faster to reach it like crossbow arc.
 	return chargetime
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/get_npc_chargetime(mob/living/user)
+	// Same logic as the normal chargetime proc, but we are given a user in the params.
+	var/newtime = 40
+	newtime -= user.get_skill_level(/datum/skill/combat/firearms) * 4.6
+	newtime -= user.STAPER
+	return max(newtime, 1) * ARCHER_NPC_ROF_PENALTY // NPCs shoot slower than players though.
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/
 	name = "arquebus rifle"
 	desc = "A gunpowder weapon that shoots an armor piercing metal ball."
@@ -264,6 +271,14 @@
 			newtime *= 1.5
 		return max(newtime, 12)
 	return chargetime
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/pistol/get_npc_chargetime(mob/living/user)
+	var/newtime = 40
+	newtime -= user.get_skill_level(/datum/skill/combat/firearms) * 4
+	newtime -= user.STAPER
+	if(user.get_num_arms(FALSE) < 2 || user.get_inactive_held_item())
+		newtime *= 1.5
+	return max(newtime, 1) * ARCHER_NPC_ROF_PENALTY
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/pistol
     name = "arquebus pistol"
