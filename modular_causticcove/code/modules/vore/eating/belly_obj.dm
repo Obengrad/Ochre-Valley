@@ -911,7 +911,7 @@
 		var/mob/living/carbon/human/Pred = owner
 		if(ishuman(M))
 			var/mob/living/carbon/human/Prey = M
-			Prey.reagents.del_reagent(REAGENT_ID_NUMBENZYME)
+			//Prey.reagents.del_reagent(REAGENT_ID_NUMBENZYME) //OV Edit - Not A Real Reagent Sire
 			Prey.reagents.trans_to(Pred.reagents, Prey.reagents.total_volume, 0.5) // Copy=TRUE because we're deleted anyway
 			Prey.reagents.trans_to(Pred.reagents, Prey.reagents.total_volume, 0.5) // Therefore don't bother spending cpu
 			//Don't need this stuff in our reagentseam.
