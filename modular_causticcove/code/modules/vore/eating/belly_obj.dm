@@ -195,8 +195,8 @@
 	var/nutri_reagent_gen = FALSE					//if belly produces reagent over time using nutrition, needs to be optimized to use subsystem - Jack
 	var/is_beneficial = FALSE							//Sets a reagent as a beneficial one / healing reagents
 	var/list/generated_reagents = list(REAGENT_ID_WATER = 1) //Any number of reagents, the associated value is how many units are generated per process()
-	var/reagent_name = REAGENT_ID_WATER 						//What is shown when reagents are removed, doesn't need to be an actual reagent
-	var/reagentid = REAGENT_ID_WATER							//Selected reagent's id, for use in puddle system currently
+	var/reagent_name = REAGENT_WATER					//What is shown when reagents are removed, doesn't need to be an actual reagent
+	var/reagentid = REAGENT_WATER							//Selected reagent's id, for use in puddle system currently
 	var/reagentcolor = "#0064C877"					//Selected reagent's color, for use in puddle system currently
 	var/custom_reagentcolor							//Custom reagent color. Blank for normal reagent color
 	var/custom_reagentalpha							//Custom reagent alpha. Blank for capacity based alpha
