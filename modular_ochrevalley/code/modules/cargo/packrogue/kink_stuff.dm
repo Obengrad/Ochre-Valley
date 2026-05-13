@@ -53,14 +53,14 @@
 				)
 
 /datum/supply_pack/rogue/kink_toy/collar_bell
-	name = "Bell Collar"
+	name = "Collar (Bell)"
 	cost = 15
 	contains = list(
 					/obj/item/clothing/neck/roguetown/collar/bell_collar
 				)
 
 /datum/supply_pack/rogue/kink_toy/collar_cow
-	name = "Cowbell Collar"
+	name = "Collar (Cowbell)"
 	cost = 15
 	contains = list(
 					/obj/item/clothing/neck/roguetown/collar/cow_collar
@@ -81,14 +81,14 @@
 				)
 
 /datum/supply_pack/rogue/kink_toy/spell_shrink
-	name = "Enlarge/Reduce Scroll"
+	name = "Scroll of Enlarge/Reduce"
 	cost = 20
 	contains = list(
 					/obj/item/book/granter/spell/bonechill/sizespell
 				)
 
 /datum/supply_pack/rogue/kink_toy/spell_mirror
-	name = "Mirror Transform Scroll"
+	name = "Scroll of Mirror Transform"
 	cost = 20
 	contains = list(
 					/obj/item/book/granter/spell/bonechill/mirror_transform
