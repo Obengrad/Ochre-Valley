@@ -836,15 +836,13 @@
 
 	// OV Edit Start
 	if(HAS_TRAIT(src, TRAIT_DARKVISION))
-		var/perception = min(max(get_stat(STATKEY_PER), 1), 15)
-		var/perception_bonus = clamp(perception - 9, 0, 6)
+		var/perception = clamp(get_stat(STATKEY_PER), 8, 15)
+		// Remap the old PER 10-13 Darksight range across PER 8-15.
+		var/perception_ratio = (perception - 8) / 7
+		var/perception_bonus = 1 + (perception_ratio * 3)
 		var/vision_ratio = perception_bonus / 6
 		var/darksight_alpha = round(LIGHTING_PLANE_ALPHA_DARKVISION * (1 - vision_ratio))
-		var/darksight_level = 9 + perception_bonus
-
-		// 15 PER is the Darksight cap.
-		if(perception_bonus >= 6)
-			darksight_level = 15
+		var/darksight_level = 9 + round(perception_bonus)
 
 		lighting_alpha = min(lighting_alpha, darksight_alpha)
 		see_in_dark = max(see_in_dark, darksight_level)
