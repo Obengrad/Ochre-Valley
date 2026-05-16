@@ -891,10 +891,14 @@
 
 	// If digested prey is also a pred... anyone inside their bellies gets moved up.
 	if(is_vore_predator(M))
-		M.release_vore_contents(include_absorbed = TRUE, silent = TRUE)
+		SSinventory_return.preserve_or_eject_belly_contents(M)	//OV EDIT - Preserve any unaccounted for belly contents before releasing things
 
 	//Drop all items into the belly.
 	//if(CONFIG_GET(flag/items_survive_digestion))
+	if(mode_flags & DM_FLAG_STRIP_DIGEST && M.client?.prefs_vr.strip_pref)		//OV ADD START - INVENTORY RETURN PORT FROM RS#1261
+		SSinventory_return.catalogue_full_inventory(M)
+	else
+		SSinventory_return.digest_inventory_preserve(M)	//OV ADD END
 	var/Itemlist = M.get_equipped_items(TRUE)
 	Itemlist += M.held_items
 	for(var/obj/item/W in Itemlist)
