@@ -1,0 +1,5 @@
+author: "Ketrai"
+delete-after: True
+changes:
+  - bugfix: "cure deadite rot surgery now correctly only works when targeting chest."
+  - bugfix: "cure black rot surgery now correctly only works when targeting chest."
