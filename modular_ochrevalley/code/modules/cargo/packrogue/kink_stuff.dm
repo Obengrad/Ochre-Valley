@@ -42,7 +42,7 @@
 	name = "Dildo (gold)"
 	cost = 50
 	contains = list(
-					/obj/item/dildo/wood
+					/obj/item/dildo/gold
 				)
 
 /datum/supply_pack/rogue/kink_toy/collar
