@@ -1,4 +1,0 @@
-author: "Ollanius"
-delete-after: True
-changes:
-  - bugfix: "Fixes up some minor incongruencies in the time-changing tips."

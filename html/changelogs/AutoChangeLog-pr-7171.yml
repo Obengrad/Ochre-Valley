@@ -1,4 +1,0 @@
-author: "kbitykbitykbity"
-delete-after: True
-changes:
-  - bugfix: "Fixed small races being barred from every nomad adventurer class."
