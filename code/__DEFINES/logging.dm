@@ -120,6 +120,7 @@
 #define LOG_CATEGORY_GAME_TOPIC "game-topic"
 #define LOG_CATEGORY_GAME_VOTE "game-vote"
 #define LOG_CATEGORY_GAME_WHISPER "game-whisper"
+#define LOG_CATEGORY_GAME_CRAFT "game-craft"
 
 // HREF categories
 #define LOG_CATEGORY_HREF "href"
