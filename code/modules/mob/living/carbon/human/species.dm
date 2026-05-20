@@ -53,6 +53,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/use_skintones = FALSE	// does it use skintones or not? (spoiler alert this is only used by humans)
 	var/exotic_blood = ""	// If my race wants to bleed something other than bog standard blood, change this to reagent id.
 	var/exotic_bloodtype = "" //If my race uses a non standard bloodtype (A+, O-, AB-, etc)
+	var/blood_color = BLOOD_COLOR_RED // Hex color used to tint blood decals this species leaves behind.
 	var/meat = /obj/item/reagent_containers/food/snacks/rogue/meat/steak //What the species drops on gibbing
 	var/skinned_type
 	var/liked_food = NONE
@@ -999,7 +1000,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			hunger_rate = 10 * HUNGER_FACTOR*/
 //		hunger_rate *= H.physiology.hunger_mod
 		if(!H.mind || world.time < H.time_of_last_move + 10 MINUTES)
-			H.adjust_nutrition(-hunger_rate)
+		H.adjust_nutrition(-hunger_rate)
 
 		var/obj/item/organ/breasts/breasts = H.has_breasts()
 		if(breasts)
@@ -1018,7 +1019,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/hunger_rate = HUNGER_FACTOR
 //		hunger_rate *= H.physiology.hunger_mod
 		if(!H.mind || world.time < H.time_of_last_move + 10 MINUTES)
-			H.adjust_hydration(-hunger_rate)
+		H.adjust_hydration(-hunger_rate)
 
 
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
@@ -1096,8 +1097,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.remove_status_effect(/datum/status_effect/debuff/hungryt2)
 			//Cove edit start
 			if(!istype(H.loc, /obj/belly))
-				if(prob(3))
-					playsound(get_turf(H), pick('sound/vo/hungry1.ogg','sound/vo/hungry2.ogg','sound/vo/hungry3.ogg'), 100, TRUE, -1)
+			if(prob(3))
+				playsound(get_turf(H), pick('sound/vo/hungry1.ogg','sound/vo/hungry2.ogg','sound/vo/hungry3.ogg'), 100, TRUE, -1)
 			//Cove edit end
 
 	switch(H.hydration)
@@ -1934,7 +1935,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				bloody = 1
 				var/turf/location = H.loc
 				var/splatter_dir = get_dir(H, user)
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(H.loc, splatter_dir)
+				var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(H.loc, splatter_dir)
+				splatter.set_blood_color(H.get_blood_color())
 				if(istype(location))
 					H.add_splatter_floor(location)
 					H.add_splatter_wall(location, force = I.force)
@@ -2135,7 +2137,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			loc_temp = loc_b.owner.bodytemperature
 	
 	if(!loc_temp)
-		var/turf/cur_turf = get_turf(H)
+	var/turf/cur_turf = get_turf(H)
 		loc_temp = cur_turf.temperature
 	//Caustic Edit End
 
