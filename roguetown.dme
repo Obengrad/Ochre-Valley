@@ -3586,6 +3586,7 @@
 #include "modular_causticcove\code\modules\vore\config.dm"
 #include "modular_causticcove\code\modules\vore\food_handling.dm"
 #include "modular_causticcove\code\modules\vore\mob_tf.dm"
+#include "modular_ochrevalley\code\modules\ochrebot\relays.dm"
 #include "modular_ochrevalley\code\modules\roguetown\roguemachine\gm_kit\gm_quest.dm"
 #include "modular_ochrevalley\code\modules\vore\shapeshift_vore.dm"
 #include "modular_ochrevalley\code\modules\mob\living\carbon\human\emotes_noises.dm"
