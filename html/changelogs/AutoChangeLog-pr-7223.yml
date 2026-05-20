@@ -1,0 +1,9 @@
+author: "Quinalion"
+delete-after: True
+changes:
+  - image: "Added missing icon for sallet detail."
+  - bugfix: "Fixed velvet and noble dress paths; they now correctly cover the groin area."
+  - bugfix: "Fixed bronze handlantern lighting."
+  - bugfix: "Fixed hauberk brigandine sleeves."
+  - bugfix: "Fixed fencing gloves path, so they display correctly when facing east/west."
+  - bugfix: "Fixed missing background icon for Zizo's miracles."
