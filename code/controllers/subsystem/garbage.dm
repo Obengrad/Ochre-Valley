@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(garbage)
 			entry["Total No Hint"] = I.no_hint
 
 		if(LAZYLEN(I.extra_details))
-			dellog += "\tExtra Info:\n\t\t- [I.extra_details.Join("\n\t\t- ")]"
+			del_log += "\tExtra Info:\n\t\t- [I.extra_details.Join("\n\t\t- ")]"
 	log_qdel("", del_log)
 // OV Edit End
 
