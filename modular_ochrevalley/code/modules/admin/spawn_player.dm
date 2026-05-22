@@ -117,10 +117,9 @@
 		var/datum/job/announce_job = SSjob.GetJob(M.job)
 		var/announce_title = announce_job ? announce_job.get_informed_title(M) : M.job
 		scom_announce("[M.real_name] the [announce_title] has left the vicinity of [SSticker.realm_name].")
-	if(istype(M, /mob/living))
-		var/mob/living/L = M
-		if(L.has_embedded_objects())
-			var/list/embeds = L.get_embedded_objects()
-			for(var/thing in embeds)
-				QDEL_NULL(thing)
+	var/mob/living/L = M
+	if(istype(L) && L.has_embedded_objects())
+		var/list/embeds = L.get_embedded_objects()
+		for(var/thing in embeds)
+			QDEL_NULL(thing)
 	QDEL_NULL(M)
