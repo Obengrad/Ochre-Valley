@@ -6,7 +6,7 @@
 		return
 	//Setup and option selections
 	if(!istype(C.mob, /mob/dead))
-		if(alert(usr, "Target is still alive, are you sure you want to delete and respawn them?", "Target Still Alive!", "Yes", "No") == "No")
+		if(tgui_alert(usr, "Target is still alive, are you sure you want to delete and respawn them?", "Target Still Alive!", list("Yes", "No")) != "Yes")
 			return
 	var/list/job_list = sortList(build_loadout_job_list())
 	var/selected_title = tgui_input_list(usr, "Select a job to spawn [C.key] as:", "Job Selection", job_list)
@@ -17,7 +17,7 @@
 	var/selected_advclass_path = null
 	var/is_migrant = ispath(selected_job_path, /datum/migrant_role)
 	if(is_migrant)
-		var/datum/migrant_role/migrant_datum = new selected_job_path()
+		var/datum/migrant_role/migrant_datum = MIGRANT_ROLE(selected_job_path)
 		if(migrant_datum.advclass_cat_rolls && length(migrant_datum.advclass_cat_rolls))
 		
 			// Get advclasses from the role class handler
@@ -26,7 +26,6 @@
 				for(var/datum/advclass/advclass_instance in SSrole_class_handler.sorted_class_categories[category])
 					advclass_choices[advclass_instance.name] = advclass_instance.type
 			
-			qdel(migrant_datum)
 			
 			if(length(advclass_choices))
 				var/selected = tgui_input_list(usr, "Select advclass:", "Advclass Selection", sortList(advclass_choices))
@@ -34,13 +33,9 @@
 				selected_advclass_path = advclass_choices[selected]
 	else
 		// Regular job
-		var/datum/job/selected_job
-		for(var/datum/job/J in SSjob.occupations)
-			if(J.type == selected_job_path)
-				selected_job = J
-				break
+		var/datum/job/selected_job = SSjob.type_occupations[selected_job_path]
 		
-		if(selected_job && selected_job.job_subclasses && length(selected_job.job_subclasses))
+		if(length(selected_job?.job_subclasses))
 			var/list/advclass_choices = list()
 			for(var/advclass_path in selected_job.job_subclasses)
 				var/datum/advclass/AC = advclass_path
@@ -49,20 +44,29 @@
 			var/selected = tgui_input_list(usr, "Select advclass:", "Advclass Selection", sortList(advclass_choices))
 			to_chat(usr, span_notice("Advclass selected: [selected]"))
 			selected_advclass_path = advclass_choices[selected]
-	var/turf/location = usr.loc //Fallback to self if the location doesn't exist
-	switch(alert(usr,"Where should [C.prefs.real_name] be spawned?", "Where to spawn?", "Here", "Offset", "Coordinates"))
-		if("Offset")
-			var/x = input(usr, "Set X offset", "X Offset", 0) as num
-			var/y = input(usr, "Set Y offset", "Y Offset", 0) as num
-			var/z = input(usr, "Set Z offset", "Z Offset", 0) as num
-			location = locate(usr.loc.x + x, usr.loc.y + y, usr.loc.z + z)
-		if("Coordinates")
-			var/x = input(usr, "Set X position", "X Position", 0) as num
-			var/y = input(usr, "Set Y position", "Y Position", 0) as num
-			var/z = input(usr, "Set Z position", "Z Position", 0) as num
-			location = locate(0 + x, 0 + y, 0 + z)
-	var/announce = alert(usr, "Add [C.prefs.real_name] to the actor list? (This will announce their arrival if their role normally would)", "Hide from actor list?", "Yes", "No") == "Yes"
-	if(alert(usr, "You are spawning [C.prefs.real_name]/([C.ckey]) as [selected_title] at ([location.x],[location.y],[location.z]), is this correct?", "Confirmation", "Yes", "Cancel") == "Cancel")
+	var/turf/location = usr.loc //Fallback to user location if anything weird happens
+	do
+		switch(tgui_alert(usr,"Where should [C.prefs.real_name] be spawned?", "Where to spawn?", list("Here", "Offset", "Coordinates")))
+			if("Offset")
+				var/x = input(usr, "Set X offset", "X Offset", 0) as num
+				var/y = input(usr, "Set Y offset", "Y Offset", 0) as num
+				var/z = input(usr, "Set Z offset", "Z Offset", 0) as num
+				location = locate(usr.loc.x + x, usr.loc.y + y, usr.loc.z + z)
+			if("Coordinates")
+				var/x = input(usr, "Set X position", "X Position", 0) as num
+				var/y = input(usr, "Set Y position", "Y Position", 0) as num
+				var/z = input(usr, "Set Z position", "Z Position", 0) as num
+				location = locate(x, y, z)
+			if("Here")
+				location = usr.loc
+			if(null)
+				to_chat(usr, span_danger("No spawn position selected"))
+				return
+		if(!location)
+			to_chat(usr, span_danger("Invalid coordinates for spawn!"))
+	while(!location)
+	var/announce = tgui_alert(usr, "Add [C.prefs.real_name] to the actor list? (This will announce their arrival if their role normally would)", "Hide from actor list?", "Yes", "No") == "Yes"
+	if(tgui_alert(usr, "You are spawning [C.prefs.real_name]/([C.ckey]) as [selected_title] at ([location.x],[location.y],[location.z]), is this correct?", "Confirmation", "Yes", "Cancel") != "Yes")
 		return
 	//Actual Spawning stuff
 	var/mob/living/carbon/human/new_character = new
@@ -92,10 +96,6 @@
 			var/target_job = SSrole_class_handler.get_advclass_by_name(M.advjob)
 			if(target_job)
 				SSrole_class_handler.adjust_class_amount(target_job, -1)
-	if(length(M.contents))
-		for(var/i in length(M.contents))
-			if(istype(M.contents[i], /obj/item/holder/micro))
-				M.dropItemToGround(M.contents[i], TRUE, TRUE)
 	if(M.mind)
 		M.mind.unknow_all_people()
 		for(var/datum/mind/MF in get_minds())
@@ -103,6 +103,8 @@
 		for(var/datum/bounty/removing_bounty in GLOB.head_bounties)
 			if(removing_bounty.target == M.real_name)
 				GLOB.head_bounties -= removing_bounty
+	for(var/obj/item/holder/micro/micro in M)
+		M.dropItemToGround(micro, TRUE, TRUE)
 	if(SSticker.rulermob == M)
 		SSticker.rulermob = null
 	if(SSticker.regentmob == M)
