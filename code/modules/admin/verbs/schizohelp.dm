@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(schizo.owner == src.mob)
 		to_chat(src, span_warning("I can't answer my own meditation!"))
 		return
-	var/answer = tgui_input_text(src, "Answer their meditations...", "VOICE", multiline = TRUE, max_length = MAX_MESSAGE_LEN) // OV Edit: Use TGUI Input
+	var/answer = tgui_input_text(src, "Answer their meditations...", "VOICE", multiline = TRUE, max_length = MAX_MESSAGE_LEN, encode = FALSE) // OV Edit: Use TGUI Input
 	if(!answer || QDELETED(schizo))
 		return
 	schizo.answer_schizo(answer, src.mob)
