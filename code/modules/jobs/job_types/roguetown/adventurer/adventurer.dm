@@ -75,6 +75,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 		// /datum/advclass/mage/spellthief, //OV Edit AP Merge 4.2.26 - Commented out Pending Rework
 		/datum/advclass/rogue/buccaneer,
 		///Caustic edit end
+		/datum/advclass/true_random, //OV ADD
 		/datum/advclass/foreigner/shepherd,
 		/datum/advclass/foreigner/fencerguy,
 		/datum/advclass/foreigner/bronzeclad,
