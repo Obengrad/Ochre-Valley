@@ -230,6 +230,7 @@
 				/obj/item/clothing/suit/roguetown/armor/chainmail/light,
 				/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
 				/obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1,
+				/obj/item/clothing/suit/roguetown/armor/corset,
 		)
 	if(prob(60))
 		armor = pick(/obj/item/clothing/suit/roguetown/armor/plate/cuirass/iron,
@@ -244,6 +245,7 @@
 				/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat,
 				/obj/item/clothing/suit/roguetown/shirt/robe/monk,
 				/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
+				/obj/item/clothing/suit/roguetown/armor/armordress,
 		)
 	if(prob(80))
 		pants = pick(/obj/item/clothing/under/roguetown/tights/black,
@@ -254,12 +256,14 @@
 				/obj/item/clothing/under/roguetown/heavy_leather_pants/bronzeskirt,
 				/obj/item/clothing/under/roguetown/loincloth/deprived,
 				/obj/item/clothing/under/roguetown/heavy_leather_pants,
+				/obj/item/clothing/under/roguetown/skirt/red,
 		)
 	belt = pick(/obj/item/storage/belt/rogue/leather,
 			/obj/item/storage/belt/rogue/leather/rope,
 			/obj/item/storage/belt/rogue/leather/sash,
 			/obj/item/storage/belt/rogue/leather/plaquesilver,
 			/obj/item/storage/belt/rogue/leather/black,
+			/obj/item/storage/belt/rogue/leather/cloth/lady,
 	)
 	beltl = pick(/obj/item/storage/belt/rogue/pouch/coins/poor,
 			/obj/item/storage/belt/rogue/pouch/coins/rich,
@@ -279,13 +283,24 @@
 			/obj/item/rogueweapon/sword/short/messer/iron,
 			/obj/item/rogueweapon/sword/sabre,
 			/obj/item/rogueweapon/mace/cudgel,
+			/obj/item/rogueweapon/stoneaxe/woodcut,
 	)
+	if(prob(40))
+		cloak = pick(/obj/item/clothing/cloak/raincloak/furcloak,
+				/obj/item/clothing/cloak/half,
+				/obj/item/clothing/cloak/apron,
+				/obj/item/clothing/cloak/bandolier,
+				/obj/item/clothing/cloak/poncho,
+				/obj/item/clothing/cloak/tabard,
+				/obj/item/clothing/cloak/cape,
+		)
 	if(prob(90))
 		shoes = pick(/obj/item/clothing/shoes/roguetown/boots,
 				/obj/item/clothing/shoes/roguetown/boots/leather/reinforced,
 				/obj/item/clothing/shoes/roguetown/boots/furlinedboots,
 				/obj/item/clothing/shoes/roguetown/boots/armor/iron,
 				/obj/item/clothing/shoes/roguetown/boots/armor,
+				/obj/item/clothing/shoes/roguetown/sandals,
 		)
 	if(prob(50))
 		wrists = pick(/obj/item/clothing/wrists/roguetown/bracers/iron,
@@ -331,6 +346,8 @@
 		/obj/item/reagent_containers/glass/bottle/rogue/beer,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 		/obj/item/rope/chain,
+		/obj/item/rogueweapon/huntingknife/scissors,
+		/obj/item/clothing/mask/cigarette/rollie/cannabis,
 	)
 	backpack_contents = list(pick(backpack_items),pick(backpack_items),pick(backpack_items))
 	if(prob(50))
@@ -349,6 +366,7 @@
 				/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
 				/obj/item/quiver/arrows,
 				/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+				/obj/item/storage/backpack/rogue/satchel,
 		)
 	r_hand = pick(/obj/item/rogueweapon/greatsword/iron,
 			/obj/item/rogueweapon/sword/short,
