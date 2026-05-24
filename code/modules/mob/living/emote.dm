@@ -2003,3 +2003,17 @@
 		
 	to_chat(src, span_warning("You can't [direction == UP ? "emerge" : "dive"] here."))
 	return FALSE
+
+//OV edit
+/datum/emote/living/stomach_growl
+	key = "stomach_growl"
+	message = "emits a rumbling growl from their middle."
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_stomach_growl()
+	set name = "Stomach Growl"
+	set category = "Noises"
+
+	emote("stomach_growl", intentional = TRUE)
+//OV edit end
