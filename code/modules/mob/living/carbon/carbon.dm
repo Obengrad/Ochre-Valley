@@ -1,6 +1,9 @@
 /mob/living/carbon/Initialize()
 	..()
 
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_DARKVISION), PROC_REF(on_darkvision_trait_changed))
+	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_DARKVISION), PROC_REF(on_darkvision_trait_changed))
+
 	pain_threshold = STAWIL * 10
 
 	if(HAS_TRAIT(src, TRAIT_NOPAIN))
@@ -14,6 +17,8 @@
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
 	. =  ..()
 
+	UnregisterSignal(src, list(SIGNAL_ADDTRAIT(TRAIT_DARKVISION), SIGNAL_REMOVETRAIT(TRAIT_DARKVISION)))
+
 	QDEL_LIST(hand_bodyparts)
 	QDEL_LIST(internal_organs)
 	QDEL_LIST(bodyparts)
@@ -21,6 +26,11 @@
 	QDEL_NULL(dna)
 	QDEL_NULL(underwear)
 	GLOB.carbon_list -= src
+
+/mob/living/carbon/proc/on_darkvision_trait_changed()
+	SIGNAL_HANDLER
+
+	update_sight()
 
 /mob/living/carbon/ZImpactDamage(turf/T, levels)
 	var/obj/item/bodypart/affecting
@@ -842,7 +852,14 @@
 		var/perception_bonus = 1 + (perception_ratio * 3)
 		var/vision_ratio = perception_bonus / 6
 		var/darksight_alpha = round(LIGHTING_PLANE_ALPHA_DARKVISION * (1 - vision_ratio))
-		var/darksight_level = 9 + round(perception_bonus)
+		var/darkvision_accessibility = client?.prefs ? client.prefs.darkvision_accessibility : 0
+		var/min_darkvision_potency = DARKVISION_BASE_POTENCY + (DARKVISION_ACCESSIBILITY_MIN / 100)
+		var/max_darkvision_potency = DARKVISION_BASE_POTENCY + (DARKVISION_ACCESSIBILITY_MAX / 100)
+		var/darkvision_potency = clamp(DARKVISION_BASE_POTENCY + (darkvision_accessibility / 100), min_darkvision_potency, max_darkvision_potency)
+		var/darkvision_effect = LIGHTING_PLANE_ALPHA_VISIBLE - darksight_alpha
+		var/darksight_level = 9 + round(perception_bonus * darkvision_potency)
+		// Scale the alpha reduction so the default is substantially darker while accessibility can restore strength.
+		darksight_alpha = round(LIGHTING_PLANE_ALPHA_VISIBLE - (darkvision_effect * darkvision_potency))
 
 		lighting_alpha = min(lighting_alpha, darksight_alpha)
 		see_in_dark = max(see_in_dark, darksight_level)
