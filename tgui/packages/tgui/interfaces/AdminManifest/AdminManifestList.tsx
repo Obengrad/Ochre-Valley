@@ -102,7 +102,7 @@ export const AdminManifestList = (props: {
           })
           .sort((a, b) => {
             const i = sortOrder ? 1 : -1;
-            return a[sortId].localeCompare(b[sortId]) * i;
+            return String(a[sortId]).localeCompare(String(b[sortId])) * i;
           })
           .map((player, i) => {
             return (
