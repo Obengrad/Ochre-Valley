@@ -105,7 +105,7 @@ SUBSYSTEM_DEF(garbage)
 		var/list/entry = list()
 		del_log[path] = entry
 		if (I.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
-			entry["SUSPENDED FOR LAG"]
+			del_log += "\tSUSPENDED FOR LAG"
 		if (I.failures)
 			entry["Failures"] = I.failures
 		entry["qdel() Count"] = I.qdels

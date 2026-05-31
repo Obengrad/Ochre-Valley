@@ -600,7 +600,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WHITE_STAG = span_info("The power of the white stag lives on inside of me!"),
 	TRAIT_EDIT_DESCRIPTORS = span_info("I can change my appearance at a magic mirror in a thorough manner."),
 	TRAIT_DUSTRUNNER = span_info("I run dust for the Thieves' Guild. Those in the trade know how to spot one of their own."),
-	TRAIT_REGROW_LIMBS = span_info("I can regrow my limbs in my sleep, but doing so will make me hungry.")
+	TRAIT_REGROW_LIMBS = span_info("I can regrow my limbs in my sleep, but doing so will make me hungry."),
 	//OV Add Start
 	TRAIT_LYFE_DRINK = span_bloody("I hunger for fresh lyfe's blood."),
 	//OV Add End
