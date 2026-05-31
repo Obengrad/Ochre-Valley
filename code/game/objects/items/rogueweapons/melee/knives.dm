@@ -152,7 +152,6 @@
 	unequip_delay_self = 1 SECONDS
 	inv_storage_delay = 1 SECONDS
 	edelay_type = 1
-	sellprice = 10 //Knives are rather important and common tools to have. It's also important to price them as such- Important!!!
 
 	//flipping knives has a cooldown on to_chat to reduce chatspam
 	COOLDOWN_DECLARE(flip_cooldown)
@@ -215,7 +214,6 @@
 	icon_state = "cdagger"
 	max_integrity = 75
 	smeltresult = null // TODO: We don't have partial melt so coping time
-	sellprice = 15
 
 /obj/item/rogueweapon/huntingknife/bronze
 	name = "bronze knife"
@@ -228,7 +226,6 @@
 	max_blade_int = 200
 	max_integrity = 175
 	smeltresult = /obj/item/ingot/bronze
-	sellprice = 30
 
 /datum/intent/dagger/thrust/bronze
 	name = "piercing thrust"
@@ -264,7 +261,6 @@
 	max_blade_int = 100
 	max_integrity = 150
 	smeltresult = null
-	sellprice = 4 //Wooden!?
 
 /datum/intent/dagger/cut/wood
 	name = "cut"
@@ -319,7 +315,6 @@
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 40
 
 //
 
@@ -337,7 +332,6 @@
 	thrown_bclass = BCLASS_CUT
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 30
 
 /obj/item/rogueweapon/huntingknife/chefknife/cleaver
 	name = "cleaver"
@@ -376,7 +370,6 @@
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 50
 
 /obj/item/rogueweapon/huntingknife/combat/getonmobprop(tag)
 	. = ..()
@@ -458,7 +451,6 @@
 	sheathe_icon = "idagger"
 	smeltresult = /obj/item/ingot/iron
 	special = /datum/special_intent/dagger_dash
-	sellprice = 20
 
 // Standard dagger for wardens, or for any other forester-styled class. While a pick-dagger penetrates
 // armour, this is more focused on breaking *through* it and then dealing a lot of damage via REND.
@@ -494,7 +486,6 @@
 	sheathe_icon = "idagger"
 	smeltresult = /obj/item/ingot/iron
 	wdefense = 7
-	sellprice = 20
 
 /obj/item/rogueweapon/huntingknife/idagger/adagger
 	name = "decrepit dagger"
@@ -508,14 +499,12 @@
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	randomize_blade_int_on_init = TRUE
-	sellprice = 15 //... Okay well since you're a dagger... Fine... MAYBE I will be more lenient with your price...
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/padagger
 	name = "ancient dagger"
 	desc = "A short blade, forged from polished gilbranze. It is violence that shepherds progress, and it is progress that will free this world from mortality's chains. Zizo, Zizo, Zizo - I call upon thee; bring forth the undying, so that your works may yet be done!"
 	icon_state = "adagger"
 	smeltresult = /obj/item/ingot/aaslag
-	sellprice = 15
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"
@@ -525,7 +514,6 @@
 	force = 20
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 35
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/trainer
 	name = "dagger trainer"
@@ -560,7 +548,6 @@
 	desc = "A wicked deliverer of poison, serrated and notched. Curved steel cradles the knuckles, ensuring that the wielder doesn't inflict the fatal dose on themselves. </br>I can coat this dagger in most poisons, ensuring that my next strike leaves a festering surprise."
 	icon_state = "pdagger"
 	sheathe_icon = "pdagger"
-	sellprice = 75 //Rare as fuck poison knife I didn't even know this existed!
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/Initialize()
 	. = ..()
@@ -573,7 +560,6 @@
 	sheathe_icon = "spiderdagger"
 	smeltresult = /obj/item/ingot/drow
 	smelt_bar_num = 1
-	sellprice = 100
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/zizo
 	name = "avantyne dagger"
@@ -617,7 +603,6 @@
 	sheathe_icon = "gsdagger"
 	smeltresult = /obj/item/ingot/silver
 	is_silver = TRUE
-	sellprice = 200 //Rare as fuck dagger. Very strong.
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/holysee/ComponentInitialize()
 	AddComponent(\
@@ -636,7 +621,6 @@
 	icon_state = "pestrasickle"
 	force = 22 // 10% - This is a 8 clickCD weapon
 	max_integrity = 200
-	sellprice = 125 //Job spawn only. Poisonable. Pestra.
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle/Initialize()
 	. = ..()
@@ -666,7 +650,6 @@
 	wdefense = 4
 	force = 22 // I will give you 10% force instead of 4 clickCD stab holy shit
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 75
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 	name = "steel parrying dagger"
@@ -688,7 +671,6 @@
 	sheathe_icon = "spdaggerhand"
 	max_integrity = 200
 	wdefense = 9
-	sellprice = 50
 
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero
@@ -699,12 +681,10 @@
 	max_integrity = 200
 	wdefense = 9		//This way with expert dagger skill you'd have ~13 defense. 2 higher than a kiteshield, but no arrow protection.
 	icon_state = "sail_dagger"
-	sellprice = 75
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
 	sheathe_icon = "sdaggeralt"
-	sellprice = 40
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kazengun
 	name = "steel tanto"
@@ -712,7 +692,6 @@
 	wrapping of twisted cordage provides a secure grip."
 	icon_state = "eastdagger"
 	sheathe_icon = "tanto"
-	sellprice = 40
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/fire
 	name = "fire dagger"
@@ -741,7 +720,6 @@
 	smeltresult = /obj/item/ingot/silver
 	last_used = 0
 	is_silver = TRUE
-	sellprice = 120
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/ComponentInitialize()
 	AddComponent(\
@@ -796,7 +774,6 @@
 	equip_delay_self = 0 //No delay when stowing away, without a scabbard.
 	unequip_delay_self = 0 //No delay when drawing.
 	inv_storage_delay = 0 //No delay when retrieving from a storage slot.
-	sellprice = 60
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/stake/ComponentInitialize()
 	AddComponent(\
@@ -886,7 +863,6 @@
 	max_blade_int = 100
 	wdefense = 1
 	resistance_flags = FLAMMABLE
-	sellprice = 9 //Still a useful knife! These things are really fucking versatile in the game!
 
 /obj/item/rogueweapon/huntingknife/stoneknife/kukri
 	name = "jade kukri"
@@ -918,7 +894,6 @@
 	last_used = 0
 	smeltresult = /obj/item/ingot/gold
 	smelt_bar_num = 1
-	sellprice = 150 //Beautiful, elvish, and sharp!?
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/poopknife
 	name = "thine majesty's nitesoil-cleaver"
@@ -936,7 +911,6 @@
 	is_silver = FALSE //Intended, as it's technically not silver - or at the very least, so divorced from traditional silver that it no longer retains its properties.
 	smeltresult = /obj/item/ingot/drow
 	smelt_bar_num = 1
-	sellprice = 100 //Still expensive!
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
@@ -947,7 +921,7 @@
 	item_state = "elfdag"
 	var/extended = FALSE
 	wdefense = 2
-	sellprice = 50 //VERY shiny :o
+	sellprice = 30 //shiny :o
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja/attack_self(mob/user)
 	extended = !extended
@@ -1090,7 +1064,7 @@
 	icon_state = "throw_knifesil"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
-	sellprice = 34
+	sellprice = 6
 
 /obj/item/rogueweapon/huntingknife/throwingknife/silver/ComponentInitialize()
 	AddComponent(\
@@ -1115,7 +1089,7 @@
 	icon_state = "throw_knifep"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
-	sellprice = 40
+	sellprice = 6
 
 /obj/item/rogueweapon/huntingknife/throwingknife/psydon/ComponentInitialize()
 	AddComponent(\
@@ -1138,11 +1112,6 @@
 	max_integrity = 250
 	force = 10
 	throwforce = 10
-	throw_speed = 2
-	armor_penetration = 20
-	embedding = list("embedded_pain_multiplier" = 5, "embed_chance" = 75, "embedded_fall_chance" = 10)
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/snip, /datum/intent/dagger/sucker_punch)
-	sellprice = 20
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 15)
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/snip, /datum/intent/dagger/thrust)
 
@@ -1154,7 +1123,6 @@
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "iscissors"
 	inv_storage_delay = null
-	sellprice = 20 //Tools
 
 /obj/item/rogueweapon/huntingknife/scissors/steel
 	force = 14
@@ -1163,7 +1131,6 @@
 	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
 	icon_state = "sscissors"
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 30
 
 /datum/intent/snip // The salvaging intent!
 	name = "snip"

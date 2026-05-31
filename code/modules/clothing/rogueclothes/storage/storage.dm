@@ -17,7 +17,6 @@
 	component_type = /datum/component/storage/concrete/roguetown/belt
 	grid_width = 64
 	grid_height = 64
-	sellprice = 7
 
 /obj/item/storage/belt/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -323,7 +322,6 @@
 	desc = "A dark belt with real gold making up the buckle and highlights. How bougie."
 	icon_state = "stewardbelt"
 	item_state = "stewardbelt"
-	sellprice = 100 //The stewards belt especially!
 
 //Knifeblade belts, act as quivers mixed with belts. Lower storage size of a belt, but holds knives without taking space.
 /obj/item/storage/belt/rogue/leather/knifebelt
@@ -331,7 +329,6 @@
 	desc = "A five-slotted belt meant for tossblades. Little room left over."
 	icon_state = "knife"
 	item_state = "knife"
-	sellprice = 20 //Unironically really good.
 	strip_delay = 20
 	var/max_storage = 5			//Javelin bag is 4 and they can't hold items. So, more fair having it like this since these are pretty decent weapons.
 	var/list/knives = list()
@@ -450,7 +447,6 @@
 	icon_state = "silkbelt"
 	flags_inv = HIDECROTCH
 	var/max_storage = 5
-	sellprice = 15
 	sewrepair = TRUE
 
 ///////////////////////////////////////////////
@@ -471,7 +467,6 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	component_type = /datum/component/storage/concrete/grid/headhook
-	sellprice = 15 //Solid utility!
 
 /obj/item/storage/hip/headhook/bronze
 	name = "bronze head hook"
@@ -489,7 +484,6 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/bronze
 	component_type = /datum/component/storage/concrete/grid/headhook/bronze
-	sellprice = 30 //Great utility!
 
 /obj/item/clothing/climbing_gear
 	name = "climbing gear"
