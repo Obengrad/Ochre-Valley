@@ -6,7 +6,6 @@
 	item_state = "bplatehelm"
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT|HIDEHAIR
-	sellprice = 150 //Smelt it down silly... //CC edit
 
 /obj/item/clothing/head/roguetown/helmet/blacksteel/modern/ComponentInitialize()
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
@@ -67,7 +66,6 @@
 	smeltresult = /obj/item/ingot/blacksteel
 	smelt_bar_num = 2
 	chunkcolor = "#303036"
-	sellprice = 150 //CC Edit
 	material_category = ARMOR_MAT_PLATE
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -103,7 +101,6 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
 	alternate_worn_layer  = 8.9 //On top of helmet
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
-	sellprice = 250 //CC Edit | Rare!!!
 	armor_class = ARMOR_CLASS_NONE
 	block2add = FOV_DEFAULT
 	flags_cover = null

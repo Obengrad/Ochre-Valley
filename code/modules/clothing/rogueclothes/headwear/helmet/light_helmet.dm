@@ -16,7 +16,6 @@
 	sewrepair = TRUE
 	salvage_result = /obj/item/natural/fibers
 	salvage_amount = 2 // Major materials loss
-	sellprice = 6
 
 /obj/item/clothing/head/roguetown/armingcap/padded/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -43,7 +42,6 @@
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	salvage_result = /obj/item/natural/hide/cured
-	sellprice = 10
 
 /obj/item/clothing/head/roguetown/helmet/leather/ComponentInitialize() //they could already use this, this just makes the examine say so.
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -105,7 +103,6 @@
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "volfhead"
 	item_state = "volfhead"
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/helmet/leather/saiga
 	name = "saiga skull"
@@ -121,7 +118,6 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
-	sellprice = 20
 
 /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	name = "hardened leather helmet"
@@ -137,7 +133,6 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 	salvage_result = /obj/item/natural/hide/cured
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/spellcasterhat
 	name = "spellsinger hat"
@@ -151,7 +146,6 @@
 	worn_y_dimension = 64
 	sewrepair = TRUE
 	resistance_flags = FIRE_PROOF
-	sellprice = 20 //Unique helm!
 
 // Grenzel unique drip head. Pretend it is a secrete (A type of hat with a hidden helmet underneath). Same stats as kettle
 /obj/item/clothing/head/roguetown/grenzelhofthat
@@ -174,7 +168,6 @@
 	color = "#262927"
 	detail_color = "#FFFFFF"
 	altdetail_color = "#9c2525"
-	sellprice = 40
 
 /obj/item/clothing/head/roguetown/grenzelhofthat/attack_right(mob/user)
 	..()
@@ -216,7 +209,6 @@
 	armor = ARMOR_CLOTHING
 	salvage_result = /obj/item/natural/fibers
 	salvage_amount = 1
-	sellprice = 3
 
 /obj/item/clothing/head/roguetown/briarthorns/pickup(mob/living/user)
 	. = ..()
@@ -235,7 +227,6 @@
 	flags_inv = HIDEEARS
 	body_parts_covered = HEAD|HAIR|EARS|NOSE|EYES
 	resistance_flags = FIRE_PROOF
-	sellprice = 10 
 
 /obj/item/clothing/head/roguetown/mentorhat/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)

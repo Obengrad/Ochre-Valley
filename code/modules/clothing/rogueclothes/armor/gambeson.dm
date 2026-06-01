@@ -19,7 +19,6 @@
 	chunkcolor = "#978151"
 	material_category = ARMOR_MAT_LEATHER
 	cold_protection = 10
-	sellprice = 16 //Lighter equipment. Still decent.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -36,14 +35,12 @@
 	color = null
 	chunkcolor = null
 	allowed_sex = list(MALE, FEMALE)
-	sellprice = 33 //This is a very nice jacket! Where'd you get it?...
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe
 	name = "stalker robe"
 	desc = "A thick robe in royal purple, befitting the hand, while remaining easy for them to slip about in.."
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon_state = "shadowrobe"
-	sellprice = 88 //Hand's attire. If someone nabs this, well, they best get paid well that's for sure.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	name = "light gambeson"

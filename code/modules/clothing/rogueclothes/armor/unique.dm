@@ -12,7 +12,6 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	sellprice = 80 //Very powerful armor tbh
 
 /obj/item/clothing/suit/roguetown/armor/basiceast
 	name = "simple dobo robe"
@@ -31,7 +30,6 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = HIDEBOOB|HIDECROTCH
-	sellprice = 44 // Has potential..
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_HONORBOUND)
@@ -91,7 +89,6 @@
 	smeltresult = /obj/item/rogueore/coal
 	smelt_bar_num = 4
 	blocksound = SOFTHIT
-	sellprice = 300 //It's elven! This shit is rather rare to get our hands on!! //CC Edit
 
 /obj/item/clothing/suit/roguetown/armor/plate/elven_plate/Initialize(mapload)
 	. = ..()

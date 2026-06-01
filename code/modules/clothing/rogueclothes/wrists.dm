@@ -12,7 +12,6 @@
 	grid_height = 64
 	var/overarmor
 	throw_on_break = TRUE
-	sellprice = 6 //CC edit
 
 /obj/item/clothing/wrists/roguetown/MiddleClick(mob/user, params)
 	. = ..()
@@ -42,7 +41,6 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 13 //CC Edit
 
 /obj/item/clothing/wrists/roguetown/bracers/get_mechanics_examine(mob/user)
 	. = ..()
@@ -95,7 +93,6 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	sewrepair = FALSE
 	alternate_worn_layer = WRISTS_LAYER
-	sellprice = 15
 
 /obj/item/clothing/wrists/roguetown/bracers/psythorns/equipped(mob/user, slot)
 	. = ..()
@@ -129,14 +126,12 @@
 	material_category = ARMOR_MAT_PLATE
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	sellprice = 10 //Ew... AAslag... //CC Edit
 
 /obj/item/clothing/wrists/roguetown/bracers/paalloy
 	name = "ancient bracers"
 	desc = "Polished gilbranze cuffings, clasped around the wrists. Through ascension, the chains of mortality are broken; and only through death will the spirit be ready to embrace divinity."
 	icon_state = "ancientbracers"
 	smeltresult = /obj/item/ingot/aaslag
-	sellprice = 10
 
 /obj/item/clothing/wrists/roguetown/bracers/bronze
 	name = "bronze wristguards"
@@ -164,7 +159,6 @@
 	salvage_amount = 0 // sry
 	salvage_result = /obj/item/natural/hide/cured
 	color = "#b76f61"
-	sellprice = 7 // CC Edit
 
 /obj/item/clothing/wrists/roguetown/bracers/leather/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -188,7 +182,6 @@
 	smeltresult = /obj/item/ingot/copper
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_SIDE_BRONZE
-	sellprice = 10 //CC Edit
 
 /obj/item/clothing/wrists/roguetown/wrappings
 	name = "solar wrappings"
@@ -196,7 +189,6 @@
 	icon_state = "wrappings"
 	item_state = "wrappings"
 	sewrepair = TRUE
-	sellprice = 4
 
 /obj/item/clothing/wrists/roguetown/nocwrappings
 	name = "moon wrappings"
@@ -204,7 +196,6 @@
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 	sewrepair = TRUE
-	sellprice = 4
 
 /obj/item/clothing/wrists/roguetown/allwrappings
 	name = "wrappings"
@@ -213,7 +204,6 @@
 	icon_state = "nocwrappings" //Greyscale. Accessable in the loadout.
 	item_state = "nocwrappings"
 	sewrepair = TRUE
-	sellprice = 4
 
 /obj/item/clothing/wrists/roguetown/allwrappings/scarlet
 	color = CLOTHING_SCARLET
@@ -229,7 +219,6 @@
 	blocksound = SOFTHIT
 	anvilrepair = null
 	sewrepair = TRUE
-	sellprice = 7
 
 /obj/item/clothing/wrists/roguetown/bracers/cloth/monk
 	name = "padded wrappings"
@@ -255,7 +244,6 @@
 	item_state = "royalsleeves"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_BLACK
-	sellprice = 25
 
 /obj/item/clothing/wrists/roguetown/royalsleeves/update_icon()
 	cut_overlays()
@@ -299,7 +287,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
-	sellprice = 15
 
 /obj/item/clothing/wrists/roguetown/bracers/brigandine/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
@@ -319,7 +306,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
-	sellprice = 10
 
 /obj/item/clothing/wrists/roguetown/bracers/iron
 	name = "iron bracers"

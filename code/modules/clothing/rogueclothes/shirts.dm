@@ -699,7 +699,6 @@
 	slot_flags = ITEM_SLOT_SHIRT
 	salvage_result = /obj/item/natural/fibers
 	salvage_amount = 3
-	sellprice = 15
 
 //OV edit
 /obj/item/clothing/suit/roguetown/shirt/bindings

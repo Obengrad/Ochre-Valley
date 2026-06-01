@@ -21,7 +21,6 @@
 	max_integrity = ARMOR_INT_SIDE_IRON
 	smeltresult = /obj/item/rogueore/coal
 	anvilrepair = /datum/skill/craft/carpentry
-	sellprice = 100 //Elven!
 
 /obj/item/clothing/gloves/roguetown/bandages
 	name = "bandages"

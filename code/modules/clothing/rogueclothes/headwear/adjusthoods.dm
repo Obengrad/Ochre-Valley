@@ -24,7 +24,6 @@
 	block2add = FOV_BEHIND
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 15 //These can provide some basic protection from your identity. Also fashionable!
 
 /obj/item/clothing/head/roguetown/roguehood/ComponentInitialize()
 	. = ..()
@@ -102,7 +101,6 @@
 	overarmor = FALSE
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 10 //Pretty ... neat!
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/black
 	color = CLOTHING_BLACK
@@ -163,7 +161,6 @@
 	resistance_flags = FIRE_PROOF
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 25 //Praise Astrata...
 
 /obj/item/clothing/head/roguetown/roguehood/astrata/stonekeep
 	name = "sunwrought visage"
@@ -198,7 +195,6 @@
 	max_integrity = 180
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/roguehood/abyssor
 	name = "depths hood"
@@ -216,7 +212,6 @@
 	max_integrity = 180
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/roguehood/eorahood
 	name = "opera hood"
@@ -237,7 +232,6 @@
 	max_integrity = 180
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/roguehood/ravoxgorget
 	name = "ravox's tabard gorget"
@@ -252,7 +246,6 @@
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
 	block2add = null
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/roguehood/undivided
 	name = "undivided hood"
@@ -420,7 +413,6 @@
 	max_integrity = 200
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	sellprice = 40 //Psydon!
 
 /obj/item/clothing/head/roguetown/roguehood/psydon/black
 	name = "blessed hood"
