@@ -121,13 +121,7 @@
 	path = /obj/item/clothing/mask/rogue/lordmask/triumph
 	triumph_cost = 5
 	sort_category = "Triumphs"
-// OV Edit Start
-/datum/loadout_item/triumph_warscholarmask
-	name = "Golden Warscholar Mask"
-	path = /obj/item/clothing/mask/rogue/lordmask/naledi/triumph
-	triumph_cost = 5
-	sort_category = "Triumphs"
-// OV Edit End
+
 /datum/loadout_item/triumph_goldfullmask
 	name = "Golden Mask, Ornate"
 	path = /obj/item/clothing/mask/rogue/facemask/goldmask/triumph
