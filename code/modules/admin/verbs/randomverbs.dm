@@ -976,7 +976,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 //OV edit
 //reenable PQ on request
 /client/proc/reenable_pq()
-	set category = "-Admin-"
+	set category = "Admin"
 	set name = "Reenable players PQ"
 
 	if(!check_rights(R_ADMIN))

@@ -278,7 +278,7 @@
 	spark_act()
 
 //OV edit 
-
+/*
 /obj/item/flashlight/flare/torch/attack(mob/living/M, mob/user)
 	if(isooze(M) && can_fix_ooze)
 		singe(M, user)
@@ -378,6 +378,7 @@
 		log_combat(doctor, patient, "singe", "torch")
 		return TRUE
 	return FALSE
+*/
 //OV edit end
 
 /obj/item/flashlight/flare/torch/metal

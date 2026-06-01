@@ -17,7 +17,7 @@
 	origin = "Underdark"
 	default_color = "79F299"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,MUTCOLORS)
-	restricted_virtues = list(/datum/virtue/utility/feral_appetite, /datum/virtue/utility/noble)
+	restricted_virtues = list(/datum/virtue/utility/feral_appetite) //OV EDIT - Allow them to be nobles
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = FALSE
 	possible_ages = ALL_AGES_LIST
@@ -84,8 +84,8 @@
 	enflamed_icon = "widefire"
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
-		/datum/customizer/bodypart_feature/hair/head/humanoid/slime,
-		/datum/customizer/bodypart_feature/hair/facial/humanoid/slime,
+		/datum/customizer/bodypart_feature/hair/head/humanoid, //OV EDIT - Don't restrict slime customisability
+		/datum/customizer/bodypart_feature/hair/facial/humanoid, //OV EDIT - Don't restrict slime customisability
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,

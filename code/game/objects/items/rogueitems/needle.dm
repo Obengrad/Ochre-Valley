@@ -189,9 +189,11 @@
 	var/is_simple_animal = !iscarbon(patient)
 	if(iscarbon(patient))
 		//OV edit
+		/*
 		if(isooze(patient))
 			to_chat(doctor, span_warning("You can't sew an Ooze, their wounds must be burned closed."))
 			return FALSE
+		*/
 		//OV edit end
 		affecting = patient.get_bodypart(check_zone(doctor.zone_selected))
 		if(!affecting)
