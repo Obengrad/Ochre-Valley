@@ -10,5 +10,5 @@
 
 /mob/living/carbon/human/verb/emote_coo()
 	set name = "Coo"
-	set category = "WT"
+	set category = "WILDTONGUE"
 	emote("coo", intentional = TRUE, animal = TRUE)
