@@ -73,6 +73,7 @@
 	minstr = 6
 	walking_stick = TRUE
 	experimental_onback = TRUE
+	flags_ai_inventory = AI_ITEM_GUN
 	cartridge_wording = "musketball"
 	load_sound = 'modular_causticcove/sound/arquebus/musketload.ogg'
 	fire_sound = "modular_causticcove/sound/arquebus/arquefire.ogg"
@@ -138,7 +139,6 @@
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
-			adjust_experience(user, /datum/skill/combat/firearms, user.STAINT * 4)
 		else
 			spread = 150 - (150 * (user.client.chargedprog / 100))
 	else
@@ -149,7 +149,6 @@
 		BB.range = range
 	gunpowder = FALSE
 	reloaded = FALSE
-	user.adjust_experience(/datum/skill/combat/firearms, (user.STAINT*5))
 	..()
 	new /obj/effect/particle_effect/sparks/muzzle(get_ranged_target_turf(user, user.dir, 1))
 	spawn (5)
