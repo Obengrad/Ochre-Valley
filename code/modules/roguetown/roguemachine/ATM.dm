@@ -313,16 +313,16 @@
 			head.add_wound(/datum/wound/fracture)
 			head.update_disabled()
 			H.apply_damage(50, BRUTE, head)
-			H.emote("agony")
+			H.emote("agony", forced = TRUE)
 		if("agony")
 			H.apply_damage(10, BRUTE, head)
-			H.emote("agony")
+			H.emote("agony", forced = TRUE)
 		if("whimper")
 			H.apply_damage(10, BRUTE, head)
-			H.emote("whimper")
+			H.emote("whimper", forced = TRUE)
 		if("cry")
 			H.apply_damage(10, BRUTE, head)
-			H.emote("cry")
+			H.emote("cry", forced = TRUE)
 		if("silence")
 			return
 		else
@@ -332,9 +332,9 @@
 	var/consequence = pick(slow_effects)
 	switch(consequence)
 		if("whimper")
-			H.emote("whimper")
+			H.emote("whimper", forced = TRUE)
 		if("cry")
-			H.emote("cry")
+			H.emote("cry", forced = TRUE)
 		if("silence")
 			return
 		else

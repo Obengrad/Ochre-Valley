@@ -354,6 +354,12 @@
   ..()
   add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = GLOW_COLOR_FIRE, "alpha" = 50, "size" = 1))
 
+/obj/item/ingot/bsslag
+	name = "blacksteel-speckled slag"
+	desc = "A mass of smoldered blacksteel, rendered lame from the forge's heat. It has taken its secrets to the grave." 
+	icon_state = "oreada"
+	sellprice = 7
+
 //Anomalous Smeltings
 /obj/item/ingot/weeping
 	name = "enduring ingot"
