@@ -3580,6 +3580,7 @@
 #include "modular_ochrevalley\code\modules\client\preferences_pref_badges.dm"
 #include "modular_ochrevalley\code\modules\dcbot\makenote.dm"
 #include "modular_causticcove\code\modules\taurs\taur_markings.dm"
+#include "modular_ochrevalley\code\modules\roguetown\roguemachine\gm_kit\generate_quest.dm"
 #include "modular_causticcove\code\modules\vices\combat_adverse.dm"
 #include "modular_causticcove\code\modules\vices\mind_broken.dm"
 #include "modular_causticcove\code\modules\vices\bottomless\bottomless.dm"
