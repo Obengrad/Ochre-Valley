@@ -123,6 +123,7 @@
 	if(!landmark)
 		return FALSE
 	spawn_kill_mobs(landmark)
+	message_admins("A custom quest ([title]) has spawned its landmark at [landmark.x], [landmark.y], [landmark.z].")
 	return TRUE
 
 /datum/quest/kill/generated/compose_warband()
