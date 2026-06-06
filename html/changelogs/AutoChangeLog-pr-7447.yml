@@ -1,6 +1,0 @@
-author: "FeniaFox"
-delete-after: True
-changes:
-  - rscadd: "Added novice carpentry to Ruma Seonjang and Gun-in."
-  - balance: "Rebalanced ruma sheaths to use carpentry to repair."
-  - bugfix: "Fixed tanto sheath parrying functionality & integrity."

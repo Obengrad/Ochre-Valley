@@ -1,6 +1,0 @@
-author: "radarseas"
-delete-after: True
-changes:
-  - balance: "portal goblins are slightly tougher, can use specials and always spawn with armor."
-  - balance: "due to respawnability + no shutdown nor cap, latejoin goblins still have worse stats."
-  - bugfix: "no expert skill gobins from latejoining ancient issues. F U C K."

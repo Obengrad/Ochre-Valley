@@ -1,4 +1,0 @@
-author: "FeniaFox"
-delete-after: True
-changes:
-  - bugfix: "fixed stone axe/knife repairs not using crafting skill after merges"
