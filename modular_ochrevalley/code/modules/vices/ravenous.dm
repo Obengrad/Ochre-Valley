@@ -1,3 +1,6 @@
+/mob
+	var/maxnutrition = NUTRITION_LEVEL_FULL
+
 /datum/charflaw/ravenous //Code taken directly from the "Bottomless" Vice from Caustic Cove, modified for linear progression rather than exponential
 	name = "Ravenous" //The Vice itself
 	desc = "My hunger constantly grows, up to a point. Even when I should be full, I still feel empty..."
