@@ -3566,6 +3566,7 @@
 #include "modular_causticcove\code\modules\size_scaling\sizecats.dm"
 #include "modular_causticcove\code\modules\size_scaling\resizing\holder_micro_vr.dm"
 #include "modular_causticcove\code\modules\size_scaling\resizing\resize_vr.dm"
+#include "modular_causticcove\code\modules\size_scaling\size_verbs\standardized_sprite_verb.dm"
 #include "modular_causticcove\code\modules\size_scaling\spells\shrink.dm"
 #include "modular_causticcove\code\modules\spells\animagus\animagus.dm"
 #include "modular_causticcove\code\modules\spells\animagus\animagus_transformation.dm"
