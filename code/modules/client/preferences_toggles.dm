@@ -175,7 +175,7 @@
 		//Caustic Edit End
 
 /client/verb/darkvision_accessibility()
-	set category = "Options"
+	set category = "Preferences.Options"
 	set name = "Darkvision Accessibility"
 	if(!prefs)
 		return
