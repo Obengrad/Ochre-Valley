@@ -1,5 +1,5 @@
 /datum/voicepack/male
-	preview = list("agony", "laugh", "pain", "hmph", "painmoan", "rage", "paincrit", "burp", "chuckle", "clearthroat", "embed", "grumble", "groan", "hiccup", "hmm", "huh", "laugh", "rage", "warcry") // OV Edit - More stuff added.
+	preview = list("agony", "laugh", "pain", "hmph", "painmoan", "rage", "paincrit", "burp", "chuckle", "clearthroat", "embed", "grumble", "groan", "hiccup", "hmm", "huh", "laugh", "rage", "warcry") // OV Edit - Added burp and hiccup emotes
 
 /datum/voicepack/male/get_sound(soundin, modifiers)
 	var/used
@@ -57,8 +57,8 @@
 				used = list('sound/vo/male/gen/haltyell (1).ogg','sound/vo/male/gen/haltyell (2).ogg')
 				if(prob(3))
 					used = 'sound/vo/male/gen/HEY.ogg'
-			if("hic","hiccup") // OV Edit, hiccups.
-				used = list('sound/vo/vore/hiccups/hic.ogg','sound/vo/vore/hiccups/hiccup.ogg')
+			if("hic","hiccup") // OV Add
+				used = list('modular_ochrevalley/sounds/vo/vore/hiccups/hic.ogg','modular_ochrevalley/sounds/vo/vore/hiccups/hiccup.ogg') // OV Add
 			if("hmm")
 				used = 'sound/vo/male/gen/hmm.ogg'
 			if("huh")
