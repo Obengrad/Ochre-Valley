@@ -1,6 +1,6 @@
 /client/proc/generate_quest_kill()
 	set name = "Generate Kill Quest"
-	set category = "GAME MASTER"
+	set category = "Game Master"
 	set hidden = 0
 
 	var/mob/user = src.mob
