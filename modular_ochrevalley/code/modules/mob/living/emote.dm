@@ -31,7 +31,7 @@
 
 /mob/living/carbon/human/verb/emote_hiccup()
 	set name = "Hiccup"
-	set category = "Noises"
+	set category = "Emotes.Noises"
 	emote("hiccup", intentional = TRUE)
 
 /datum/emote/living/hiccup/hic
