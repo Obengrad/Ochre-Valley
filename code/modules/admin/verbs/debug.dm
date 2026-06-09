@@ -26,7 +26,7 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
-	set category = "-GameMaster-"
+	set category = "Game Master"
 	set name = "Make Simple Animal"
 
 	if(!SSticker.HasRoundStarted())
@@ -69,7 +69,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
-	set category = "-Admin-"
+	set category = "Admin.Admin"
 	set name = "Direct control..."
 	set desc = ""
 
@@ -88,7 +88,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Assume Direct Control") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_areatest(on_station)
-	set category = "Mapping"
+	set category = "Debug.Mapping"
 	set name = "Test Areas"
 
 	var/list/dat = list()
@@ -201,17 +201,17 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 
 /client/proc/cmd_admin_areatest_station()
-	set category = "Mapping"
+	set category = "Debug.Mapping"
 	set name = "Test Areas (STATION Z)"
 	cmd_admin_areatest(TRUE)
 
 /client/proc/cmd_admin_areatest_all()
-	set category = "Mapping"
+	set category = "Debug.Mapping"
 	set name = "Test Areas (ALL)"
 	cmd_admin_areatest(FALSE)
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
-	set category = "-GameMaster-"
+	set category = "Game Master"
 	set name = "Select Loadout"
 	if(!(ishuman(M) || isobserver(M)))
 		alert("Invalid mob")
@@ -276,6 +276,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	body += "<b>Apply Components:</b><br>"
 	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_stats;target=[REF(H)]'>Apply Stats</A> | "
 	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_equipment_spells;target=[REF(H)]'>Apply Equipment/Spells</A> | "
+	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=add_remove_spell;target=[REF(H)]'>Add/Remove Spell</A> | " //OV Edit: Add/remove spells from loadout panel
 	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_skills;target=[REF(H)]'>Apply Skills</A> | "
 	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_traits;target=[REF(H)]'>Apply Traits</A> | "
 	body += "<A href='?_src_=holder;[HrefToken()];loadout_action=apply_examine_title;target=[REF(H)]'>Apply Examine Title</A><br>"
@@ -587,7 +588,12 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(alert(usr, "This will reset [H.name] to a blank state, removing all equipment, skills, examine title, traits, and resetting stats. Continue?", "Confirm Clean Slate", "Yes", "No") == "Yes")
 				clean_slate_mob(H)
 				show_loadout_panel(H)
-	
+
+		//OV Edit: Add and remove spells
+		if("add_remove_spell")
+			add_remove_spell(H)
+			show_loadout_panel(H)
+		//OV Edit End
 	return TRUE
 
 /client/proc/robust_dress_shop()
@@ -1130,7 +1136,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	// Clear spells and aspect config if they have a mind
 	if(H.mind)
-		for(var/obj/effect/proc_holder/spell/S in H.mind.spell_list)
+		for(var/S in H.mind.spell_list) //OV Edit: Not all spells are /obj/ Some are datums too
 			H.mind.RemoveSpell(S)
 		H.mind.mage_aspect_config = null
 		H.mind.major_aspects = null
@@ -1479,7 +1485,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] pumped a random event.")
 
 /client/proc/start_line_profiling()
-	set category = "Profile"
+	set category = "Debug.Profile"
 	set name = "Start Line Profiling"
 	set desc = ""
 
@@ -1490,7 +1496,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] started line by line profiling.")
 
 /client/proc/stop_line_profiling()
-	set category = "Profile"
+	set category = "Debug.Profile"
 	set name = "Stops Line Profiling"
 	set desc = ""
 
@@ -1501,7 +1507,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] stopped line by line profiling.")
 
 /client/proc/show_line_profiling()
-	set category = "Profile"
+	set category = "Debug.Profile"
 	set name = "Show Line Profiling"
 	set desc = ""
 
