@@ -441,10 +441,10 @@ GLOBAL_LIST_INIT(bogbun_aggro, world.file2list("modular_ochrevalley/strings/rt/b
 /mob/living/carbon/human/species/human/northern/bogbun_legendary
 	ai_controller = /datum/ai_controller/human_npc
 	d_intent = INTENT_PARRY
-	faction = list(FACTION_GRONNMEN, FACTION_STATION)
+	faction = list(FACTION_BANDITS, FACTION_STATION)
 	ambushable = FALSE
 	dodgetime = 30
-	blood_toll_bucket = STATS_KILLED_GRONNMEN
+	blood_toll_bucket = STATS_KILLED_HIGHWAYMEN
 
 /mob/living/carbon/human/species/human/northern/bogbun_legendary/Initialize()
 	. = ..()
