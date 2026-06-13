@@ -1247,7 +1247,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 		//OV edit
 		if(isbelly(L.loc))
 			continue
-		//OV edit end
+		//OV edit end 
 		if(L != howner)
 	
 			L.adjust_fire_stacks(fire_stacks)
