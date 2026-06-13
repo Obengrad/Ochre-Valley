@@ -3293,7 +3293,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 								if(suffix)
 									name += " — [suffix]"
 								choices[name] = i
-					var/choice = tgui_input_list(user, "CHOOSE A HERO","CAUSTIC COVE", choices, choices_default)
+					var/choice = tgui_input_list(user, "CHOOSE A HERO","OCHRE VALLEY", choices, choices_default)
 					// Caustic Edit End
 					if(choice)
 						choice = choices[choice]
