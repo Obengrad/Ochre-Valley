@@ -1,16 +1,14 @@
 /datum/species/ooze
 	name = "Ooze" //OV Edit - Name and DESC changed
 	id = "ooze"
-	desc = "<b>Ooze</b><br>\
-	Ever since Zizo's ascension, the imbalance of the world has affected Psydonia, but one of its most curious symptoms is the leyline's own process of \
+	desc_title = "Ooze"
+	desc = "Ever since Zizo's ascension, the imbalance of the world has affected Psydonia, but one of its most curious symptoms is the leyline's own process of \
 	trying to right the wrong that happened to its system - the Ooze. At least they are connected in some shape or form, since only since the Ascendance have they been reported in history. \
 	Ultimately, they are a fluke. A by-product of errant Lux finding itself in a liquid strong enough to hold its form, before something pulses the dormant power \
 	within Psydon's Gift awake, lashing its tendrils into matter and forming the core of a being, bubbling and festering into a shape it is vaguely familiar with. \
 	What finally emerges is the Ooze, with some big-headed scholars trying to give them a more 'proper celestial name', although nobody can quite agree on \
 	it. Luxophont, Luxem, Homunculus… Whatever their philological circles babble about, the common man calls them Ooze, for their opaque and liquid-y appearance. \
-	Though hardened by the violent depths, they remain volatile and naive, struggling to understand a surface world that often sees them as monsters.<br> \
-	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>+1 CON | +1 INT<br> \
-	Easy Dismember | Limb Regrowth | Inhumen Digestion</span><br><br>"
+	Though hardened by the violent depths, they remain volatile and naive, struggling to understand a surface world that often sees them as monsters."
 	blood_color = "#00FFFF" //Defaults to blue, but we recolor this later to match the slime person's body color.
 	origin_default = /datum/virtue/origin/racial/underdark
 	base_name = "Ooze"
@@ -172,6 +170,11 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver/ooze,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach/ooze,
 		)
+	
+	mechanics_explanations = list("Have no bones to break. However, upon suffering a severe blunt wound, or when a limb would experience a bone fracture, the limb melts. Lost limbs similarly melt off.",
+		"Can regenerate lost limbs by sleeping, at a great cost to their bodily nutrition.",
+		"Have uniquely colored blood that matches the color of their bodies.",
+		"Upon dying, they become \"suffering oozes\"; simple creechers which are unable to do much more than move around and attack things. They may ONLY be revived by either resurrection miracles or the Fulmenor Chair, (the revival chair utilized by apothecaries and physicians in the Clinic.)") // OV Add
 
 ////// ORGAN SPRITES, provided by VelSlime
 /obj/item/organ/brain/ooze

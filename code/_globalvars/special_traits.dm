@@ -53,9 +53,9 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 			var/discounted_cost = max(0, LI.triumph_cost - triumph_discount_remaining)
 			if(discounted_cost > 0 && character.get_triumphs() < discounted_cost)
 				continue
-			//triumph_discount_remaining = max(0, triumph_discount_remaining - LI.triumph_cost) //OV Edit - Adjusted so triumph is deducted on removal of item
-			//if(discounted_cost > 0)
-				//character.adjust_triumphs(-discounted_cost)
+			triumph_discount_remaining = max(0, triumph_discount_remaining - LI.triumph_cost) //OV Edit - Adjusted so triumph is deducted on removal of item
+			if(discounted_cost > 0)
+				character.adjust_triumphs(-discounted_cost)
 		character.mind.special_items[LI.name] = LI.path
 	var/datum/job/assigned_job = SSjob.GetJob(character.mind?.assigned_role)
 	if(assigned_job)

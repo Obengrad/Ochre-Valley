@@ -1,4 +1,4 @@
 author: "VanessaCoding"
 delete-after: True
 changes:
-  - qol: "autochiseling."
+  - bugfix: "autochisel fix"

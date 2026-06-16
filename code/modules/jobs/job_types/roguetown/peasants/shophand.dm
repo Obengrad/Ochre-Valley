@@ -14,7 +14,7 @@
 
 	tutorial = "You are a shophand, hired by the Azurian Trading Company to work one of their many storefronts around town. Your duties are simple: keep the shelves stocked, keep the customers happy, and try not to get sacked. It is not glamorous work, but you serve under the Factor of Azure Peak - second only to the Grand Factor themselves. Keep your eyes on the ledgers, learn what you can, and one day you may rise to Factor yourself. Then the mammons shall flow - into your pouch."
 
-	//outfit = /datum/outfit/job/roguetown/shophand //Caustic edit
+	outfit = /datum/outfit/job/roguetown/shophand
 	display_order = JDO_SHOPHAND
 	give_bank_account = TRUE
 	min_pq = null //-10
@@ -27,26 +27,10 @@
 
 	advclass_cat_rolls = list(CTAG_SHOPHAND = 2)
 	job_subclasses = list(
-		//Caustic edit
-		// /datum/advclass/shophand
-		/datum/advclass/guildthug,
-		/datum/advclass/guildinformant,
-		/datum/advclass/hiredservant,
-		/datum/advclass/shoplackey,
-		//Caustic edit end
+		/datum/advclass/shophand
 	)
 
-/datum/job/roguetown/shophand/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
-
-
-///Caustic edit, we have our own version
-/*/datum/advclass/shophand
+/datum/advclass/shophand
 	name = "Shophand"
 	tutorial = "TODO: Shophand advclass flavor rewrite - Ansari to fill" //TODO: Shophand advclass FT rewrite (M8)
 	outfit = /datum/outfit/job/roguetown/shophand/basic
@@ -103,4 +87,4 @@
 		SStreasury.grant_savings(ECONOMIC_UPPER_MIDDLE_CLASS, H)
 	backpack_contents = list(
 		/obj/item/mini_flagpole/merchant = 1,
-	) */
+	)
