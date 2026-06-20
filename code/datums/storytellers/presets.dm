@@ -98,7 +98,7 @@
 	roundstart_prob = 100
 	block_hard = FALSE
 	block_soft = FALSE
-	allow_dreamwalker = FALSE
+	allow_dreamwalker = FALSE //OV Edit
 	preferred_gnoll_mode = GNOLL_SCALING_FLAT	// max 2
 	wretch_slot_cap = 9
 
