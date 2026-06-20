@@ -16,6 +16,7 @@
 	welcome_text = "A temperate breeze rolls through the quiet streets.."
 	color_theme = "#80ced8"
 	preset_pool = GAMEMODE_POOL_EXTENDED
+	always_votable = FALSE //OV Edit
 	block_hard = TRUE
 	block_soft = TRUE
 	allow_dreamwalker = FALSE
@@ -97,7 +98,7 @@
 	roundstart_prob = 100
 	block_hard = FALSE
 	block_soft = FALSE
-	allow_dreamwalker = TRUE
+	allow_dreamwalker = FALSE
 	preferred_gnoll_mode = GNOLL_SCALING_FLAT	// max 2
 	wretch_slot_cap = 9
 
@@ -124,7 +125,7 @@
 	preset_pool = GAMEMODE_POOL_NOANTAG
 	block_hard = TRUE
 	block_soft = FALSE
-	allow_dreamwalker = TRUE
+	allow_dreamwalker = FALSE
 	preferred_gnoll_mode = GNOLL_SCALING_DYNAMIC	// max 3
 	wretch_slot_cap = 12
 	roundstart_prob = 50

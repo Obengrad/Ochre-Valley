@@ -25,15 +25,9 @@
 	return preset?.block_soft
 
 /proc/enforce_storyteller_soft_antag_slots()
-	/* OV Remove: We'll do our own version of enforcing soft antag slots.
 	if(!is_storyteller_soft_antag_blocked())
 		return
 	for(var/job_title in list("Wretch", "Gnoll", "Assassin"))
-	*/
-	// OV Add Start - OV-specific soft antag slot enforcement. Allows wretches even when soft antags are blocked.
-	var/job_title = is_storyteller_soft_antag_blocked() ? list("Wretch") : list("Wretch", "Gnoll", "Assassin")
-	for(var/title in job_title)
-	// OV Add End
 		var/datum/job/blocked_job = SSjob.GetJob(job_title)
 		if(!blocked_job)
 			continue
@@ -768,7 +762,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	refresh_alive_stats()
 	handle_post_setup_roundstart_events()
-	// apply_storyteller_bonus_roundstart_antags() OV Remove: Commented out to stop storyteller system from forcing Dreamwalkers
+	apply_storyteller_bonus_roundstart_antags()
 	handle_post_setup_points()
 	enforce_storyteller_soft_antag_slots()
 	roundstart_event_view = FALSE
@@ -815,7 +809,7 @@ SUBSYSTEM_DEF(gamemode)
 // 			if(!SSvote.mode)
 // 				SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
 	if(roundvoteend && world.time >= round_ends_at)
-		return TRUE
+				return TRUE
 // OV Edit End
 
 	if(SSmapping.retainer.head_rebel_decree)
@@ -2015,20 +2009,20 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/list/statistics_to_clear = list(
 		STATS_TOTAL_POPULATION,
-		STATS_PSYCROSS_USERS,
-		STATS_ALIVE_NOBLES,
-		STATS_ALIVE_GARRISON,
-		STATS_ALIVE_CLERGY,
-		STATS_ALIVE_TRADESMEN,
-		STATS_WEREVOLVES,
-		STATS_BANDITS,
-		STATS_VAMPIRES,
-		STATS_DEADITES_ALIVE,
-		STATS_CLINGY_PEOPLE,
+        STATS_PSYCROSS_USERS,
+        STATS_ALIVE_NOBLES,
+        STATS_ALIVE_GARRISON,
+        STATS_ALIVE_CLERGY,
+        STATS_ALIVE_TRADESMEN,
+        STATS_WEREVOLVES,
+        STATS_BANDITS,
+        STATS_VAMPIRES,
+        STATS_DEADITES_ALIVE,
+        STATS_CLINGY_PEOPLE,
 		STATS_BEAUTIFUL_PEOPLE,
 		STATS_MARRIAGES_MADE,
-		STATS_ALCOHOLICS,
-		STATS_JUNKIES,
+        STATS_ALCOHOLICS,
+        STATS_JUNKIES,
 		STATS_VOYEURS,
 		STATS_NYMPHOMANIACS,
 		STATS_INDEBTED,
