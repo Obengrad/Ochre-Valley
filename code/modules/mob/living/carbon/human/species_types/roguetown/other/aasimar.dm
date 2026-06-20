@@ -70,6 +70,7 @@
 		//Caustic edit end
 		// OV Edit start
 		/datum/customizer/organ/tail/demihuman,
+		/datum/customizer/organ/horns/demihuman,
 		// OV Edit End
 		)
 	body_marking_sets = list(
