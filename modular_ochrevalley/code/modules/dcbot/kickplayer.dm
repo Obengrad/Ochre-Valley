@@ -1,8 +1,9 @@
 /datum/world_topic/kickplayer
 	keyword = "kickplayer"
+	require_comms_key = TRUE
 
-/datum/world_topic/makenote/Run(list/input)
-	if(!"ckey" in input)
+/datum/world_topic/kickplayer/Run(list/input)
+	if(!("ckey" in input))
 		return "No ckey given!"
 	for(var/client/C in GLOB.clients)
 		if(C.ckey == input["ckey"])
