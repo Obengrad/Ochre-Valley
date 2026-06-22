@@ -74,6 +74,8 @@
 		harpy.remove_status_effect(/datum/status_effect/buff/harpy_sing)
 	if(harpy.has_status_effect(STATUS_EFFECT_SLEEPING))
 		harpy.remove_status_effect(/datum/status_effect/buff/harpy_sing)
+	if(!harpy.can_speak_vocal())
+		harpy.remove_status_effect(/datum/status_effect/buff/harpy_sing)
 
 /datum/status_effect/buff/harpy_sing/on_remove()
 	. = ..()

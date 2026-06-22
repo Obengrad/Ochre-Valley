@@ -60,6 +60,9 @@
 
 /obj/effect/proc_holder/spell/self/harpy_sing/cast(mob/living/carbon/human/user)
 	. = ..()
+	if(!user.can_speak_vocal())
+		to_chat(user, span_bloody("I have no voice!"))
+		return
 	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))
 		user.emote("clearthroat", forced = TRUE)
 	var/mob/living/carbon/human/harpy = user
