@@ -490,10 +490,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)
-
+// OV Edit Start
 	for(var/skill as anything in inherent_skills)
-		C.adjust_skillrank(skill, inherent_skills[skill], TRUE)
-
+		C.adjust_skillrank_up_to(skill, inherent_skills[skill], TRUE)
+// OV Edit End
 	if(TRAIT_TOXIMMUNE in inherent_traits)
 		C.setToxLoss(0, TRUE, TRUE)
 
