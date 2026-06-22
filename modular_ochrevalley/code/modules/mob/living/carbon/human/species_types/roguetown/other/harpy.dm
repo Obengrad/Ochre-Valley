@@ -49,7 +49,7 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
 
-	race_bonus = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 1) //OV Edit - Cleaned up bonuses in-line with other racials
+	race_bonus = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = -1, STAT_STRENGTH = -2) //OV Edit - -3 Stat Weight, similar to constructs
 	inherent_traits = list(TRAIT_NOFALLDAMAGE1)
 	inherent_skills = list(
 		/datum/skill/misc/music = 3,
