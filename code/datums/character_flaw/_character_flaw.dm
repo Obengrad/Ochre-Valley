@@ -938,13 +938,13 @@ GLOBAL_LIST_INIT(averse_factions, list(
 		addtimer(CALLBACK(src, PROC_REF(check_for_candidates), user), 5 SECONDS)
 
 /datum/charflaw/wanted
-	name = "Wanted (+2 TRI)"
+	name = "Wanted" //OV Edit, TRI Removal - (+2 TRI)"
 	desc = "You're a known criminal; your name can be found on the EXCIDIUM. Your crime may have been a misdeed worthy of a fine, or a great offense against the powers at play. Only Adventurers, Pilgrims (Migrants), Traders, Vagabonds and Lunatics may pick this vice and it requires another."
 	needs_extra_vice = TRUE
 
 /datum/charflaw/wanted/on_mob_creation(mob/user)
 	. = ..()
-	user.adjust_triumphs(2)
+	//user.adjust_triumphs(2) //OV Edit - TRI removal
 	ADD_TRAIT(user, TRAIT_OUTLAW, "[type]")
 
 /datum/charflaw/wanted/apply_post_equipment(mob/user)
