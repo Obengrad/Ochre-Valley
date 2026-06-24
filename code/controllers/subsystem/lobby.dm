@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(lobbymenu)
 	var/list/wanderer_jobs = list(
 		"Adventurer",
 		"Wretch",
+		"Wild Soul", //OV Edit
 		"Court Agent"
 	)
 	var/list/count_only_job = list(
