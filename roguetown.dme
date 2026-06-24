@@ -3703,7 +3703,11 @@
 #include "modular_ochrevalley\code\modules\dcbot\kickplayer.dm"
 #include "modular_causticcove\code\modules\size_scaling\sizecats.dm"
 #include "modular_causticcove\code\modules\size_scaling\resizing\holder_micro_vr.dm"
+<<<<<<< HEAD
 #include "modular_ochrevalley\code\modules\roguetown\roguecrafting\alchemy\ingredients.dm"
+=======
+#include "modular_ochrevalley\code\modules\jobs\job_types\roguetown\adventurer\types\combat\rogue.dm"
+>>>>>>> d5c1d9cbbf (adds the Tinkerer)
 #include "modular_causticcove\code\modules\size_scaling\resizing\resize_vr.dm"
 #include "modular_causticcove\code\modules\size_scaling\size_verbs\standardized_sprite_verb.dm"
 #include "modular_ochrevalley\code\modules\roguetown\roguejobs\alchemist\herb_seeds.dm"
