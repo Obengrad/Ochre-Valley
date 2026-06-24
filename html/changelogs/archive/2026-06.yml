@@ -1057,3 +1057,69 @@
   - balance: Otavian Routier gets an Otavian satchel instead of a regular one
   - balance: Grenzel + Emir get interlectual trait for free as proper envoy nobility,
       on-par with advisor hand and the likes.
+2026-06-24:
+  Antoonij:
+  - code_imp: simplify locate corpse
+  KatTheFox:
+  - qol: Eoran tree pruning now checks for the presence of snip intent, rather than
+      scissors type path; which basically means 'anything that works like scissors
+      can prune them now'
+  Kell-E:
+  - bugfix: Fluted Half-Plate has had its coverage corrected.
+  - balance: Food only buffs on the last bite. Meals & Snacks no longer stack.
+  Ketrai:
+  - bugfix: Made dream items less heretical on examine.
+  - balance: 66% of devotee regen is now basekit for miracle classes with regen.
+  - balance: Prayer is now far more effective for regaining devotion as it scales
+      with miracle skill properly now.
+  - rscadd: long pig from butchering humanoids, longpig mince and stew
+  - balance: butchering humanoids yields less meat
+  - image: new mince sprites.
+  - rscadd: Soilson & peasant secular bless crops
+  Ollanius:
+  - rscadd: Improvised repair kits now only require Novice-level skills to create.
+  - rscadd: Descriptions for metal repair kits and iron scrap are clarified to make
+      it easier for newcomers to understand how it works.
+  - rscadd: Improvised metal- and fabric-repair kits can now be purchased on the Triumph
+      menu for 5 TRI each.
+  WeNeedMorePhoron:
+  - server: Round should announces when it is extended now in restart annoucements
+  - rscadd: Sending letter to someone who don't exist reject letter on TGUI
+  changelingonberry:
+  - balance: bites only roll for accuracy against activated combat mode
+  - bugfix: bites are as accurate as any unarmed
+  hazarawn:
+  - bugfix: great flail uses flail skill instead of polearms
+  radarseas:
+  - rscadd: new cinematic for lich's death, be sure to keep your phylactory safe and
+      hidden because it makes noise now resurrecting you.
+  - balance: lich can now sleep, instead of being hard-locked to your skills or being
+      softlocked indefinitely in burncrit, similar to how and why dreamwalker can
+      now
+  - balance: lich has gained Lacrima/Eyebiter for consistancy with Necromancers
+  - balance: lich's statline adjusted slightly, they also have enough willpower to
+      not be easy prey to silver
+  - balance: lich has a few additional traits for flavor
+  - balance: lich has some misc skills either for flavor, mobility, gimmics, resurrecting
+      dead people properly or just jumpscaring people for aura
+  - balance: lich uses minimal skill uptos, ensuring their skills don't become too
+      high, they will still be varied by job + job traits
+  - balance: lich has all of the labor traits their skeletons have
+  - balance: lich now has reinforced boots instead of regular
+  - balance: sapper outburst has a slightly shorter windup by (1) second to account
+      for their (5) CON points often getting them killed too quickly
+  - bugfix: sapper outburst now correctly makes a noise on being primed instead of
+      only on exploding
+  - bugfix: lich now spawns their ritual chalk + spelltome in their satchel upon rolling/resurrecting,
+      so they don't lose it
+  - bugfix: lich now keeps their true name on resurrecting instead of becoming unknown
+  - bugfix: lich now preserves all stats as-intended and won't end up with 10 con
+  - bugfix: fixed lich exploding on shell outburst instead of the actual skeleton
+      you cast it on, LMAO.
+  - rscadd: Added ENDURING BLAST to Psydonic Missionaries, its definitely not pulling
+      a rock out of your boot, shhh, nope, nope.
+  - balance: Psydonic missionaries can conjure rocks I mean-- ENDURING BLASTS for
+      25 devotion every 5 seconds for combat. Trust the plan.
+  - bugfix: sunderstacks clear on death + revival + aheal + revives, you don't need
+      to varedit it away.
+  - balance: Werewolves are immune to pain even while doused in sunderflames.

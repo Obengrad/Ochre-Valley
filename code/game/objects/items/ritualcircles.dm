@@ -739,6 +739,9 @@
 	var/faith_locked = TRUE
 	var/obj/upgraded_rune_type = /obj/structure/active_abyssor_rune/greater
 
+/obj/item/abyssal_marker/get_examine_highlight_status()
+	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, "It shatters the barrier between reality and NIGHTMARE")
+
 /obj/item/abyssal_marker/volatile
 	name = "volatile abyssal marker"
 	effect_desc = " Whispers fill your head. The crystal yearns to be used, it shall bring forth a beautiful dream. The first use shall mark, the second shall unleash. Seems fragile, like it might explode violently with energies when thrown..."
@@ -746,9 +749,6 @@
 	icon_state = "abyssal_marker_volatile"
 	var/cooldown = 0
 	var/creation_time
-
-/obj/item/abyssal_marker/volatile/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, "It shatters the barrier between reality and NIGHTMARE")
 
 /obj/item/abyssal_marker/tidal
 	name = "tidal abyssal marker"

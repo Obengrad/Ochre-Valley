@@ -1,5 +1,0 @@
-author: "radarseas"
-delete-after: True
-changes:
-  - bugfix: "sunderstacks clear on death + revival + aheal + revives, you don't need to varedit it away."
-  - balance: "Werewolves are immune to pain even while doused in sunderflames."
