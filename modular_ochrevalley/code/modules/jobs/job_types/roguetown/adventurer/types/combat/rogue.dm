@@ -28,7 +28,7 @@
 /datum/advclass/rogue/tinkerer //
 	name = "Itinerant Tinkerer"
 	tutorial = "In another life, your intellect, connections, and aptitude for blending well-worked bronze with Arcyne mysteries would have made for a fine guildsman. Whilst unnaccustomed to combat, your cleverness and inventions offer you a novel edge."
-	outfit = /datum/outfit/job/roguetown/adventurer/antiquarian
+	outfit = /datum/outfit/job/roguetown/adventurer/tinkerer
 	cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
 	traits_applied = list(TRAIT_SEEPRICES, TRAIT_DECEIVING_MEEKNESS, TRAIT_ARCYNE, TRAIT_SMITHING_EXPERT)
 	subclass_stats = list(
@@ -61,7 +61,7 @@
 	..()
 	to_chat(H, span_warning("In another life, your intellect, connections, and aptitude for blending well-worked bronze with Arcyne mysteries would have made for a fine guildsman. Whilst unnaccustomed to combat, your cleverness and inventions offer you a novel edge."))
 	if(H.mind)
-		var/gadgets = list("Pistol", "Grappler", "Clockwork Drill", "Voltic Gauntlets", "Bronze Arms", "Bronze Legs")
+		var/gadgets = list("Pistol", "Grappling Hook", "Clockwork Drill", "Voltic Gauntlets", "Bronze Arms", "Bronze Legs")
 		var/gadget_choice = input(H, "Choose a gadget.", "YOUR LATEST MASTERPIECE") as anything in gadgets
 		H.set_blindness(0)
 		switch(gadget_choice)
