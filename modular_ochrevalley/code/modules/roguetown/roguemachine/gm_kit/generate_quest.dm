@@ -31,12 +31,13 @@
 	to_chat(user, "The region selected is: [where_to_spawn?.region_name]")*/
 
 	while(current_mob_count < 21)
-		var/mob_to_add = tgui_input_list(user, "Choose a mob that needs killing, cancel to finish adding mobs.", "Mob", list_of_mobs)
+		var/mob_to_add = tgui_input_list(user, "Choose a mob that needs killing, cancel to finish adding mobs. (max of 20)", "Mob", list_of_mobs)
 		if(!mob_to_add)
 			break
 		else
 			var/remaining_count = 20 - current_mob_count
-			var/number_to_add = tgui_input_number(user, "How many of this mob to include?", "Mob", 1, remaining_count)
+			var/number_to_add = tgui_input_number(user, "How many of this mob to include? ([remaining_count] remaining)", "Mob", 1, remaining_count)
+			to_chat(user, "Added [number_to_add] of [mob_to_add]")
 			while(number_to_add > 0)
 				quest_mobs += mob_to_add
 				number_to_add--
