@@ -383,7 +383,9 @@
 
 //OV edit
 /obj/belly/proc/steal_mana(mob/living/L)
-	if((L.energy > 0) && (L.client)) //Make sure it's a player so you can't use goblins as mana batteries.
-		L.energy_add(-1)
-		owner.energy_add(1)
+	if((L.energy > 5) && (L.client))
+		L.energy_add(-5)
+		owner.adjust_nutrition(5)
+		prob(3)
+			to_chat(L, span_warning("Your energy is slowly being siphoned away..."))
 //OV edit end
