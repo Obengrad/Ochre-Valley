@@ -3700,6 +3700,7 @@
 #include "modular_ochrevalley\code\modules\admin\sun_strike_save.dm"
 #include "modular_causticcove\code\modules\size_scaling\prefs.dm"
 #include "modular_causticcove\code\modules\size_scaling\sizecat_types.dm"
+#include "modular_ochrevalley\code\modules\dcbot\kickplayer.dm"
 #include "modular_causticcove\code\modules\size_scaling\sizecats.dm"
 #include "modular_causticcove\code\modules\size_scaling\resizing\holder_micro_vr.dm"
 #include "modular_ochrevalley\code\modules\roguetown\roguecrafting\alchemy\ingredients.dm"
