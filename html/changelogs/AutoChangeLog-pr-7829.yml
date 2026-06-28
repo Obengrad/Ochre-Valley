@@ -1,0 +1,4 @@
+author: "KatTheFox"
+delete-after: True
+changes:
+  - bugfix: "Gemcarved teapots now hold 120 drams instead of 99"
