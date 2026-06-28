@@ -334,7 +334,7 @@
 	zombie.Unconscious(15) //Brief Knockout
 	//OV Add Start
 	if(zombie.show_redflash())
-	zombie.flash_fullscreen("redflash3")
+		zombie.flash_fullscreen("redflash3")
 	//OV Add End
 	zombie.visible_message(span_warning("[zombie] convulses on the floor momentarily, skin rotting away unnaturally fast..."))
 	sleep(2 SECONDS) //Second message, another small gap to notice something is very fucking wrong if the previous que wasn't enough.
