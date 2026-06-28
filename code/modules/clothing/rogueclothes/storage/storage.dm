@@ -555,7 +555,7 @@
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "harpy_talon" // coder kitbash 5 minute sprite ugh
 	drop_sound = 'sound/blank.ogg'
-	gripped_intents = list(/datum/intent/wing/cut, /datum/intent/wing/shred, /datum/intent/wing/grab, /datum/intent/wing/pick)
+	gripped_intents = list(/datum/intent/wing/cut, /datum/intent/wing/shred, /datum/intent/wing/pick) // /datum/intent/wing/grab - temporarily removed until a fix for the INFINITE FLOAT bug is figured out.
 	associated_skill = /datum/skill/combat/unarmed
 	w_class = WEIGHT_CLASS_HUGE
 	wlength = WLENGTH_GREAT
