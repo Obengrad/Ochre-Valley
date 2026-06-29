@@ -560,6 +560,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	wlength = WLENGTH_GREAT
 	wbalance = WBALANCE_SWIFT
+	sharpness = IS_SHARP // For butchering!
 	twohands_required = TRUE
 	force = 20
 	wdefense = 0 // Technically unarmed. Wear bracers to parry.
