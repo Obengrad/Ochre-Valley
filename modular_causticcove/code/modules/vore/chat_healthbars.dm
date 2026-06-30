@@ -115,8 +115,8 @@
 		to_chat(reciever,span_notice("[ourbar]"))
 
 /mob/living/verb/print_healthbars()
-	set name = "Print Prey Healthbars"
-	set category = "Vore" //OV EDIT
+	set name = "Print Prey Healthbars" // OV Edit
+	set category = "Vore.Misc" //OV EDIT
 
 	var/nuffin = TRUE
 
