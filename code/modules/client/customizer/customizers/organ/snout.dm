@@ -521,5 +521,18 @@
 		/datum/sprite_accessory/snout/shortnosed,
 		/datum/sprite_accessory/snout/stubby,
 		/datum/sprite_accessory/snout/stubbyalt,
+		/datum/sprite_accessory/snout/toucan,
+		/datum/sprite_accessory/snout/sbeak,
+		/datum/sprite_accessory/snout/front/bird,
+		/datum/sprite_accessory/snout/front/bigbeak,
+		/datum/sprite_accessory/snout/front/toucan,
+		/datum/sprite_accessory/snout/ochre/short_beak,
+		/datum/sprite_accessory/snout/ochre/parrot_beak,
+		/datum/sprite_accessory/snout/ochre/thin_beak,
+		/datum/sprite_accessory/snout/ochre/finch_beak,
+		/datum/sprite_accessory/snout/ochre/pelican_beak,
+		/datum/sprite_accessory/snout/ochre/toucan_beak_alt,
+		/datum/sprite_accessory/snout/ochre/raptor_beak_small,
+		/datum/sprite_accessory/snout/ochre/raptor_beak_large,
 	)
 // OV Add End

@@ -454,7 +454,8 @@
 		/datum/sprite_accessory/tail/swallow,
 		/datum/sprite_accessory/tail/zorzor,
 		/datum/sprite_accessory/tail/large_snake,
-		/datum/sprite_accessory/tail/large_snake_plain
+		/datum/sprite_accessory/tail/large_snake_plain,
+		/datum/sprite_accessory/tail/ochre/narrowtail_2color,
 	)
 // OV Add End
 // Slimes

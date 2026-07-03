@@ -123,6 +123,8 @@
 		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/featheryv2,
 		/datum/sprite_accessory/wings/huge/angel,
+		/datum/sprite_accessory/wings/ochre/wingarms_speckles,
+		/datum/sprite_accessory/wings/ochre/wingarms_2tone,
 	)
 // OV Add End
 /datum/customizer/organ/wings/slime
