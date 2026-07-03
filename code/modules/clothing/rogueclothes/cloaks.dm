@@ -1433,6 +1433,9 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	var/active_item = FALSE
 
+/obj/item/clothing/neck/roguetown/blkknight/get_examine_highlight_status()
+	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_MATTHIOS_ICON)
+
 /obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user, slot)
 	. = ..()
 	if(active_item)
