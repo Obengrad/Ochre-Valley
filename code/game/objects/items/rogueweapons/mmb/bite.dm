@@ -428,12 +428,12 @@
 		if(C.blood_volume <= 0)
 			to_chat(user, span_warning("--But there's no blood left to drink."))
 			break
-	//OV edit start. This proc is for hemovores- we check if the user has TRAIT_LYFE_DRINK, if the target location is unarmored, and if the target is not in combat mode. If so, drink, and apply drugs, without checking for bleeding
-	if(check_hemovore(user))
-		return
-	//OV edit end. if this returns false, the target is either actively fighting, or protected- check normally
+		//OV edit start. This proc is for hemovores- we check if the user has TRAIT_LYFE_DRINK, if the target location is unarmored, and if the target is not in combat mode. If so, drink, and apply drugs, without checking for bleeding
+		if(check_hemovore(user))
+			return
+		//OV edit end. if this returns false, the target is either actively fighting, or protected- check normally
 
-	if(!limb_grabbed.get_bleed_rate())
+		if(!limb_grabbed.get_bleed_rate())
 			to_chat(user, span_warning("--But they're not bleeding, I should chew."))
 			break
 		if(!user.Adjacent(grabbed))
