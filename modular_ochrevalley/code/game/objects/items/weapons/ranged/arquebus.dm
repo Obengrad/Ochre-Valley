@@ -172,8 +172,35 @@
 		wield(user)
 	update_icon()
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/proc/unload(mob/user)
+	if(gunpowder)
+		gunpowder = FALSE
+		reloaded = FALSE
+		if(chambered)
+			chambered.forceMove(get_turf(src))
+			if(user)
+				user.visible_message("<span class='notice'>[user] unloads the [chambered] from [src].</span>")
+			else
+				visible_message("<span class='notice'>[chambered] spills from [src]'s barrel!</span>")
+			chambered = null
+			return TRUE
+		if(user)
+			user.visible_message("<span class='notice'>[user] unloads the powder from [src].</span>")
+			return TRUE
+		visible_message("<span class='notice'>Powder spills from [src]'s barrel!</span>")
+		return TRUE
+	return FALSE
+
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/attack_right(mob/user)
 	if(user.get_active_held_item())
+		if(istype(user.get_active_held_item(), /obj/item/ramrod) && (chambered || gunpowder))
+			to_chat(user, "<span class='warning'>I begin to unload the [src]!</span>")
+			user.visible_message("<span class='notice'>[user] begins rooting [user.get_active_held_item()] around in the barrel of the [src].</span>")
+			playsound(src, 'modular_causticcove/sound/arquebus/ramrod.ogg',  100)
+			if(do_after(user, load_time, src))
+				user.visible_message("<span class='notice'>[user] unloads [src].</span>")
+				unload(user)
 		return
 	else
 		if(myrod)
@@ -379,3 +406,37 @@
 						M.balloon_alert(M, "[length(arrows)] left...")
 		return
 	..()
+
+/obj/item/storage
+	var/holdsguns = FALSE
+
+/obj/item/clothing
+	var/holdsguns = FALSE
+
+/* Definitions for if someone wants to allow guns into belts, cloaks, or what have you later. I've erred on the side of conservative for now
+/obj/item/clothing/cloak
+	holdsguns = TRUE
+
+/obj/item/storage/belt
+	holdsguns = TRUE
+*/
+
+/datum/component/storage/spill_contents(atom/A)
+	. = ..()
+	var/holdsagun = FALSE
+	if(istype(A, /obj/item/storage))
+		var/obj/item/storage/str = A 
+		holdsagun = str.holdsguns
+	else if(istype(A, /obj/item/clothing))
+		var/obj/item/clothing/clth = A 
+		holdsagun = clth.holdsguns
+	if(!holdsagun)
+		for(var/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/arquebus in A.contents)
+			arquebus.unload()
+
+
+/obj/item/storage/equipped(mob/user, slot)
+	. = ..()
+	if(!holdsguns)
+		for(var/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/arquebus in contents)
+			arquebus.unload()
