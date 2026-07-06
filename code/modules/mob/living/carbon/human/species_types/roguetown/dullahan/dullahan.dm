@@ -45,9 +45,10 @@
 		/obj/item/bodypart/taur/bunny,
 		/obj/item/bodypart/taur/biglegs,
 		/obj/item/bodypart/taur/biglegsstanced,
-		/obj/item/bodypart/taur/goat, //OV Add
-		/obj/item/bodypart/taur/satyr, //OV ADD
-		//OV Edit End
+		/obj/item/bodypart/taur/goat,
+		/obj/item/bodypart/taur/satyr,
+		/obj/item/bodypart/taur/noodle,
+		/// OV Edit End
 	)
 	base_name = "Godtouched"
 	is_subrace = TRUE

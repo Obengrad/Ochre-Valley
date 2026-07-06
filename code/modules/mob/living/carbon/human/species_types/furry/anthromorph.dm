@@ -51,7 +51,10 @@
 		/obj/item/bodypart/taur/biglegs,
 		/obj/item/bodypart/taur/biglegsstanced,
 		///Caustic edit end
-		/obj/item/bodypart/taur/satyr, //OV ADD
+		/// OV edit
+		/obj/item/bodypart/taur/satyr,
+		/obj/item/bodypart/taur/noodle,
+		/// OV edit end
 	)
 
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

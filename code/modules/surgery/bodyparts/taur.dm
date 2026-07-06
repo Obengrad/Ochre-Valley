@@ -300,4 +300,12 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	taur_icon_state = "satyr_s"
 
 	has_taur_color = TRUE
+
+/obj/item/bodypart/taur/noodle
+	name = "Noodle"
+
+	offset_x = -16
+	taur_icon_state = "noodle_s"
+
+	has_taur_color = TRUE
 //OV edit end
