@@ -40,7 +40,7 @@
 	newtime -= user.get_skill_level(/datum/skill/combat/firearms) * 4.6
 	newtime -= user.STAPER
 	return max(newtime, 1) * ARCHER_NPC_ROF_PENALTY // NPCs shoot slower than players though.
-
+	
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/
 	name = "arquebus rifle"
 	desc = "A gunpowder weapon that shoots an armor piercing metal ball."
@@ -95,12 +95,27 @@
 	var/obj/item/ramrod/myrod = null
 	var/gunchannel
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/examine(mob/user)
+	. = ..()
+	if(reloaded && chambered)
+		. += span_notice("It is loaded with [chambered] and ready to fire!")
+	else if(chambered)
+		. += span_notice("It is loaded with [chambered]. It still needs to be tamped down")
+		if(myrod)
+			. += span_notice("The ramrod can be retrieved by right-clicking [src] with an empty hand")
+	else if(gunpowder)
+		. += span_notice("It's filled with powder, and ready for shot!")
+	else
+		. += span_notice("It's empty. It can be filled with a Powder Flask.")
+
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/get_mechanics_examine(mob/user)
 	. = ..()
 	. += span_info("Black powder weapons increase in accuracy with a higher <b>PERCEPTION</b>, but deal a static amount of damage \
 	regardless of character stats.")
 	. += span_info("Black powder weapons must be loaded with powder, then a bullet, which must then be forced down the barrel with a ramrod.")
 	. += span_info("Most black powder weapons come with a ramroad stored on them, which can be pulled out with a right click from an empty hand. They can be stored back on the weapon by left clicking them when there isn't a bullet that needs ramming down.")
+	. += span_info("The weapon's ramrod may be used to unload the weapon, by right-clicking on it while it's loaded.")
 	if(onehanded)
 		. += span_info("This weapon can be used in one hand, at the penalty of aim time.")
 
@@ -117,8 +132,12 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/Initialize()
 	. = ..()
+	RegisterSignal(src, COMSIG_AFTER_STORAGE_INSERT, PROC_REF(checkstoragevalidity))
 	myrod = new /obj/item/ramrod(src)
-
+	
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/Destroy()
+	UnregisterSignal(src, COMSIG_AFTER_STORAGE_INSERT)
+	. = ..()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/shoot_live_shot(mob/living/user as mob|obj, pointblank = 0, mob/pbtarget = null, message = 1)
 	fire_sound = pick(
@@ -172,16 +191,29 @@
 		wield(user)
 	update_icon()
 
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/proc/checkstoragevalidity()
+	var/holdsagun = FALSE
+	if(istype(loc, /obj/item/storage))
+		var/obj/item/storage/str = loc 
+		holdsagun = str.holdsguns
+	else if(istype(loc, /obj/item/clothing))
+		var/obj/item/clothing/clth = loc
+		holdsagun = clth.holdsguns
+	if(!holdsagun)
+		unload()
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/arquebus/proc/unload(mob/user)
 	if(gunpowder)
 		gunpowder = FALSE
 		reloaded = FALSE
 		if(chambered)
-			chambered.forceMove(get_turf(src))
 			if(user)
 				user.visible_message("<span class='notice'>[user] unloads the [chambered] from [src].</span>")
 			else
 				visible_message("<span class='notice'>[chambered] spills from [src]'s barrel!</span>")
+			LAZYREMOVE(magazine.stored_ammo, chambered)
+			chambered.forceMove(get_turf(src))
 			chambered = null
 			return TRUE
 		if(user)
