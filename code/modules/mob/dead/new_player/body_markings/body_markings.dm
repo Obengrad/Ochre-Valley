@@ -382,6 +382,27 @@
 	icon_state = "bun_s"
 	default_color = "FFFFFF"
 	affected_bodyparts = HEAD
+
+/datum/body_marking/womb_tattoo
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Womb Tattoo"
+	icon_state = "groin"
+	default_color = "FF0000"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/butterfly
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Butterfly"
+	icon_state = "butterfly"
+	default_color = "FF0000"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/waist
+	icon = 'icons/mob/body_markings/small_chest_markings.dmi'
+	name = "Waist"
+	icon_state = "waist"
+	default_color = "FF0000"
+	affected_bodyparts = CHEST
 // OV Add Start
 /datum/body_marking/harpy_feet_claws
 	icon = 'icons/mob/body_markings/harpy_markings.dmi'

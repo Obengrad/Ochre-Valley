@@ -175,9 +175,8 @@
 				return
 			if(curfile)
 				playing = TRUE
-				soundloop.mid_sounds = list(curfile)
-				soundloop.cursound = null
-				soundloop.start(user)
+				soundloop.set_mid_sounds(list(curfile))
+				soundloop.start()
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
 				if(not_held) // OV Edit
 					user.apply_status_effect(/datum/status_effect/buff/harpy_sing)
@@ -214,8 +213,7 @@
 						return
 					bandinstrumentsband.playing = TRUE
 					bandinstrumentsband.groupplaying = TRUE
-					bandinstrumentsband.soundloop.mid_sounds = bandinstrumentsband.curfile
-					bandinstrumentsband.soundloop.cursound = null
+					bandinstrumentsband.soundloop.set_mid_sounds(list(bandinstrumentsband.curfile))
 					bandinstrumentsband.soundloop.start(user) // OV Edit
 					for(var/mob/living/carbon/human/A in bandmates)
 						A.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
