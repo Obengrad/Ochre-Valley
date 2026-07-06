@@ -176,7 +176,7 @@
 			if(curfile)
 				playing = TRUE
 				soundloop.set_mid_sounds(list(curfile))
-				soundloop.start()
+				soundloop.start(user) // OV Edit - (user) Is needed so harpies singing applies to their body instead of the organ, for playing the sound.
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
 				if(not_held) // OV Edit
 					user.apply_status_effect(/datum/status_effect/buff/harpy_sing)
@@ -214,7 +214,7 @@
 					bandinstrumentsband.playing = TRUE
 					bandinstrumentsband.groupplaying = TRUE
 					bandinstrumentsband.soundloop.set_mid_sounds(list(bandinstrumentsband.curfile))
-					bandinstrumentsband.soundloop.start(user) // OV Edit
+					bandinstrumentsband.soundloop.start(user) // OV Edit - (user) Is needed so harpies singing applies to their body instead of the organ, for playing the sound.
 					for(var/mob/living/carbon/human/A in bandmates)
 						A.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
 
