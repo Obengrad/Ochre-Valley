@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Feline Body"
 
 	offset_x = -16
-	taur_clothing_category = "m"
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "feline_s"
 
 	has_taur_color = TRUE
@@ -177,6 +177,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Tempst Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "tempest_s"
 
 	has_taur_color = TRUE
@@ -187,6 +188,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Drake Body"
 
 	offset_x = -16
+	taur_clothing_category = "r" //OV ADD
 	taur_icon_state = "drake_s"
 
 	has_taur_color = TRUE
@@ -203,6 +205,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Wolf Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "wolf_s"
 
 	has_taur_color = TRUE
@@ -227,6 +230,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Deer Body"
 
 	offset_x = -16
+	taur_clothing_category = "d" //OV ADD
 	taur_icon_state = "deer_s"
 
 	has_taur_color = TRUE
@@ -243,6 +247,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Fat wolf Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "fatwolf_s"
 
 	has_taur_color = TRUE
@@ -251,6 +256,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	name = "Fat feline Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "fatfeline_s"
 
 	has_taur_color = TRUE

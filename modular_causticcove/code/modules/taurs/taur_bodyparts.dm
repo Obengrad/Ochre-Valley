@@ -100,6 +100,7 @@
 	name = "Feline Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "feline_s"
 
 	has_taur_color = TRUE
@@ -116,6 +117,7 @@
 	name = "Tempst Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "tempest_s"
 
 	has_taur_color = TRUE
@@ -126,6 +128,7 @@
 	name = "Drake Body"
 
 	offset_x = -16
+	taur_clothing_category = "r" //OV ADD
 	taur_icon_state = "drake_s"
 
 	has_taur_color = TRUE
@@ -142,6 +145,7 @@
 	name = "Wolf Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "wolf_s"
 
 	has_taur_color = TRUE
@@ -166,6 +170,7 @@
 	name = "Deer Body"
 
 	offset_x = -16
+	taur_clothing_category = "d" //OV ADD
 	taur_icon_state = "deer_s"
 
 	has_taur_color = TRUE
@@ -182,6 +187,7 @@
 	name = "Fat wolf Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "fatwolf_s"
 
 	has_taur_color = TRUE
@@ -190,6 +196,7 @@
 	name = "Fat feline Body"
 
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "fatfeline_s"
 
 	has_taur_color = TRUE
@@ -230,6 +237,7 @@
 	name = "Bunny Taur Body"
 	icon = 'modular_causticcove/icons/mob/taurs/taur.dmi'
 	offset_x = -16
+	taur_clothing_category = "m" //OV ADD
 	taur_icon_state = "bigbunny_s"
 
 	has_taur_color = TRUE
