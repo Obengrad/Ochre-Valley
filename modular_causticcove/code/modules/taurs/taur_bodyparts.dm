@@ -114,7 +114,7 @@
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/tempest
-	name = "Tempst Body"
+	name = "Tempest Body"
 
 	offset_x = -16
 	taur_clothing_category = "m" //OV ADD
