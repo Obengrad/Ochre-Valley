@@ -203,6 +203,10 @@
 	name = "Gift - Armor Cosmetic, Shoulderguard"
 	path = /obj/item/clothing/cloak/tabard/stabard/donator_shoulderguard
 
+/datum/loadout_item/donator/universal/armorpiece_armharness
+	name = "Gift - Armor Cosmetic, Arm Harness"
+	path = /obj/item/enchantingkit/donator_universal_armharness
+
 /////////////////////////////
 // ! Player / Donor Kits ! //
 /////////////////////////////

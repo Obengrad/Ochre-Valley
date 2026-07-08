@@ -572,6 +572,15 @@
 	item_state = "triheartfelt"
 	icon_state = "triheartfelt"
 
+/obj/item/clothing/wrists/roguetown/bracers/armharness
+	name = "plate arm harness"
+	desc = "A pair of interlocked steel plate arm harnesses, composed of pauldrons, rerebraces, couters, and vambraces - all snugly latched around the limb and secured to one another thanks to a series of leather straps, metal aglets, and sliding rivets. The engineering is so meticulous that flexibility of the limb is hardly impeded."
+	item_state = "armharness"
+	icon_state = "armharness"
+	icon = 'icons/clothing/donor_clothes.dmi'
+	mob_overlay_icon = 'icons/clothing/onmob/donor_clothes.dmi'
+	sleeved = 'icons/clothing/onmob/donor_sleeves_armor.dmi'
+
 /obj/item/clothing/head/roguetown/decoration/orle
 	name = "noble striped decoration"
 	desc = "A delicate weaving of colored fabric, intended to be worn atop a helmet; a touch of elegance, indiscriminate of the alloy."
