@@ -116,7 +116,7 @@
 /datum/sprite_accessory/tail_feature/taur/caustic/deerbelly
 	name = "Deer Taur Belly Markings"
 	icon = 'modular_causticcove/icons/mob/taurs/taurdeer_belly.dmi'
-	icon_state = "taurdeer_belly"
+	icon_state = "taurdeer_belly_s"
 
 
 /datum/sprite_accessory/tail_feature/large_snake
