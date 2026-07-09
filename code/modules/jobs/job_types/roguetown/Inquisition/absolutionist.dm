@@ -115,6 +115,10 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_ABSOLVER, start_maxed = TRUE) // PSYDONIAN MIRACLE-WORKER. LUX-MERGING FREEK.
 	change_origin(H, /datum/virtue/origin/otava, "Holy order")
+	//OV Edit: Let more classes test faith
+	add_verb(H, /mob/living/carbon/human/proc/faith_test)
+	add_verb(H, /mob/living/carbon/human/proc/torture_victim)
+	//OV Edit End
 
 /obj/effect/proc_holder/spell/invoked/convert_psydon
 	name = "REDEEM"
