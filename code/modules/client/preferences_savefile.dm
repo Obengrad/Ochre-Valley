@@ -396,7 +396,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["eating_noises"], eating_noises)
 	WRITE_FILE(S["belch_noises"], belch_noises)
 	///Caustic edit end
-	
+	//OV Edit: Any persistent OV Prefs
+	WRITE_FILE(S["block_mindlink"], block_mindlink)
+	//OV Edit Start
 	return TRUE
 
 
