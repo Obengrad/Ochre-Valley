@@ -220,6 +220,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["eating_noises"]		>> eating_noises
 	S["belch_noises"]		>> belch_noises
 	///Caustic edit end
+	//OV Edit
+	S["block_mindlink"]		>> block_mindlink
+	//OV Edit End
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
 
