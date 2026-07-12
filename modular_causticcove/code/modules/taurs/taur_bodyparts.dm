@@ -257,3 +257,12 @@
 	taur_icon_state = "biglegsstanced_s"
 
 	has_taur_color = TRUE
+
+/obj/item/bodypart/taur/noodle
+	name = "Noodle"
+
+	offset_x = -16
+	taur_clothing_category = "r"
+	taur_icon_state = "noodle_s"
+
+	has_taur_color = TRUE
