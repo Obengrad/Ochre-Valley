@@ -69,6 +69,8 @@
 		target = get_step_multiz(source, direction)
 		if(!target)
 			return FALSE
+	if(HAS_TRAIT(src, TRAIT_PREVENT_Z_FALL)) // OV Add
+		return FALSE
 	return !(movement_type & FLYING) && !throwing
 
 /atom/movable/proc/onZImpact(turf/T, levels)
