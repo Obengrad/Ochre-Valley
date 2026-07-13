@@ -47,10 +47,9 @@
 		/obj/item/bodypart/taur/biglegs,
 		/obj/item/bodypart/taur/biglegsstanced,
 		///Caustic edit end
-		/// OV edit
-		/obj/item/bodypart/taur/satyr,
-		/obj/item/bodypart/taur/noodle,
-		/// OV edit end
+		/obj/item/bodypart/taur/satyr, //OV ADD
+		/obj/item/bodypart/taur/sloog, //OV ADD
+    /obj/item/bodypart/taur/noodle, // OV ADD
 	)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = TRUE

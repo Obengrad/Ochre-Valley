@@ -147,4 +147,9 @@
 	name = "Noodle, Tail Marking"
 	icon = 'modular_ochrevalley/icons/mob/taurs/noodle_tail_markings.dmi'
 	icon_state = "noodle_marking_tail"
+
+/datum/sprite_accessory/tail_feature/taur/sloogmarkings
+	name = "Slugcat Body Glow Line Marking"
+	icon = 'modular_causticcove/icons/mob/taurs/sloog_markings.dmi'
+	icon_state = "sloog_glowstripe"
 /// OV edit end
