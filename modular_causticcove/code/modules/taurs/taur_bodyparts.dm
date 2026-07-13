@@ -258,6 +258,7 @@
 
 	has_taur_color = TRUE
 
+/// OV edit
 /obj/item/bodypart/taur/noodle
 	name = "Noodle"
 
@@ -266,3 +267,4 @@
 	taur_icon_state = "noodle_s"
 
 	has_taur_color = TRUE
+/// OV edit end
