@@ -140,11 +140,11 @@
 /// OV edit
 /datum/sprite_accessory/tail_feature/taur/noodle_marking_belly
 	name = "Noodle, Underbelly Marking"
-	icon = 'modular_causticcove/icons/mob/taurs/noodle_belly_markings.dmi'
+	icon = 'modular_ochrevalley/icons/mob/taurs/noodle_belly_markings.dmi'
 	icon_state = "noodle_marking_belly"
 
 /datum/sprite_accessory/tail_feature/taur/noodle_marking_tail
 	name = "Noodle, Tail Marking"
-	icon = 'modular_causticcove/icons/mob/taurs/noodle_tail_markings.dmi'
+	icon = 'modular_ochrevalley/icons/mob/taurs/noodle_tail_markings.dmi'
 	icon_state = "noodle_marking_tail"
 /// OV edit end
