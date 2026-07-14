@@ -3675,6 +3675,7 @@
 #include "modular_causticcove\code\modules\dcbot\topichandlers\fetchplayers.dm"
 #include "modular_causticcove\code\modules\deadite_pac\deadite_pac.dm"
 #include "modular_causticcove\code\modules\extra_virtue\prefs.dm"
+#include "modular_ochrevalley\code\modules\clothing\rogueclothes\armor\regenerating.dm"
 #include "modular_causticcove\code\modules\grazer\stomach.dm"
 #include "modular_ochrevalley\code\datums\loadout\loadout_triumph.dm"
 #include "modular_ochrevalley\code\datums\pollutants\foods.dm"
