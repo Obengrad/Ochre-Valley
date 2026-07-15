@@ -116,20 +116,17 @@
 			I.Knockdown(30)
 			I.Jitter(30)
 			return
-		else
-			//Caustic Edit
-			if(M.show_redflash())
-				M.flash_fullscreen("redflash3")
-			//Caustic Edit End
-			M.emote("agony", forced = TRUE)
-			to_chat(M, span_userdanger("THE FOUL SILVER! IT BURNS ME TO MY CORE!"))
-			Were.on_removal()
-			ADD_TRAIT(M, TRAIT_SILVER_BLESSED, POULTICE_TRAIT)
-			M.poultice_pacify()
-			M.Stun(30)
-			M.Knockdown(30)
-			M.Jitter(30)
-			return
+
+		if(M.show_redflash())
+			M.flash_fullscreen("redflash3")
+		M.emote("agony", forced = TRUE)
+		to_chat(M, span_userdanger("THE FOUL SILVER! IT BURNS ME TO MY CORE!"))
+		Were.on_removal()
+		ADD_TRAIT(M, TRAIT_SILVER_BLESSED, POULTICE_TRAIT)
+		M.poultice_pacify()
+		M.Stun(30)
+		M.Knockdown(30)
+		M.Jitter(30)
 // OV change end
 
 	else if(Wereless) //A lesser werewolf can be deconverted
