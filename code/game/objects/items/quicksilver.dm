@@ -101,7 +101,7 @@
 		icon_state = "[initial(icon_state)]_half"
 		to_chat(user, span_notice("My inquisitorial training leaves just enough of the poultice left for one more anointment."))
 		
-// OV change start - any werewolf can be cured
+// OV Edit start - any werewolf can be cured
 	//Werewolf deconversion
 	if(Were && !Wereless) //The roundstart elder/alpha werewolf
 		if(Were.transformed == TRUE)
