@@ -127,7 +127,7 @@
 		M.Stun(30)
 		M.Knockdown(30)
 		M.Jitter(30)
-// OV change end
+// OV Edit end
 
 	else if(Wereless) //A lesser werewolf can be deconverted
 		if(Wereless.transformed == TRUE)
