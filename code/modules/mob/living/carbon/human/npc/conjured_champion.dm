@@ -44,13 +44,16 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BADTRAINER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NODISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_DUSTABLE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_DUST_DELETE_GEAR, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	//OV Edit Yeah, no, you're not putting medium and heavy armor on a servant.
+	if(loadout != "servant")
+		ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+		ADD_TRAIT(src, TRAIT_DUST_DELETE_GEAR, TRAIT_GENERIC)
+		ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	//OV Edit End
 	var/mob/living/master = summoner_ref?.resolve()
 	if(master)
 		if(master.mind && master.mind.current)
@@ -79,6 +82,11 @@
 		if("spearman")
 			outfit_champion(new /datum/outfit/job/roguetown/conjured_champion/spearman)
 			def_intent_change(INTENT_PARRY)
+		//OV Edit Servant option for champion
+		if("servant")
+			outfit_champion(new /datum/outfit/job/roguetown/conjured_servant)
+			def_intent_change(INTENT_DODGE)
+		//OV Edit End
 		else
 			outfit_champion(new /datum/outfit/job/roguetown/conjured_champion/greatswordman)
 			def_intent_change(INTENT_PARRY)
