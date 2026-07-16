@@ -146,7 +146,7 @@
 	qdel(query_del_message)
 	//OV Edit: Relay note/whitelist/message removals
 	if(CONFIG_GET(flag/amia_enabled))
-		amia_relaynote(target_key, deleted_by_ckey, text, "removed")
+		amia_relaynote(ckey(target_key), deleted_by_ckey, text, "removed")
 	//OV Edit End
 	if(logged)
 		var/m1 = "[user_key_name] has deleted a [type][(type == "note" || type == "message" || type == "watchlist entry") ? " for" : " made by"] [target_key]: [text]"
